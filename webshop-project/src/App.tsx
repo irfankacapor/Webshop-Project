@@ -1,11 +1,12 @@
-import Navbar from './Components/Navbar';
-import { Box, Paper } from '@mui/material';
-import Categories from './Components/Homepage/Categories';
-import MoreProducts from './Components/Homepage/MoreProducts';
-import Featured from './Components/Homepage/Featured';
-import Start from './Components/Homepage/Start';
-import SpecialOffer from './Components/Homepage/SpecialOffer';
-import styled from 'styled-components';
+import Navbar from "./Components/Navbar";
+import { Box, Paper } from "@mui/material";
+import Categories from "./Components/Homepage/Categories";
+import MoreProducts from "./Components/Homepage/MoreProducts";
+import Featured from "./Components/Homepage/Featured";
+import Start from "./Components/Homepage/Start";
+import SpecialOffer from "./Components/Homepage/SpecialOffer";
+import styled from "styled-components";
+import { colours } from "./constants/colours";
 
 export const SectionContainer = styled(Box)`
   box-sizing: border-box;
@@ -13,15 +14,15 @@ export const SectionContainer = styled(Box)`
   padding: 2rem 1rem !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  @media (min-width: 900px){
+  @media (min-width: 900px) {
     max-width: 1236px !important;
     padding: 4rem 1rem !important;
   }
-  @media (min-width: 600px){
+  @media (min-width: 600px) {
     max-width: 720px;
     padding: 3rem 1rem !important;
   }
-`
+`;
 
 export const MoreProductsContainer = styled(Box)`
   box-sizing: border-box;
@@ -30,41 +31,46 @@ export const MoreProductsContainer = styled(Box)`
   width: 100%;
   margin-left: auto !important;
   margin-right: auto !important;
-  @media (min-width: 900px){
+  @media (min-width: 900px) {
     max-width: 1236px !important;
   }
-  @media (min-width: 600px){
+  @media (min-width: 600px) {
     max-width: 720px;
   }
-`
-
+`;
 
 const App = () => {
   return (
     <Paper elevation={0}>
-      <Box fontFamily={"Inter"} fontWeight={400} lineHeight={1.5} boxSizing={"border-box"}>
-        <header><Navbar/></header>
+      <Box
+        fontFamily={"Inter"}
+        fontWeight={400}
+        lineHeight={1.5}
+        boxSizing={"border-box"}
+      >
+        <header>
+          <Navbar />
+        </header>
         <main>
           <SectionContainer width={"100%"}>
-            <Start/>
+            <Start />
           </SectionContainer>
           <MoreProductsContainer>
-            <MoreProducts/>
+            <MoreProducts />
           </MoreProductsContainer>
           <SectionContainer>
-            <Categories/>
+            <Categories />
           </SectionContainer>
-          <Box sx={{backgroundColor: "rgb(249, 185, 52)", padding: 0}}>
-            <SpecialOffer/>
+          <Box sx={{ backgroundColor: colours.yellow, padding: 0 }}>
+            <SpecialOffer />
           </Box>
           <SectionContainer marginX={"auto"} maxWidth={"1236px"}>
-            <Featured/>
+            <Featured />
           </SectionContainer>
         </main>
       </Box>
     </Paper>
-    
   );
-}
+};
 
 export default App;

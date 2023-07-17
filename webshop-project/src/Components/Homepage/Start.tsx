@@ -13,10 +13,10 @@ const Start = () => (
   <Grid container spacing={4}>
     <Grid item xs={12} md={6}>
       <Box data-aos="fade-right">
-        <Box marginBottom={"1rem"}>
+        <Box marginBottom="1rem">
           <Typography
             variant="h3"
-            fontWeight={"700"}
+            fontWeight="700"
             sx={{ "@media (max-width: 600px)": { fontSize: "2rem" } }}
           >
             <span style={{ color: colours.blue }}>Experience your music</span>{" "}
@@ -24,11 +24,11 @@ const Start = () => (
           </Typography>
         </Box>
         <Box marginBottom={"1.5rem"}>
-          <Typography variant="h6" color={colours.grey} fontWeight={"400"}>
+          <Typography variant="h6" color={colours.grey} fontWeight="400">
             Super offer till the end of June. All the original headphones at
             maximum:
           </Typography>
-          <Typography variant="h3" color={colours.red} fontWeight={"700"}>
+          <Typography variant="h3" color={colours.red} fontWeight="700">
             $299.95
           </Typography>
           <HomepageButton

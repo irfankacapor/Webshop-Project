@@ -21,7 +21,7 @@ export const CategoryContainer = styled(Box)`
 
 const Categories = () => (
   <Box>
-    <Box marginBottom={"2rem"} display={"block"}>
+    <Box marginBottom="2rem" display="block">
       <Section
         sectionName="CATEGORIES"
         sectionTitle="Choose your product by categories"

@@ -42,16 +42,16 @@ export const MoreProductsContainer = styled(Box)`
 const App = () => (
   <Paper elevation={0}>
     <Box
-      fontFamily={"Inter"}
+      fontFamily="Inter"
       fontWeight={400}
       lineHeight={1.5}
-      boxSizing={"border-box"}
+      boxSizing="border-box"
     >
       <header>
         <Navbar />
       </header>
       <main>
-        <SectionContainer width={"100%"}>
+        <SectionContainer width="100%">
           <Start />
         </SectionContainer>
         <MoreProductsContainer>
@@ -63,7 +63,7 @@ const App = () => (
         <Box sx={{ backgroundColor: colours.yellow, padding: 0 }}>
           <SpecialOffer />
         </Box>
-        <SectionContainer marginX={"auto"} maxWidth={"1236px"}>
+        <SectionContainer marginX="auto" maxWidth="1236px">
           <Featured />
         </SectionContainer>
       </main>

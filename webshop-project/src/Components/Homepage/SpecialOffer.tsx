@@ -17,8 +17,8 @@ const SpecialOfferImage = styled.img`
 `;
 
 const SpecialOffer = () => (
-  <SectionContainer padding={"4rem 1rem"} marginX={"auto"} maxWidth={"1236px"}>
-    <Grid container position={"relative"}>
+  <SectionContainer padding="4rem 1rem" marginX="auto" maxWidth="1236px">
+    <Grid container position="relative">
       <Grid item xs={12} md={6} data-aos="fade-up">
         <Section
           sectionTitle="Experience your music like never before."

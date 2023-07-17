@@ -30,7 +30,7 @@ const Section = (props: SectionProps) => {
 
   return (
     <Box
-      marginBottom={"2rem"}
+      marginBottom="2rem"
       data-aos={props.sectionAosAnimation ? props.sectionAosAnimation : ""}
     >
       <>
@@ -90,7 +90,7 @@ const Section = (props: SectionProps) => {
         display="flex"
         justifyContent={props.alignText ? props.alignText : "center"}
         alignItems={props.alignText ? props.alignText : "center"}
-        marginTop={"1rem"}
+        marginTop="1rem"
       >
         <HomepageButton
           variant="contained"

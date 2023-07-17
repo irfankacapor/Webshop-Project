@@ -20,7 +20,7 @@ export interface ProductProps {
 }
 
 const Product = (props: ProductProps) => (
-  <Box display={"block"} width={"100%"} height={"100%"}>
+  <Box display="block" width="100%" height="100%">
     <Paper
       elevation={1}
       sx={{
@@ -36,11 +36,11 @@ const Product = (props: ProductProps) => (
     >
       <Box>
         <Box
-          padding={"1.5rem 1.5rem 0 1.5rem"}
+          padding="1.5rem 1.5rem 0 1.5rem"
           sx={{ backgroundColor: colours.lightgrey, position: "relative" }}
         >
           <CardMedia
-            component={"img"}
+            component="img"
             image={props.image}
             sx={{
               height: "280px",
@@ -74,8 +74,8 @@ const Product = (props: ProductProps) => (
         <Typography variant="h6" align="left">
           {props.title}
         </Typography>
-        <Box display={"flex"} alignContent={"left"} margin={"0.5rem 0 0.5rem"}>
-          <Box display="flex" flexDirection={"row"}>
+        <Box display="flex" alignContent="left" margin="0.5rem 0 0.5rem">
+          <Box display="flex" flexDirection="row">
             <Box>
               <StarIcon
                 sx={{ color: colours.staryellow, width: 18, height: 18 }}
@@ -110,7 +110,7 @@ const Product = (props: ProductProps) => (
             justifyContent: "space-between",
           }}
         >
-          <Typography variant="body1" color={"primary"}>
+          <Typography variant="body1" color="primary">
             {props.price}
           </Typography>
           <Button

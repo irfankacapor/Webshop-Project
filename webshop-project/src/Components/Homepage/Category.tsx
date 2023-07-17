@@ -25,41 +25,39 @@ export interface CategoryProps {
   icon: string;
 }
 
-const Category = (props: CategoryProps) => {
-  return (
-    <Box width={"100%"} height={"100%"} display={"block"}>
-      <StyledPaper elevation={3}>
+const Category = (props: CategoryProps) => (
+  <Box width={"100%"} height={"100%"} display={"block"}>
+    <StyledPaper elevation={3}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          position: "relative",
+          marginTop: "1rem",
+        }}
+      >
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "center",
-            position: "relative",
-            marginTop: "1rem",
+            borderRadius: "100%",
+            backgroundColor: colours.orange,
+            width: "50px",
+            height: "50px",
+            transform: "translate(1rem, -1rem)",
           }}
-        >
-          <Box
-            sx={{
-              borderRadius: "100%",
-              backgroundColor: colours.orange,
-              width: "50px",
-              height: "50px",
-              transform: "translate(1rem, -1rem)",
-            }}
-          ></Box>
-          <img
-            src={props.icon}
-            width={"48px"}
-            alt={props.category}
-            height={"48px"}
-            style={{ position: "absolute", bottom: 0 }}
-          />
-        </Box>
-        <Typography variant="subtitle1" align="center" marginTop={"1rem"}>
-          {props.category}
-        </Typography>
-      </StyledPaper>
-    </Box>
-  );
-};
+        ></Box>
+        <img
+          src={props.icon}
+          width={"48px"}
+          alt={props.category}
+          height={"48px"}
+          style={{ position: "absolute", bottom: 0 }}
+        />
+      </Box>
+      <Typography variant="subtitle1" align="center" marginTop={"1rem"}>
+        {props.category}
+      </Typography>
+    </StyledPaper>
+  </Box>
+);
 
 export default Category;

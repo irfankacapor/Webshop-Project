@@ -19,118 +19,112 @@ export interface ProductProps {
   title: string;
 }
 
-const Product = (props: ProductProps) => {
-  return (
-    <Box display={"block"} width={"100%"} height={"100%"}>
-      <Paper
-        elevation={1}
-        sx={{
-          transitionProperty: "box-shadow",
-          objectFit: "contain",
-          width: "100%",
-          height: "100%",
-          boxShadow:  `${colours.shadow} 0px 3px 6px 0px`,
-          borderRadius: "8px",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <Box>
-          <Box
-            padding={"1.5rem 1.5rem 0 1.5rem"}
-            sx={{ backgroundColor: colours.lightgrey, position: "relative" }}
-          >
-            <CardMedia
-              component={"img"}
-              image={props.image}
+const Product = (props: ProductProps) => (
+  <Box display={"block"} width={"100%"} height={"100%"}>
+    <Paper
+      elevation={1}
+      sx={{
+        transitionProperty: "box-shadow",
+        objectFit: "contain",
+        width: "100%",
+        height: "100%",
+        boxShadow: `${colours.shadow} 0px 3px 6px 0px`,
+        borderRadius: "8px",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <Box>
+        <Box
+          padding={"1.5rem 1.5rem 0 1.5rem"}
+          sx={{ backgroundColor: colours.lightgrey, position: "relative" }}
+        >
+          <CardMedia
+            component={"img"}
+            image={props.image}
+            sx={{
+              height: "280px",
+              objectFit: "contain",
+              backgroundColor: colours.lightgrey,
+            }}
+          ></CardMedia>
+          <Box>
+            <IconButton
               sx={{
-                height: "280px",
-                objectFit: "contain",
-                backgroundColor: colours.lightgrey,
+                position: "absolute",
+                top: "1rem",
+                right: "1rem",
+                backgroundColor: "white",
+                padding: ".75rem",
               }}
-            ></CardMedia>
-            <Box>
-              <IconButton
+            >
+              <FavoriteBorderOutlinedIcon
                 sx={{
-                  position: "absolute",
-                  top: "1rem",
-                  right: "1rem",
                   backgroundColor: "white",
-                  padding: ".75rem",
+                  width: "1.25rem",
+                  height: "1.25rem",
+                  color: colours.blue,
                 }}
-              >
-                <FavoriteBorderOutlinedIcon
-                  sx={{
-                    backgroundColor: "white",
-                    width: "1.25rem",
-                    height: "1.25rem",
-                    color: colours.blue,
-                  }}
-                />
-              </IconButton>
+              />
+            </IconButton>
+          </Box>
+        </Box>
+      </Box>
+      <CardContent>
+        <Typography variant="h6" align="left">
+          {props.title}
+        </Typography>
+        <Box display={"flex"} alignContent={"left"} margin={"0.5rem 0 0.5rem"}>
+          <Box display="flex" flexDirection={"row"}>
+            <Box>
+              <StarIcon
+                sx={{ color: colours.staryellow, width: 18, height: 18 }}
+              />
+            </Box>
+            <Box>
+              <StarIcon
+                sx={{ color: colours.staryellow, width: 18, height: 18 }}
+              />
+            </Box>
+            <Box>
+              <StarIcon
+                sx={{ color: colours.staryellow, width: 18, height: 18 }}
+              />
+            </Box>
+            <Box>
+              <StarIcon
+                sx={{ color: colours.staryellow, width: 18, height: 18 }}
+              />
+            </Box>
+            <Box>
+              <StarIcon
+                sx={{ color: colours.staryellow, width: 18, height: 18 }}
+              />
             </Box>
           </Box>
         </Box>
-        <CardContent>
-          <Typography variant="h6" align="left">
-            {props.title}
+        <CardActions
+          sx={{
+            padding: "0.5rem",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography variant="body1" color={"primary"}>
+            {props.price}
           </Typography>
-          <Box
-            display={"flex"}
-            alignContent={"left"}
-            margin={"0.5rem 0 0.5rem"}
+          <Button
+            variant="outlined"
+            size="medium"
+            startIcon={<BusinessCenterIcon />}
+            sx={{ textTransform: "none", padding: "10px 15px" }}
           >
-            <Box display="flex" flexDirection={"row"}>
-              <Box>
-                <StarIcon
-                  sx={{ color: colours.staryellow, width: 18, height: 18 }}
-                />
-              </Box>
-              <Box>
-                <StarIcon
-                  sx={{ color: colours.staryellow, width: 18, height: 18 }}
-                />
-              </Box>
-              <Box>
-                <StarIcon
-                  sx={{ color: colours.staryellow, width: 18, height: 18 }}
-                />
-              </Box>
-              <Box>
-                <StarIcon
-                  sx={{ color: colours.staryellow, width: 18, height: 18 }}
-                />
-              </Box>
-              <Box>
-                <StarIcon
-                  sx={{ color: colours.staryellow, width: 18, height: 18 }}
-                />
-              </Box>
-            </Box>
-          </Box>
-          <CardActions
-            sx={{
-              padding: "0.5rem",
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
-            <Typography variant="body1" color={"primary"}>
-              {props.price}
-            </Typography>
-            <Button
-              variant="outlined"
-              size="medium"
-              startIcon={<BusinessCenterIcon />}
-              sx={{ textTransform: "none", padding: "10px 15px" }}
-            >
-              Add to cart
-            </Button>
-          </CardActions>
-        </CardContent>
-      </Paper>
-    </Box>
-  );
-};
+            Add to cart
+          </Button>
+        </CardActions>
+      </CardContent>
+    </Paper>
+  </Box>
+);
 
 export default Product;

@@ -16,35 +16,29 @@ const SpecialOfferImage = styled.img`
   }
 `;
 
-const SpecialOffer = () => {
-  return (
-    <SectionContainer
-      padding={"4rem 1rem"}
-      marginX={"auto"}
-      maxWidth={"1236px"}
-    >
-      <Grid container position={"relative"}>
-        <Grid item xs={12} md={6} data-aos="fade-up">
-          <Section
-            sectionTitle="Experience your music like never before."
-            sectionDescription={[
-              "If we're no longer the right solution for you, we'll allow you to export and take your data at anytime for any reason.",
-            ]}
-            sectionButton="Discover the offer"
-            sectionDescriptionColor={colours.mediumgrey}
-            sectionTitleColor={colours.darkgrey}
-            alignText="left"
-            buttonHeight="54px"
-          />
-        </Grid>
-
-        <SpecialOfferImage
-          src="https://assets.maccarianagency.com/backgrounds/img33.png"
-          alt="..."
+const SpecialOffer = () => (
+  <SectionContainer padding={"4rem 1rem"} marginX={"auto"} maxWidth={"1236px"}>
+    <Grid container position={"relative"}>
+      <Grid item xs={12} md={6} data-aos="fade-up">
+        <Section
+          sectionTitle="Experience your music like never before."
+          sectionDescription={[
+            "If we're no longer the right solution for you, we'll allow you to export and take your data at anytime for any reason.",
+          ]}
+          sectionButton="Discover the offer"
+          sectionDescriptionColor={colours.mediumgrey}
+          sectionTitleColor={colours.darkgrey}
+          alignText="left"
+          buttonHeight="54px"
         />
       </Grid>
-    </SectionContainer>
-  );
-};
+
+      <SpecialOfferImage
+        src="https://assets.maccarianagency.com/backgrounds/img33.png"
+        alt="..."
+      />
+    </Grid>
+  </SectionContainer>
+);
 
 export default SpecialOffer;

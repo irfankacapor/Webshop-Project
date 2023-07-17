@@ -39,38 +39,36 @@ export const MoreProductsContainer = styled(Box)`
   }
 `;
 
-const App = () => {
-  return (
-    <Paper elevation={0}>
-      <Box
-        fontFamily={"Inter"}
-        fontWeight={400}
-        lineHeight={1.5}
-        boxSizing={"border-box"}
-      >
-        <header>
-          <Navbar />
-        </header>
-        <main>
-          <SectionContainer width={"100%"}>
-            <Start />
-          </SectionContainer>
-          <MoreProductsContainer>
-            <MoreProducts />
-          </MoreProductsContainer>
-          <SectionContainer>
-            <Categories />
-          </SectionContainer>
-          <Box sx={{ backgroundColor: colours.yellow, padding: 0 }}>
-            <SpecialOffer />
-          </Box>
-          <SectionContainer marginX={"auto"} maxWidth={"1236px"}>
-            <Featured />
-          </SectionContainer>
-        </main>
-      </Box>
-    </Paper>
-  );
-};
+const App = () => (
+  <Paper elevation={0}>
+    <Box
+      fontFamily={"Inter"}
+      fontWeight={400}
+      lineHeight={1.5}
+      boxSizing={"border-box"}
+    >
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <SectionContainer width={"100%"}>
+          <Start />
+        </SectionContainer>
+        <MoreProductsContainer>
+          <MoreProducts />
+        </MoreProductsContainer>
+        <SectionContainer>
+          <Categories />
+        </SectionContainer>
+        <Box sx={{ backgroundColor: colours.yellow, padding: 0 }}>
+          <SpecialOffer />
+        </Box>
+        <SectionContainer marginX={"auto"} maxWidth={"1236px"}>
+          <Featured />
+        </SectionContainer>
+      </main>
+    </Box>
+  </Paper>
+);
 
 export default App;

@@ -10,6 +10,23 @@ const MoreProductsContainer = styled(Box)`
   background-color: ${colours.blue};
 `;
 
+const ImageContainer = styled(({ ...props }) => (
+  <Grid item xs={12} md={4} {...props} />
+))`
+  padding: 0;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  padding-bottom: 1rem;
+`;
+
+const StyledImage = styled.img`
+  width: 300px;
+  maxwidth: 90%;
+  objectfit: contain;
+  display: block;
+`;
+
 const MoreProducts = () => {
   const isSmallScreen = useMediaQuery("(max-width:600px)");
   return (
@@ -21,15 +38,14 @@ const MoreProducts = () => {
         margin={0}
         data-aos="fade-up"
       >
-        <Grid item xs={12} md={4} style={{ padding: 0 }}>
+        <ImageContainer>
           <Box>
-            <img
+            <StyledImage
               src="https://assets.maccarianagency.com/backgrounds/img35.png"
               alt="Beats Headphones"
-              style={{ maxWidth: "90%", width: "300px", objectFit: "cover" }}
             />
           </Box>
-        </Grid>
+        </ImageContainer>
         <Grid
           container
           xs={12}
@@ -58,28 +74,12 @@ const MoreProducts = () => {
             </Typography>
           </Box>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          md={4}
-          width={"100%"}
-          justifyContent={"flex-end"}
-          padding={"0"}
-          display={"flex"}
-          overflow={"hidden"}
-          paddingBottom={"1rem"}
-        >
-          <img
+        <ImageContainer>
+          <StyledImage
             src="https://assets.maccarianagency.com/backgrounds/img36.png"
             alt="..."
-            style={{
-              width: "300px",
-              maxWidth: "90%",
-              objectFit: "contain",
-              display: "block",
-            }}
           />
-        </Grid>
+        </ImageContainer>
       </Grid>
     </MoreProductsContainer>
   );

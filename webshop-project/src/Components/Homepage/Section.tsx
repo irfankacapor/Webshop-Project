@@ -17,7 +17,9 @@ interface SectionProps {
   sectionDescriptionAosAnimation?: string;
 }
 
-export const HomepageButton = styled(Button)`
+export const HomepageButton = styled(({ ...props }) => (
+  <Button variant="contained" size="large" {...props} />
+))`
   text-transform: none !important;
   minwidth: 64 !important;
   padding: 10px 22px !important;
@@ -93,9 +95,7 @@ const Section = (props: SectionProps) => {
         marginTop="1rem"
       >
         <HomepageButton
-          variant="contained"
           sx={{ height: props.buttonHeight ? props.buttonHeight : "auto" }}
-          size="large"
         >
           {props.sectionButton}
         </HomepageButton>

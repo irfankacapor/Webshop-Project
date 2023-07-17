@@ -2,22 +2,6 @@ import Category from "../Homepage/Category";
 import { Box, Grid } from "@mui/material";
 import Section from "../Homepage/Section";
 import categoryList from "../../files/categories";
-import styled from "styled-components";
-
-export const CategoryContainer = styled(Box)`
-  box-sizing: border-box;
-  padding: 2rem 1rem !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  @media (min-width: 1025px) {
-    max-width: 1236px !important;
-    padding: 4rem 1rem !important;
-  }
-  @media (min-width: 690px) {
-    max-width: 720px;
-    padding: 3rem 1rem !important;
-  }
-`;
 
 const Categories = () => (
   <Box>

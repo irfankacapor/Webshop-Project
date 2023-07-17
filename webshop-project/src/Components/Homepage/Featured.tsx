@@ -15,7 +15,7 @@ const Featured = () => (
       sectionButton="View all"
       sectionTitleAosAnimation="fade-up"
       sectionDescriptionAosAnimation="fade-up"
-    ></Section>
+    />
     <Grid container spacing={4}>
       {products.map((product: ProductProps, index) => {
         return (

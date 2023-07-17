@@ -12,7 +12,7 @@ const Navbar = () => (
       src="https://www.kadencewp.com/wp-content/uploads/2020/10/alogo-4.png"
       alt="logo"
     />
-    <AppBar position="sticky"></AppBar>
+    <AppBar position="sticky" />
   </Paper>
 );
 

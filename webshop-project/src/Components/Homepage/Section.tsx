@@ -31,16 +31,13 @@ const Section = (props: SectionProps) => {
   const isSmallScreen = useMediaQuery("(max-width:600px)");
 
   return (
-    <Box
-      marginBottom="2rem"
-      data-aos={props.sectionAosAnimation ? props.sectionAosAnimation : ""}
-    >
+    <Box marginBottom="2rem" data-aos={props.sectionAosAnimation || ""}>
       <>
         {props.sectionName && (
           <Typography
             gutterBottom
             variant="body1"
-            align={props.alignText ? props.alignText : "center"}
+            align={props.alignText || "center"}
             sx={{ color: colours.yellow, textTransform: "uppercase" }}
           >
             {props.sectionName}
@@ -50,30 +47,20 @@ const Section = (props: SectionProps) => {
 
       <Typography
         variant="h4"
-        align={props.alignText ? props.alignText : "center"}
+        align={props.alignText || "center"}
         gutterBottom
-        color={
-          props.sectionTitleColor ? props.sectionTitleColor : colours.title
-        }
+        color={props.sectionTitleColor || colours.title}
         fontSize={isSmallScreen ? "1.5625rem" : "2.125rem"}
-        data-aos={
-          props.sectionTitleAosAnimation ? props.sectionTitleAosAnimation : ""
-        }
+        data-aos={props.sectionTitleAosAnimation || ""}
       >
         {props.sectionTitle}
       </Typography>
-      <div
-        data-aos={
-          props.sectionDescriptionAosAnimation
-            ? props.sectionDescriptionAosAnimation
-            : ""
-        }
-      >
+      <div data-aos={props.sectionDescriptionAosAnimation || ""}>
         {props.sectionDescription.map((item) => {
           return (
             <Typography
               variant="h6"
-              align={props.alignText ? props.alignText : "center"}
+              align={props.alignText || "center"}
               sx={{
                 color: props.sectionDescriptionColor
                   ? props.sectionDescriptionColor
@@ -90,13 +77,11 @@ const Section = (props: SectionProps) => {
 
       <Box
         display="flex"
-        justifyContent={props.alignText ? props.alignText : "center"}
-        alignItems={props.alignText ? props.alignText : "center"}
+        justifyContent={props.alignText || "center"}
+        alignItems={props.alignText || "center"}
         marginTop="1rem"
       >
-        <HomepageButton
-          sx={{ height: props.buttonHeight ? props.buttonHeight : "auto" }}
-        >
+        <HomepageButton sx={{ height: props.buttonHeight || "auto" }}>
           {props.sectionButton}
         </HomepageButton>
       </Box>

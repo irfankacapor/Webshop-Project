@@ -82,7 +82,7 @@ const Footer = () => (
           </Box>
         </LinkAndLogoContainer>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} textAlign="center">
         <Typography
           variant="subtitle2"
           align="center"
@@ -91,7 +91,7 @@ const Footer = () => (
         >
           &copy; randomCompany. 2023, Company. All rights reserved
         </Typography>
-        <Typography variant="caption" color={colours.grey} align="center">
+        <Typography variant="caption" color={colours.grey} align="right">
           When you visit or interact with our sites, services or tools, we or
           out authorised service providers may use cookies for storing
           information to help provide you with a better, faster, and safer

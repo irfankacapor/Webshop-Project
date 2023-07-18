@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 import styled from "styled-components";
 import { colours } from "../../constants/colours";
 
-const MoreProductsContainer = styled(Box)`
+export const MoreProductsContainer = styled(Box)`
   display: flex;
   align-item: flex-start;
   border-radius: 8px;
@@ -13,17 +13,16 @@ const MoreProductsContainer = styled(Box)`
 const ImageContainer = styled(({ ...props }) => (
   <Grid item xs={12} md={4} {...props} />
 ))`
-  padding: 0;
+  padding: 0 !important;
   width: 100%;
   display: flex;
   overflow: hidden;
-  padding-bottom: 1rem;
 `;
 
 const StyledImage = styled.img`
   width: 300px;
-  maxwidth: 90%;
-  objectfit: contain;
+  max-width: 90%;
+  object-fit: contain;
   display: block;
 `;
 
@@ -38,7 +37,7 @@ const MoreProducts = () => {
         margin={0}
         data-aos="fade-up"
       >
-        <ImageContainer>
+        <ImageContainer style={{ alignItems: "flex-start" }}>
           <Box>
             <StyledImage
               src="https://assets.maccarianagency.com/backgrounds/img35.png"
@@ -74,7 +73,7 @@ const MoreProducts = () => {
             </Typography>
           </Box>
         </Grid>
-        <ImageContainer>
+        <ImageContainer style={{ justifyContent: "flex-end" }}>
           <StyledImage
             src="https://assets.maccarianagency.com/backgrounds/img36.png"
             alt="..."

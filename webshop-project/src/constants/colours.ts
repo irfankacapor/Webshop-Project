@@ -1,6 +1,7 @@
 export const colours = {
   yellow: "rgb(249, 185, 52)",
   blue: "rgb(55, 125, 255)",
+  lightblue: "rgba(55, 125, 255, 0.5)",
   lightgrey: "rgb(247, 250, 255)",
   shadow: "rgba(140, 152, 164, 0.25)",
   orange: "rgb(255, 152, 0)",

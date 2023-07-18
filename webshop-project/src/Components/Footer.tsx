@@ -1,6 +1,6 @@
 import { Box, Button, Grid, Link, Typography } from "@mui/material";
 import styled from "styled-components";
-import { colours } from "../constants/colours";
+import { colours } from "../Constants/colours";
 
 const FooterContainer = styled(Box)`
   box-sizing: border-box;
@@ -49,7 +49,7 @@ const LinkContainer = styled(Box)`
   margin: 0.5rem 1rem 0 0;
 `;
 
-export const Footer = () => (
+const Footer = () => (
   <FooterContainer>
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -61,7 +61,7 @@ export const Footer = () => (
               style={{ height: "100%", width: "100%" }}
             />
           </LogoContainer>
-          <Box display="flex" flexDirection="row" alignItems={"center"}>
+          <Box display="flex" flexDirection="row" alignItems="center">
             <LinkContainer>
               <Link underline="none" href="/">
                 <Typography variant="subtitle2" color={colours.title}>
@@ -101,3 +101,5 @@ export const Footer = () => (
     </Grid>
   </FooterContainer>
 );
+
+export default Footer;

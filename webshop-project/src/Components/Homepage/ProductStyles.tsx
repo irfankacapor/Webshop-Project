@@ -9,7 +9,7 @@ import {
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import StarIcon from "@mui/icons-material/Star";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { colours } from "../../constants/colours";
+import { colours } from "../../Constants/colours";
 import styled from "styled-components";
 
 const ProductContainer = styled(Paper)`

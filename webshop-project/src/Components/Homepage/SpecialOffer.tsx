@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 import Section from "./Section";
 import styled from "styled-components";
-import { SectionContainer } from "../../App";
-import { colours } from "../../constants/colours";
+import { SectionContainer } from "../../Pages/Homepage";
+import { colours } from "../../Constants/colours";
 
 const SpecialOfferImage = styled.img`
   display: none;

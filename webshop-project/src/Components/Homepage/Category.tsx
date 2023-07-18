@@ -1,6 +1,6 @@
 import { Box, Paper, Typography } from "@mui/material";
 import styled from "styled-components";
-import { colours } from "../../constants/colours";
+import { colours } from "../../Constants/colours";
 
 const StyledPaper = styled(Paper)`
   height: 100% !important;

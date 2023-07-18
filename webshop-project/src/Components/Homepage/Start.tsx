@@ -1,7 +1,7 @@
 import { Box, Grid, Typography } from "@mui/material";
 import { HomepageButton } from "./Section";
 import styled from "styled-components";
-import { colours } from "../../constants/colours";
+import { colours } from "../../Constants/colours";
 
 const CoverImage = styled.img`
   max-width: 600px;

@@ -1,7 +1,7 @@
 import { Typography, Box, Button } from "@mui/material";
 import styled from "styled-components";
 import { useMediaQuery } from "@mui/material";
-import { colours } from "../../constants/colours";
+import { colours } from "../../Constants/colours";
 
 interface SectionProps {
   sectionName?: string;

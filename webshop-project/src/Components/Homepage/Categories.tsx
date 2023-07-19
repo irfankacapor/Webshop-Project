@@ -1,7 +1,7 @@
-import Category from "../Homepage/Category";
+import Category from "./Category";
 import { Box, Grid } from "@mui/material";
-import Section from "../Homepage/Section";
-import categoryList from "../../files/categories";
+import Section from "./Section";
+import categoryList from "../../Files/categories";
 
 const Categories = () => (
   <Box>

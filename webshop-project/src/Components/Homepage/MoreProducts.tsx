@@ -1,7 +1,7 @@
 import { Box, Grid, useMediaQuery } from "@mui/material";
 import { Typography } from "@mui/material";
 import styled from "styled-components";
-import { colours } from "../../constants/colours";
+import { colours } from "../../Constants/colours";
 
 export const MoreProductsContainer = styled(Box)`
   display: flex;

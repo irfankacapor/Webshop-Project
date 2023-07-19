@@ -1,6 +1,6 @@
 import { Box, Button, Grid, Link, Typography } from "@mui/material";
 import styled from "styled-components";
-import { colours } from "../constants/colours";
+import { colours } from "../Constants/colours";
 
 const FooterContainer = styled(Box)`
   box-sizing: border-box;
@@ -49,7 +49,7 @@ const LinkContainer = styled(Box)`
   margin: 0.5rem 1rem 0 0;
 `;
 
-export const Footer = () => (
+const Footer = () => (
   <FooterContainer>
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -61,7 +61,7 @@ export const Footer = () => (
               style={{ height: "100%", width: "100%" }}
             />
           </LogoContainer>
-          <Box display="flex" flexDirection="row" alignItems={"center"}>
+          <Box display="flex" flexDirection="row" alignItems="center">
             <LinkContainer>
               <Link underline="none" href="/">
                 <Typography variant="subtitle2" color={colours.title}>
@@ -82,7 +82,7 @@ export const Footer = () => (
           </Box>
         </LinkAndLogoContainer>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} textAlign="center">
         <Typography
           variant="subtitle2"
           align="center"
@@ -91,7 +91,7 @@ export const Footer = () => (
         >
           &copy; randomCompany. 2023, Company. All rights reserved
         </Typography>
-        <Typography variant="caption" color={colours.grey} align="center">
+        <Typography variant="caption" color={colours.grey} align="right">
           When you visit or interact with our sites, services or tools, we or
           out authorised service providers may use cookies for storing
           information to help provide you with a better, faster, and safer
@@ -101,3 +101,5 @@ export const Footer = () => (
     </Grid>
   </FooterContainer>
 );
+
+export default Footer;

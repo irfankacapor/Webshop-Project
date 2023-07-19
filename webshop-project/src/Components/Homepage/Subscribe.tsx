@@ -71,7 +71,7 @@ const StyledTextField = styled(({ ...props }) => (
   }
 `;
 
-export const Subscribe = () => {
+const Subscribe = () => {
   const isSmallScreen = useMediaQuery("(max-width:600px)");
   return (
     <SubscribeContainer>
@@ -113,3 +113,5 @@ export const Subscribe = () => {
     </SubscribeContainer>
   );
 };
+
+export default Subscribe;

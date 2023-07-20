@@ -42,7 +42,11 @@ const SortByDropdown = ({
   >
     <SortByText />
     <Dropdown value={sortBy} onChange={handleSortByChange}>
-      {options.map(({option, id}) => <MenuItem value={option} key={id}>{option}</MenuItem>)}
+      {options.map(({ option, display, id }) => (
+        <MenuItem value={option} key={id}>
+          {display}
+        </MenuItem>
+      ))}
     </Dropdown>
   </Box>
 );

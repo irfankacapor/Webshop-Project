@@ -95,25 +95,19 @@ const SeeDetailsButton = styled(({ ...props }) => (
   }
 `;
 
-const CreateStar = ({ rating, index }: { rating: number; index: number }) => (
-  <StyledStarIcon
-    sx={{
-      color: index <= rating ? colours.yellow : colours.mediumlightgrey,
-    }}
-  />
-);
+const CreateStars = (props: { rating: number }) => {
+  const rating = Math.round(props.rating);
+  const stars = Array(5).fill(0);
 
-const Rating = (props: { rating: number }) => {
-  const stars = [];
-
-  let rating = Math.round(props.rating);
-
-  for (let i = 1; i <= 5; i++) {
-    stars.push(<CreateStar key={i} index={i} rating={rating} />);
-  }
   return (
     <Box display="flex" alignItems="center" boxSizing={"border-box"}>
-      {stars}
+      {stars.map((_, index) => (
+        <StyledStarIcon
+          sx={{
+            color: index + 1 <= rating ? colours.yellow : colours.mediumlightgrey,
+          }}
+        />
+      ))}
     </Box>
   );
 };
@@ -149,7 +143,7 @@ const ProductCard = ({
           <ProductCaption>${price}</ProductCaption>
         </Box>
         <Box marginTop="0.25rem">
-          <Rating rating={rating} />
+          <CreateStars rating={rating} />
         </Box>
         <Stack marginTop="1rem" display="flex" flexDirection={"row"}>
           <ProductButtons>

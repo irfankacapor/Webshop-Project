@@ -61,7 +61,7 @@ const Navbar = () => {
     <>
       <StyledAppBar
         elevation={elevation}
-        style={{ backgroundColor: elevation === 1 ? "white" : "rgba(0,0,0,0)" }}
+        style={{ backgroundColor: elevation === 1 ? colours.white : colours.transparent }}
       >
         <NavbarContainer>
           <Link underline="none" href="/">

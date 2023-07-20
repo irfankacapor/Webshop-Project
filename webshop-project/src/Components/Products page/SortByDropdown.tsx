@@ -1,11 +1,6 @@
 import { Box, Typography, MenuItem, TextField } from "@mui/material";
 import styled from "styled-components";
 
-type SortByDropdownProps = {
-  handleSortByChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  sortBy: string;
-};
-
 const Dropdown = styled(({ ...props }) => <TextField select {...props} />)`
   min-width: 120px !important;
   width: 100%;
@@ -31,7 +26,7 @@ const SortByText = styled(({ ...props }) => (
   }
 `;
 
-const SortByDropdown = (props: SortByDropdownProps) => (
+const SortByDropdown = ({handleSortByChange, sortBy}: {handleSortByChange: (event: React.ChangeEvent<HTMLInputElement>) => void, sortBy: string}) => (
   <Box
     display="flex"
     alignItems="center"
@@ -39,7 +34,7 @@ const SortByDropdown = (props: SortByDropdownProps) => (
     boxSizing={"border-box"}
   >
     <SortByText />
-    <Dropdown value={props.sortBy} onChange={props.handleSortByChange}>
+    <Dropdown value={sortBy} onChange={handleSortByChange}>
       <MenuItem value="A-Z">A-Z</MenuItem>
       <MenuItem value="Z-A">Z-A</MenuItem>
       <MenuItem value="Best seller">Best seller</MenuItem>

@@ -15,12 +15,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
 
-export interface ProductCardProps {
-  thumbnail: string;
-  title: string;
-  price: number;
-  rating: number;
-}
+
 
 const StyledStarIcon = styled(StarIcon)`
   width: 16px !important;
@@ -38,7 +33,7 @@ const StyledCardMedia = styled(({ ...props }) => (
 `;
 
 const FavouriteIconContainer = styled(Box)`
-  background-color: white;
+  background-color: ${colours.white};
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -66,7 +61,7 @@ const ProductButtons = styled(({ ...props }) => (
   min-width: 4rem !important;
   width: 100%;
   transition-property: box-shadow;
-  box-shadow: rgba(140, 152, 164, 0.1) 0px 12px 15px !important;
+  box-shadow: ${colours.lightshadow} 0px 12px 15px !important;
   padding: 10px 22px !important;
 
   & svg {
@@ -102,10 +97,10 @@ const SeeDetailsButton = styled(({ ...props }) => (
   }
 `;
 
-const CreateStar = (props: { rating: number; index: number }) => (
+const CreateStar = ({rating, index}: { rating: number; index: number }) => (
   <StyledStarIcon
     sx={{
-      color: props.index <= props.rating ? colours.yellow : "rgba(0,0,0,0.12)",
+      color: index <= rating ? colours.yellow : colours.mediumlightgrey,
     }}
   />
 );
@@ -125,14 +120,14 @@ const Rating = (props: { rating: number }) => {
   );
 };
 
-const ProductCard = (props: ProductCardProps) => {
+const ProductCard = ({thumbnail, title, price, rating }: {thumbnail: string, title: string, price: number, rating: number}) => {
   return (
     <Box width="100%" height="100%">
       <Paper elevation={0}>
         <StyledCardMedia
           style={{
-            backgroundImage: `url(${props.thumbnail})`,
-            backgroundColor: "transparent",
+            backgroundImage: `url(${thumbnail})`,
+            backgroundColor: colours.transparent,
           }}
         >
           <FavouriteIconContainer>
@@ -142,11 +137,11 @@ const ProductCard = (props: ProductCardProps) => {
           </FavouriteIconContainer>
         </StyledCardMedia>
         <Box marginTop="1rem" display="flex" justifyContent="space-between">
-          <ProductCaption noWrap>{props.title}</ProductCaption>
-          <ProductCaption>${props.price}</ProductCaption>
+          <ProductCaption noWrap>{title}</ProductCaption>
+          <ProductCaption>${price}</ProductCaption>
         </Box>
         <Box marginTop="0.25rem">
-          <Rating rating={props.rating} />
+          <Rating rating={rating} />
         </Box>
         <Stack marginTop="1rem" display="flex" flexDirection={"row"}>
           <ProductButtons>
@@ -154,9 +149,9 @@ const ProductCard = (props: ProductCardProps) => {
           </ProductButtons>
           <ProductButtons
             sx={{
-              backgroundColor: "rgba(70, 125, 227, 0.1)",
+              backgroundColor: colours.extralightgrey,
               marginLeft: "0.5rem",
-              "&:hover": { backgroundColor: "rgba(55, 125, 255, 0.043)" },
+              "&:hover": { backgroundColor: colours.extralightblue },
             }}
           >
             <VisibilityIcon color="primary" />

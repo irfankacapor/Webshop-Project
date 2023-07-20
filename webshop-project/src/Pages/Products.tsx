@@ -21,7 +21,8 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [open, setOpen] = useState(false);
-  const [sortBy, setSortBy] = useState("A-Z")
+  const [sortBy, setSortBy] = useState("A-Z");
+  const numOfPages = Math.round(products.length / 12);
 
   const handleDrawerOpenClose = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -87,7 +88,7 @@ const Products = () => {
 
               <Box display="flex" justifyContent="center" width="100%">
                 <Pagination
-                  count={Math.round(products.length / 12)}
+                  count={numOfPages}
                   size="large"
                   color="primary"
                   page={page}

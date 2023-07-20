@@ -26,7 +26,13 @@ const SortByText = styled(({ ...props }) => (
   }
 `;
 
-const SortByDropdown = ({handleSortByChange, sortBy}: {handleSortByChange: (event: React.ChangeEvent<HTMLInputElement>) => void, sortBy: string}) => (
+const SortByDropdown = ({
+  handleSortByChange,
+  sortBy,
+}: {
+  handleSortByChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  sortBy: string;
+}) => (
   <Box
     display="flex"
     alignItems="center"

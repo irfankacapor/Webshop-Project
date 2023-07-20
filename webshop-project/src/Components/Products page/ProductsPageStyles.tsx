@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { Box, Button } from "@mui/material";
+import styled from "styled-components";
 import { colours } from "../../Constants/colours";
 
 export const ProductsContainer = styled(Box)`

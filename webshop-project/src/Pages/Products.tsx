@@ -1,14 +1,16 @@
 import Footer from "../Components/Footer";
 import { Box, Pagination, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import styled from "styled-components";
 import { colours } from "../Constants/colours";
 import AvailableProducts from "../Components/Products page/AvailableProducts";
-import axios from "axios";
-import { ProductsContainer } from "../Components/Products page/ProductsPageStyles";
+import {
+  ProductsContainer,
+  FilterButton,
+} from "../Components/Products page/ProductsPageStyles";
 import Filters from "../Components/Products page/ProductsFilters";
 import SortByDropdown from "../Components/Products page/SortByDropdown";
-import styled from "styled-components";
-import { FilterButton } from "../Components/Products page/ProductsPageStyles";
 
 const FilterButtonContainer = styled(Box)`
   display: flex !important;
@@ -78,12 +80,19 @@ const Products = () => {
                   >
                     {products.length} results found
                   </Typography>
-                  <SortByDropdown sortBy={sortBy} handleSortByChange={handleSortByChange}/>
+                  <SortByDropdown
+                    sortBy={sortBy}
+                    handleSortByChange={handleSortByChange}
+                  />
                 </Box>
               </FilterButtonContainer>
 
               <Box paddingY="2rem">
-                <AvailableProducts page={page} sortBy={sortBy} products={products} />
+                <AvailableProducts
+                  page={page}
+                  sortBy={sortBy}
+                  products={products}
+                />
               </Box>
 
               <Box display="flex" justifyContent="center" width="100%">

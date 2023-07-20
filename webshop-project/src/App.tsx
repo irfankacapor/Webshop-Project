@@ -1,8 +1,8 @@
-import Navbar from "./Components/Navbar";
+import { Route, Routes } from "react-router-dom";
 import { Box, Paper } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Navbar from "./Components/Navbar";
 import Homepage from "./Pages/Homepage";
-import { Route, Routes } from "react-router-dom";
 import Products from "./Pages/Products";
 
 const theme = createTheme({

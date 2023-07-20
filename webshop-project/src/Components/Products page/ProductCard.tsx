@@ -7,15 +7,13 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import styled from "styled-components";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { colours } from "../../Constants/colours";
 import StarIcon from "@mui/icons-material/Star";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
-
-
+import styled from "styled-components";
+import { colours } from "../../Constants/colours";
 
 const StyledStarIcon = styled(StarIcon)`
   width: 16px !important;
@@ -97,7 +95,7 @@ const SeeDetailsButton = styled(({ ...props }) => (
   }
 `;
 
-const CreateStar = ({rating, index}: { rating: number; index: number }) => (
+const CreateStar = ({ rating, index }: { rating: number; index: number }) => (
   <StyledStarIcon
     sx={{
       color: index <= rating ? colours.yellow : colours.mediumlightgrey,
@@ -120,7 +118,17 @@ const Rating = (props: { rating: number }) => {
   );
 };
 
-const ProductCard = ({thumbnail, title, price, rating }: {thumbnail: string, title: string, price: number, rating: number}) => {
+const ProductCard = ({
+  thumbnail,
+  title,
+  price,
+  rating,
+}: {
+  thumbnail: string;
+  title: string;
+  price: number;
+  rating: number;
+}) => {
   return (
     <Box width="100%" height="100%">
       <Paper elevation={0}>

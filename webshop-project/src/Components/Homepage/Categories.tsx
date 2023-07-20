@@ -1,5 +1,5 @@
-import Category from "./Category";
 import { Box, Grid } from "@mui/material";
+import Category from "./Category";
 import Section from "./Section";
 import categoryList from "../../Files/categories";
 

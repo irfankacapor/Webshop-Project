@@ -1,10 +1,10 @@
 import { Box, Divider } from "@mui/material";
+import styled from "styled-components";
 import Categories from "../Components/Homepage/Categories";
 import MoreProducts from "../Components/Homepage/MoreProducts";
 import Featured from "../Components/Homepage/Featured";
 import Start from "../Components/Homepage/Start";
 import SpecialOffer from "../Components/Homepage/SpecialOffer";
-import styled from "styled-components";
 import { colours } from "../Constants/colours";
 import Subscribe from "../Components/Homepage/Subscribe";
 import Footer from "../Components/Footer";

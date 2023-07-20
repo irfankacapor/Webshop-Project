@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
-import Section from "./Section";
 import styled from "styled-components";
+import Section from "./Section";
 import { SectionContainer } from "../../Pages/Homepage";
 import { colours } from "../../Constants/colours";
 

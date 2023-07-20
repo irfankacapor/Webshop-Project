@@ -19,26 +19,39 @@ export const ProductsContainer = styled(Box)`
   }
 `;
 
-export const FilterButton = styled(({...props}) => (<Button
-  variant="outlined"
-  size="medium"
-  startIcon={<img width="20" height="20" src="https://img.icons8.com/ios/50/empty-filter--v1.png" alt="empty-filter--v1"/>} {...props}>Filter</Button>))`
-    text-transform: none !important;
-    color: ${colours.title} !important;
-    border-color: rgba(0, 0, 0, 0.12) !important;
-    margin-right: 1rem !important;
-    border-radius: 5px !important;
-    padding: 8px 15px !important;
-
-    :hover {
-      border-color: ${colours.blue} !important;
+export const FilterButton = styled(({ ...props }) => (
+  <Button
+    variant="outlined"
+    size="medium"
+    startIcon={
+      <img
+        width="20"
+        height="20"
+        src="https://img.icons8.com/ios/50/empty-filter--v1.png"
+        alt="empty-filter--v1"
+      />
     }
+    {...props}
+  >
+    Filter
+  </Button>
+))`
+  text-transform: none !important;
+  color: ${colours.title} !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  margin-right: 1rem !important;
+  border-radius: 5px !important;
+  padding: 8px 15px !important;
 
-    @media (min-width: 900px) {
-      display: none !important;
-    }
+  :hover {
+    border-color: ${colours.blue} !important;
+  }
 
-    & img{
-      margin-right: 0.5rem;
-    }
-  `
+  @media (min-width: 900px) {
+    display: none !important;
+  }
+
+  & img {
+    margin-right: 0.5rem;
+  }
+`;

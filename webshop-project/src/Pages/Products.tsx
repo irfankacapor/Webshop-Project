@@ -1,9 +1,5 @@
 import Footer from "../Components/Footer";
-import {
-  Box,
-  Pagination,
-  Typography,
-} from "@mui/material";
+import { Box, Pagination, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { colours } from "../Constants/colours";
 import AvailableProducts from "../Components/Products page/AvailableProducts";
@@ -18,7 +14,7 @@ const FilterButtonContainer = styled(Box)`
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-`
+`;
 
 const Products = () => {
   const APIurl = "https://dummyjson.com/products";
@@ -26,9 +22,9 @@ const Products = () => {
   const [page, setPage] = useState(1);
   const [open, setOpen] = React.useState(false);
 
-  const handleDrawerOpenClose = () => {    
+  const handleDrawerOpenClose = () => {
     setOpen((prevOpen) => !prevOpen);
-    console.log(open)
+    console.log(open);
   };
 
   async function getProducts() {
@@ -42,13 +38,15 @@ const Products = () => {
 
   useEffect(() => {
     getProducts();
-  });
+  }, []);
 
-  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number,
+  ) => {
     setPage(value);
   };
 
-  
   return (
     <>
       <main>
@@ -57,10 +55,9 @@ const Products = () => {
             <Filters />
 
             <Box marginLeft="2rem" width="100%" color={colours.title}>
-              
               <FilterButtonContainer>
-                <FilterButton onClick={handleDrawerOpenClose}/>
-                
+                <FilterButton onClick={handleDrawerOpenClose} />
+
                 <Box
                   display="flex"
                   justifyContent="space-between"
@@ -80,11 +77,17 @@ const Products = () => {
               </FilterButtonContainer>
 
               <Box paddingY="2rem">
-                <AvailableProducts page={page}/>
+                <AvailableProducts page={page} products={products} />
               </Box>
 
               <Box display="flex" justifyContent="center" width="100%">
-                <Pagination count={Math.round(products.length/12)} size="large" color="primary" page={page} onChange={handlePageChange}/>
+                <Pagination
+                  count={Math.round(products.length / 12)}
+                  size="large"
+                  color="primary"
+                  page={page}
+                  onChange={handlePageChange}
+                />
               </Box>
             </Box>
           </Box>

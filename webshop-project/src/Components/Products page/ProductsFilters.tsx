@@ -13,24 +13,24 @@ const FilterDrawer = styled(({ ...props }) => (
     border-width: 0px;
     visibility: visible !important;
     transform: none !important;
-    @media (max-width: 900px){
+    @media (max-width: 900px) {
       display: none;
     }
   }
 `;
 
 const Filters = () => (
-    <Box display="flex">
-      <FilterDrawer>
-        <Box padding="0.5rem 0">
-          <Box marginBottom="0.5rem">
-            <Box>
-              <Typography variant="body1">Placeholder drawer</Typography>
-            </Box>
+  <Box display="flex">
+    <FilterDrawer>
+      <Box padding="0.5rem 0">
+        <Box marginBottom="0.5rem">
+          <Box>
+            <Typography variant="body1">Placeholder drawer</Typography>
           </Box>
         </Box>
-      </FilterDrawer>
-    </Box>
-  );
-  
-export default Filters
+      </Box>
+    </FilterDrawer>
+  </Box>
+);
+
+export default Filters;

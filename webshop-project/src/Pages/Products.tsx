@@ -20,7 +20,8 @@ const Products = () => {
   const APIurl = "https://dummyjson.com/products";
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [sortBy, setSortBy] = useState("A-Z")
 
   const handleDrawerOpenClose = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -35,6 +36,10 @@ const Products = () => {
       console.log(error);
     }
   }
+
+  const handleSortByChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSortBy(event.target.value as string);
+  };
 
   useEffect(() => {
     getProducts();
@@ -72,12 +77,12 @@ const Products = () => {
                   >
                     {products.length} results found
                   </Typography>
-                  <SortByDropdown />
+                  <SortByDropdown sortBy={sortBy} handleSortByChange={handleSortByChange}/>
                 </Box>
               </FilterButtonContainer>
 
               <Box paddingY="2rem">
-                <AvailableProducts page={page} products={products} />
+                <AvailableProducts page={page} sortBy={sortBy} products={products} />
               </Box>
 
               <Box display="flex" justifyContent="center" width="100%">

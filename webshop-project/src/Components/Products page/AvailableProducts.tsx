@@ -3,10 +3,23 @@ import ProductCard, { ProductCardProps } from "./ProductCard";
 
 const AvailableProducts = (props: {
   page: number;
+  sortBy: string;
   products: ProductCardProps[];
-}) => (
+}) => {
+  let sortedProducts = props.products.slice();
+  if(props.sortBy === "A-Z"){
+    sortedProducts = sortedProducts.sort((productA, productB) => productA.title.localeCompare(productB.title))
+  }else if(props.sortBy === "Z-A"){
+    sortedProducts = sortedProducts.sort((productA, productB) => productA.title.localeCompare(productB.title)).reverse()
+  }else if(props.sortBy === "low to high"){
+    sortedProducts = sortedProducts.sort((productA, productB) => productA.price - productB.price)
+  }else if(props.sortBy === "high to low"){
+    sortedProducts = sortedProducts.sort((productA, productB) => productB.price - productA.price)
+  }
+  
+  return (
   <Grid container spacing={{ xs: 4, md: 2 }}>
-    {props.products
+    {sortedProducts
       .filter((product: ProductCardProps, index: number) => {
         return index >= (props.page - 1) * 12 && index < props.page * 12;
       })
@@ -23,6 +36,6 @@ const AvailableProducts = (props: {
         );
       })}
   </Grid>
-);
+);}
 
 export default AvailableProducts;

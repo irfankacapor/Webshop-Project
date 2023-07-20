@@ -1,5 +1,6 @@
 import { Box, Typography, MenuItem, TextField } from "@mui/material";
 import styled from "styled-components";
+import options from "../../Constants/sorting-options";
 
 const Dropdown = styled(({ ...props }) => <TextField select {...props} />)`
   min-width: 120px !important;
@@ -41,12 +42,7 @@ const SortByDropdown = ({
   >
     <SortByText />
     <Dropdown value={sortBy} onChange={handleSortByChange}>
-      <MenuItem value="A-Z">A-Z</MenuItem>
-      <MenuItem value="Z-A">Z-A</MenuItem>
-      <MenuItem value="Best seller">Best seller</MenuItem>
-      <MenuItem value="Best match">Best match</MenuItem>
-      <MenuItem value="low to high">Price: low to high</MenuItem>
-      <MenuItem value="high to low">Price: high to low</MenuItem>
+      {options.map(({option, id}) => <MenuItem value={option} key={id}>{option}</MenuItem>)}
     </Dropdown>
   </Box>
 );

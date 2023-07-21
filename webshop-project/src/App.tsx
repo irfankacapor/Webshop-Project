@@ -1,10 +1,9 @@
-import Navbar from "./Components/Navbar";
+import { Route, Routes } from "react-router-dom";
 import { Box, Paper } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Navbar from "./Components/Navbar";
 import Homepage from "./Pages/Homepage";
-import { Route, Routes } from "react-router-dom";
 import Products from "./Pages/Products";
-
 
 const theme = createTheme({
   palette: {
@@ -16,7 +15,6 @@ const theme = createTheme({
     fontFamily: "Inter, sans-serif",
   },
 });
-
 
 const App = () => (
   <ThemeProvider theme={theme}>
@@ -32,8 +30,8 @@ const App = () => (
             <Navbar />
           </header>
           <Routes>
-            <Route path="/" element={<Homepage/>}/>
-            <Route path="/products" element={<Products/>}/>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/products" element={<Products />} />
           </Routes>
         </Box>
       </Paper>

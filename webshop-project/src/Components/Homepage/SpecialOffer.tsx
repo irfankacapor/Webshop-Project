@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
-import Section from "./Section";
 import styled from "styled-components";
+import Section from "./Section";
 import { SectionContainer } from "../../Pages/Homepage";
 import { colours } from "../../Constants/colours";
 
@@ -26,7 +26,7 @@ const SpecialOffer = () => (
             "If we're no longer the right solution for you, we'll allow you to export and take your data at anytime for any reason.",
           ]}
           sectionButton="Discover the offer"
-          sectionDescriptionColor={colours.mediumgrey}
+          sectionDescriptionColor={colours.mediumdarkgrey}
           sectionTitleColor={colours.darkgrey}
           alignText="left"
           buttonHeight="54px"

@@ -16,80 +16,85 @@ const NavbarContainer = styled(Box)`
   margin-left: auto !important;
   margin-right: auto !important;
   width: 100% !important;
-  @media (min-width: 600px){
+  @media (min-width: 600px) {
     max-width: 720px !important;
   }
 
-  @media (min-width: 900px){
+  @media (min-width: 900px) {
     max-width: 1236px !important;
   }
-`
+`;
 
-const StyledAppBar = styled(({...props}) => (<AppBar {...props}/>))`
+const StyledAppBar = styled(({ ...props }) => <AppBar {...props} />)`
   position: sticky;
   right: 0px;
   top: 0px;
-`
+`;
 
 const LinksContainer = styled(Box)`
-  display: flex; 
-  flex-direction: row; 
+  display: flex;
+  flex-direction: row;
   align-items: center;
-`
+`;
 
 const LinkContainer = styled(Box)`
   margin: 0.5rem 1rem;
-`
+`;
 
 const Navbar = () => {
   const [elevation, setElevation] = useState(0);
 
-  useEffect (()=>{
+  useEffect(() => {
     const handleScroll = () => {
       const newElevation = window.scrollY > 0 ? 1 : 0;
       setElevation(newElevation);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
-
   }, []);
 
   return (
     <>
-      <StyledAppBar elevation={elevation} style={{backgroundColor: elevation === 1 ? "white": "rgba(0,0,0,0)"}}>
-          <NavbarContainer>
-            <Link underline="none" href="/">
-              <Logo
-                className="logo"
-                src="https://www.kadencewp.com/wp-content/uploads/2020/10/alogo-4.png"
-                alt="logo"
-              />
-            </Link>
-            <LinksContainer>
-              <LinkContainer>
-                <Link underline="none" href="/products">
-                  <Typography variant="body1" color={colours.title}>
-                    Products
-                  </Typography>
-                </Link>
-              </LinkContainer>
-              <LinkContainer>
-                <Link underline="none" href="/">
-                  <Typography variant="body1" color={colours.title}>
-                    Home
-                  </Typography>
-                </Link>
-              </LinkContainer>
-            </LinksContainer>
-          </NavbarContainer>
+      <StyledAppBar
+        elevation={elevation}
+        style={{
+          backgroundColor:
+            elevation === 1 ? colours.white : colours.transparent,
+        }}
+      >
+        <NavbarContainer>
+          <Link underline="none" href="/">
+            <Logo
+              className="logo"
+              src="https://www.kadencewp.com/wp-content/uploads/2020/10/alogo-4.png"
+              alt="logo"
+            />
+          </Link>
+          <LinksContainer>
+            <LinkContainer>
+              <Link underline="none" href="/products">
+                <Typography variant="body1" color={colours.title}>
+                  Products
+                </Typography>
+              </Link>
+            </LinkContainer>
+            <LinkContainer>
+              <Link underline="none" href="/">
+                <Typography variant="body1" color={colours.title}>
+                  Home
+                </Typography>
+              </Link>
+            </LinkContainer>
+          </LinksContainer>
+        </NavbarContainer>
       </StyledAppBar>
-      <Toolbar/>
+      <Toolbar />
     </>
-  )
+  );
 };
 
 export default Navbar;

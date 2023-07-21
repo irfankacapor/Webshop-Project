@@ -1,11 +1,10 @@
-
 import { Box, Divider } from "@mui/material";
+import styled from "styled-components";
 import Categories from "../Components/Homepage/Categories";
 import MoreProducts from "../Components/Homepage/MoreProducts";
 import Featured from "../Components/Homepage/Featured";
 import Start from "../Components/Homepage/Start";
 import SpecialOffer from "../Components/Homepage/SpecialOffer";
-import styled from "styled-components";
 import { colours } from "../Constants/colours";
 import Subscribe from "../Components/Homepage/Subscribe";
 import Footer from "../Components/Footer";
@@ -44,31 +43,30 @@ export const MoreProductsContainer = styled(Box)`
 const Homepage = () => (
   <>
     <main>
-        <SectionContainer width="100%">
-          <Start />
-        </SectionContainer>
-        <MoreProductsContainer>
-          <MoreProducts />
-        </MoreProductsContainer>
-        <SectionContainer>
-          <Categories />
-        </SectionContainer>
-        <Box sx={{ backgroundColor: colours.yellow, padding: 0 }}>
-          <SpecialOffer />
-        </Box>
-        <SectionContainer marginX="auto" maxWidth="1236px">
-          <Featured />
-        </SectionContainer>
-        <SectionContainer>
-          <Subscribe />
-        </SectionContainer>
-        <Divider />
+      <SectionContainer width="100%">
+        <Start />
+      </SectionContainer>
+      <MoreProductsContainer>
+        <MoreProducts />
+      </MoreProductsContainer>
+      <SectionContainer>
+        <Categories />
+      </SectionContainer>
+      <Box sx={{ backgroundColor: colours.yellow, padding: 0 }}>
+        <SpecialOffer />
+      </Box>
+      <SectionContainer marginX="auto" maxWidth="1236px">
+        <Featured />
+      </SectionContainer>
+      <SectionContainer>
+        <Subscribe />
+      </SectionContainer>
+      <Divider />
     </main>
     <footer>
-      <Footer/>
+      <Footer />
     </footer>
   </>
-          
 );
 
 export default Homepage;

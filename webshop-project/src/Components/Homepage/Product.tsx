@@ -1,5 +1,5 @@
 import { Box, CardContent, Typography } from "@mui/material";
-import {
+import ProductContainer, {
   StyledIconButton,
   StyledStarIcon,
   StyledFavouriteIcon,
@@ -8,7 +8,6 @@ import {
   AddToCartButton,
   ImageContainer,
 } from "./ProductStyles";
-import ProductContainer from "./ProductStyles";
 
 export interface ProductProps {
   image: string;

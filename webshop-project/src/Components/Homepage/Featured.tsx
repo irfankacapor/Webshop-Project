@@ -1,8 +1,7 @@
-import Section from "./Section";
 import { Box, Grid } from "@mui/material";
-import products from "../../Files/products";
-import Product from "./Product";
-import { ProductProps } from "./Product";
+import Section from "./Section";
+import products from "../../Constants/products";
+import Product, { ProductProps } from "./Product";
 
 const Featured = () => (
   <Box>

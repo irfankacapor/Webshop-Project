@@ -10,8 +10,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <App />
-  </BrowserRouter>
-  );
+  </BrowserRouter>,
+);
 
 AOS.init({
   duration: 800,

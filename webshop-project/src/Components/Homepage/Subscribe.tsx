@@ -4,11 +4,11 @@ import {
   TextField,
   Typography,
   InputAdornment,
+  useMediaQuery,
 } from "@mui/material";
-import { MoreProductsContainer } from "./MoreProducts";
-import styled from "styled-components";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import { useMediaQuery } from "@mui/material";
+import styled from "styled-components";
+import { MoreProductsContainer } from "./MoreProducts";
 
 const StyledTypography = styled(({ ...props }) => (
   <Typography color="white" align="center" data-aos="fade-up" {...props} />

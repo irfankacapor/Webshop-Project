@@ -1,6 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
-import { HomepageButton } from "./Section";
 import styled from "styled-components";
+import { HomepageButton } from "./Section";
 import { colours } from "../../Constants/colours";
 
 const CoverImage = styled.img`

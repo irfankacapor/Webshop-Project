@@ -28,10 +28,9 @@ const Products = () => {
 
   const handleDrawerOpenClose = () => {
     setOpen((prevOpen) => !prevOpen);
-    console.log(open);
   };
 
-  async function getProducts() {
+  const getProducts = async() => {
     try {
       const response = await axios.get(APIurl);
       setProducts(response.data.products);

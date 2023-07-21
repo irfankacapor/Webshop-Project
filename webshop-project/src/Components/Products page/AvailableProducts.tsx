@@ -9,6 +9,13 @@ interface ProductCardProps {
   id: number;
 }
 
+const SortingOptions = {
+  NAME_ASC: "A-Z",
+  NAME_DESC: "Z-A",
+  PRICE_ASC: "low to high",
+  PRICE_DESC: "high to low"
+}
+
 const AvailableProducts = ({
   page,
   sortBy,
@@ -18,23 +25,23 @@ const AvailableProducts = ({
   sortBy: string;
   products: ProductCardProps[];
 }) => {
-  let sortedProducts = products.slice();
-  if (sortBy === "A-Z") {
-    sortedProducts = sortedProducts.sort((productA, productB) =>
+  const sortedProducts = products.slice();
+  if (sortBy === SortingOptions.NAME_ASC) {
+    sortedProducts.sort((productA, productB) =>
       productA.title.localeCompare(productB.title),
     );
-  } else if (sortBy === "Z-A") {
-    sortedProducts = sortedProducts
+  } else if (sortBy === SortingOptions.NAME_DESC) {
+    sortedProducts
       .sort((productA, productB) =>
         productA.title.localeCompare(productB.title),
       )
       .reverse();
-  } else if (sortBy === "low to high") {
-    sortedProducts = sortedProducts.sort(
+  } else if (sortBy === SortingOptions.PRICE_ASC) {
+    sortedProducts.sort(
       (productA, productB) => productA.price - productB.price,
     );
-  } else if (sortBy === "high to low") {
-    sortedProducts = sortedProducts.sort(
+  } else if (sortBy === SortingOptions.PRICE_DESC) {
+    sortedProducts.sort(
       (productA, productB) => productB.price - productA.price,
     );
   }
@@ -46,10 +53,10 @@ const AvailableProducts = ({
   return (
     <Grid container spacing={{ xs: 4, md: 2 }}>
       {sortedProducts
-        .filter((product: ProductCardProps, index: number) => {
+        .filter((_, index: number) => {
           return index >= indexOfFirstElement && index < indexOfLastElement;
         })
-        .map((product: ProductCardProps, index: number) => {
+        .map((product: ProductCardProps, _) => {
           return (
             <Grid item xs={12} sm={6} md={4} key={product.id}>
               <ProductCard

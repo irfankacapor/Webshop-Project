@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material";
 import ProductCard from "./ProductCard";
+import { SortingOptions } from "../../Constants/sorting-options";
 
 interface ProductCardProps {
   thumbnail: string;
@@ -7,13 +8,6 @@ interface ProductCardProps {
   price: number;
   rating: number;
   id: number;
-}
-
-const SortingOptions = {
-  NAME_ASC: "A-Z",
-  NAME_DESC: "Z-A",
-  PRICE_ASC: "low to high",
-  PRICE_DESC: "high to low"
 }
 
 const AvailableProducts = ({

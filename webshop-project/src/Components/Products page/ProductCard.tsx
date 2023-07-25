@@ -107,6 +107,7 @@ const CreateStars = (props: { rating: number }) => {
             color:
               index + 1 <= rating ? colours.yellow : colours.mediumlightgrey,
           }}
+          key={index}
         />
       ))}
     </Box>

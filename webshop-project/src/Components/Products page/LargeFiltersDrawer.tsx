@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FilterDivider, ResetAllButton } from "./ProductsPageStyles";
 import PriceFilter from "./PriceFilter";
 import BrandFilter from "./BrandFilter";
+import { FiltersProps } from "./SmallFiltersDrawer";
 
 const FilterDrawer = styled(({ ...props }) => (
   <Drawer variant="permanent" {...props} />
@@ -22,54 +23,36 @@ const FilterDrawer = styled(({ ...props }) => (
   }
 `;
 
-const Filters = ({
-  minPrice,
-  maxPrice,
-  priceRange,
-  onPriceRangeChange,
-  brands,
-  chosenBrands,
-  setChosenBrands,
-  searchedBrand,
-  setSearchedBrand,
-  resetAll,
+const LargeFiltersDrawer = ({
+  filters
 }: {
-  minPrice: number;
-  maxPrice: number;
-  priceRange: number[];
-  onPriceRangeChange: (event: Event, newValue: number | number[]) => void;
-  brands: string[];
-  chosenBrands: string[];
-  setChosenBrands: (brands: string[]) => void;
-  searchedBrand: string;
-  setSearchedBrand: (brand: string) => void;
-  resetAll: () => void;
+  filters: FiltersProps
 }) => {
-  const rangeNotSet = priceRange[0] === 0 && priceRange[1] === 0;
+  const rangeNotSet = filters.priceRange[0] === 0 && filters.priceRange[1] === 0;
   return (
     <Box display="flex">
       <FilterDrawer>
         <Box padding="0.5rem 0">
           <PriceFilter
-            minPrice={minPrice}
-            maxPrice={maxPrice}
-            priceRange={priceRange}
-            onPriceRangeChange={onPriceRangeChange}
+            minPrice={filters.minPrice}
+            maxPrice={filters.maxPrice}
+            priceRange={filters.priceRange}
+            onPriceRangeChange={filters.onPriceRangeChange}
             rangeNotSet={rangeNotSet}
           />
           <FilterDivider />
           <BrandFilter
-            brands={brands}
-            chosenBrands={chosenBrands}
-            setChosenBrands={setChosenBrands}
-            searchedBrand={searchedBrand}
-            setSearchedBrand={setSearchedBrand}
+            brands={filters.brands}
+            chosenBrands={filters.chosenBrands}
+            setChosenBrands={filters.setChosenBrands}
+            searchedBrand={filters.searchedBrand}
+            setSearchedBrand={filters.setSearchedBrand}
           />
-          <ResetAllButton resetAll={resetAll} />
+          <ResetAllButton resetAll={filters.resetAll} />
         </Box>
       </FilterDrawer>
     </Box>
   );
 };
 
-export default Filters;
+export default LargeFiltersDrawer;

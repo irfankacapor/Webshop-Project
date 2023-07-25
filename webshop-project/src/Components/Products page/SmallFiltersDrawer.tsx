@@ -13,22 +13,7 @@ const StyledDrawer = styled(({ ...props }) => (
   />
 ))``;
 
-const SmallFiltersDrawer = ({
-  open,
-  setOpen,
-  minPrice,
-  maxPrice,
-  priceRange,
-  onPriceRangeChange,
-  brands,
-  chosenBrands,
-  setChosenBrands,
-  searchedBrand,
-  setSearchedBrand,
-  resetAll,
-}: {
-  open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
+export interface FiltersProps {
   minPrice: number;
   maxPrice: number;
   priceRange: number[];
@@ -39,8 +24,18 @@ const SmallFiltersDrawer = ({
   searchedBrand: string;
   setSearchedBrand: (brand: string) => void;
   resetAll: () => void;
+}
+
+const SmallFiltersDrawer = ({
+  open,
+  setOpen,
+  filters,
+}: {
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  filters: FiltersProps;
 }) => {
-  const rangeNotSet = priceRange[0] === 0 && priceRange[1] === 0;
+  const rangeNotSet = filters.priceRange[0] === 0 && filters.priceRange[1] === 0;
   const toggleDrawer =
     () => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
@@ -56,21 +51,21 @@ const SmallFiltersDrawer = ({
   return (
     <StyledDrawer open={open} onClose={toggleDrawer()}>
       <PriceFilter
-        minPrice={minPrice}
-        maxPrice={maxPrice}
-        priceRange={priceRange}
-        onPriceRangeChange={onPriceRangeChange}
+        minPrice={filters.minPrice}
+        maxPrice={filters.maxPrice}
+        priceRange={filters.priceRange}
+        onPriceRangeChange={filters.onPriceRangeChange}
         rangeNotSet={rangeNotSet}
       />
       <FilterDivider />
       <BrandFilter
-        brands={brands}
-        chosenBrands={chosenBrands}
-        setChosenBrands={setChosenBrands}
-        searchedBrand={searchedBrand}
-        setSearchedBrand={setSearchedBrand}
+        brands={filters.brands}
+        chosenBrands={filters.chosenBrands}
+        setChosenBrands={filters.setChosenBrands}
+        searchedBrand={filters.searchedBrand}
+        setSearchedBrand={filters.setSearchedBrand}
       />
-      <ResetAllButton resetAll={resetAll} />
+      <ResetAllButton resetAll={filters.resetAll} />
     </StyledDrawer>
   );
 };

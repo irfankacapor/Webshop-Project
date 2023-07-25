@@ -11,10 +11,10 @@ import {
   ProductsContainer,
   FilterButton,
 } from "../Components/Products page/ProductsPageStyles";
-import Filters from "../Components/Products page/LargeFiltersDrawer";
 import SortByDropdown from "../Components/Products page/SortByDropdown";
 import SmallFiltersDrawer from "../Components/Products page/SmallFiltersDrawer";
 import LoadingScreen from "../Components/Products page/LoadingScreen";
+import LargeFiltersDrawer from "../Components/Products page/LargeFiltersDrawer";
 
 const FilterButtonContainer = styled(Box)`
   display: flex !important;
@@ -28,19 +28,13 @@ const Products = () => {
   // Saves the number of products that are shown based on the current filters
   const [numOfProductsFound, setNumOfProductsFound] = useState(0);
   // Products array that is fetched from the API
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<ProductCardProps[]>([]);
   // Current page of products
   const [page, setPage] = useState(1);
   // Stores how the products are sorted
   const [sortBy, setSortBy] = useState("A-Z");
-  // Stores the price of the cheapest element
-  const [minPrice, setMinPrice] = useState(0);
-  // Stores the price of the most expensive element
-  const [maxPrice, setMaxPrice] = useState(0);
   // Stores the current price range filter set by the user, is passed down to the ProductsFilter component where it is calculated and set
   const [priceRange, setPriceRange] = useState([0, 0]);
-  // Stores distinct values of brands of the products
-  const brands: string[] = [];
   // Stores the brands chosen by the user
   const [chosenBrands, setChosenBrands] = useState<string[]>([]);
   // Stores the brand that the user is searching for
@@ -54,24 +48,7 @@ const Products = () => {
     try {
       const response = await axios.get(APIurl);
       setProducts(response.data.products);
-      setMinPrice(
-        response.data.products.sort(
-          (productA: ProductCardProps, productB: ProductCardProps) =>
-            productA.price - productB.price,
-        )[0].price,
-      );
-      setMaxPrice(
-        response.data.products.sort(
-          (productA: ProductCardProps, productB: ProductCardProps) =>
-            productB.price - productA.price,
-        )[0].price,
-      );
       setNumOfProductsFound(response.data.products.length);
-      response.data.products.forEach((product: ProductCardProps) => {
-        if (!brands.includes(product.brand)) {
-          brands.push(product.brand);
-        }
-      });
     } catch (error) {
       console.log(error);
     }
@@ -80,6 +57,24 @@ const Products = () => {
   useEffect(() => {
     getProducts();
   }, []);
+
+  // Stores distinct values of brands of the products
+  const brands =
+    products.length > 0
+      ? [...new Set(products.map((product) => product.brand))]
+      : [];
+
+  // Stores the price of the most expensive element
+  const maxPrice = products.length > 0 ? [...products].sort(
+    (productA: ProductCardProps, productB: ProductCardProps) =>
+      productB.price - productA.price,
+  )[0].price: 0;
+
+  // Stores the price of the cheapest element
+  const minPrice = products.length > 0 ? [...products].sort(
+    (productA: ProductCardProps, productB: ProductCardProps) =>
+      productA.price - productB.price,
+  )[0].price : 0;
 
   // Handles the changes in price range set by the user, is passed down to the ProductFilters component
   const handlePriceRangeChange = (
@@ -109,37 +104,33 @@ const Products = () => {
     setSearchedBrand("");
   };
 
-  return (
-    products.length === 0 ? <LoadingScreen/> :
+  const filters={
+    minPrice,
+    maxPrice,
+    priceRange,
+    onPriceRangeChange: handlePriceRangeChange,
+    brands,
+    chosenBrands,
+    setChosenBrands,
+    searchedBrand,
+    setSearchedBrand,
+    resetAll,
+  }
+
+  return products.length === 0 ? (
+    <LoadingScreen />
+  ) : (
     <>
       <main>
         <SmallFiltersDrawer
           open={smallDrawerOpen}
           setOpen={setSmallDrawerOpen}
-          minPrice={minPrice}
-          maxPrice={maxPrice}
-          priceRange={priceRange}
-          onPriceRangeChange={handlePriceRangeChange}
-          brands={brands}
-          chosenBrands={chosenBrands}
-          setChosenBrands={setChosenBrands}
-          searchedBrand={searchedBrand}
-          setSearchedBrand={setSearchedBrand}
-          resetAll={resetAll}
+          filters={filters}
         />
         <ProductsContainer>
           <Box display="flex">
-            <Filters
-              minPrice={minPrice}
-              maxPrice={maxPrice}
-              priceRange={priceRange}
-              onPriceRangeChange={handlePriceRangeChange}
-              brands={brands}
-              chosenBrands={chosenBrands}
-              setChosenBrands={setChosenBrands}
-              searchedBrand={searchedBrand}
-              setSearchedBrand={setSearchedBrand}
-              resetAll={resetAll}
+            <LargeFiltersDrawer
+              filters={filters}
             />
 
             <Box marginLeft="2rem" width="100%" color={colours.title}>
@@ -197,9 +188,9 @@ const Products = () => {
       </main>
       <footer>
         <Footer />
-        </footer>
-        </>
-  )
+      </footer>
+    </>
+  );
 };
 
 export default Products;

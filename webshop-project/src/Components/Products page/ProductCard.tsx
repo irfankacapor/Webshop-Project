@@ -104,7 +104,8 @@ const CreateStars = (props: { rating: number }) => {
       {stars.map((_, index) => (
         <StyledStarIcon
           sx={{
-            color: index + 1 <= rating ? colours.yellow : colours.mediumlightgrey,
+            color:
+              index + 1 <= rating ? colours.yellow : colours.mediumlightgrey,
           }}
         />
       ))}

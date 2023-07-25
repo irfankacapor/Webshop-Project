@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Grid } from "@mui/material";
 import ProductCard from "./ProductCard";
 import { SortingOptions } from "../../Constants/sorting-options";
@@ -16,34 +15,25 @@ const AvailableProducts = ({
   page,
   sortBy,
   products,
-  priceRangeSet,
   lowerPriceBound,
   upperPriceBound,
   setNumOfProductsFound,
-  brands,
-  setBrands,
   chosenBrands,
   searchedBrand,
 }: {
   page: number;
   sortBy: string;
   products: ProductCardProps[];
-  priceRangeSet: boolean;
   lowerPriceBound: number;
   upperPriceBound: number;
   setNumOfProductsFound: (numOfProductsFound: number) => void;
-  brands: string[];
-  setBrands: (brands: string[]) => void;
   chosenBrands: string[];
   searchedBrand: string;
 }) => {
   // Create a copy of the original products array from the API
   let sortedProducts = products.slice();
 
-  // Every time the sortedProducts array changes, calculate the number of results shown
-  useEffect(() => {
-    setNumOfProductsFound(sortedProducts.length);
-  }, [sortedProducts]);
+  const priceRangeSet = lowerPriceBound !== 0 || upperPriceBound !== 0;
 
   // Sort the array based on the chosen sort option
   if (sortBy === SortingOptions.NAME_ASC) {
@@ -92,7 +82,8 @@ const AvailableProducts = ({
   const numOfElementsPerPage = 12;
   const indexOfFirstElement = (page - 1) * numOfElementsPerPage;
   const indexOfLastElement = page * numOfElementsPerPage;
-
+  
+  setNumOfProductsFound(sortedProducts.length);
   return (
     <Grid container spacing={{ xs: 4, md: 2 }}>
       {sortedProducts

@@ -20,7 +20,6 @@ const SmallFiltersDrawer = ({
   maxPrice,
   priceRange,
   onPriceRangeChange,
-  rangeNotSet,
   brands,
   chosenBrands,
   setChosenBrands,
@@ -34,7 +33,6 @@ const SmallFiltersDrawer = ({
   maxPrice: number;
   priceRange: number[];
   onPriceRangeChange: (event: Event, newValue: number | number[]) => void;
-  rangeNotSet: boolean;
   brands: string[];
   chosenBrands: string[];
   setChosenBrands: (brands: string[]) => void;
@@ -42,6 +40,7 @@ const SmallFiltersDrawer = ({
   setSearchedBrand: (brand: string) => void;
   resetAll: () => void;
 }) => {
+  const rangeNotSet = priceRange[0] === 0 && priceRange[1] === 0;
   const toggleDrawer =
     () => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (

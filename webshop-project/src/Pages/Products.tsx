@@ -14,6 +14,7 @@ import {
 import Filters from "../Components/Products page/LargeFiltersDrawer";
 import SortByDropdown from "../Components/Products page/SortByDropdown";
 import SmallFiltersDrawer from "../Components/Products page/SmallFiltersDrawer";
+import LoadingScreen from "../Components/Products page/LoadingScreen";
 
 const FilterButtonContainer = styled(Box)`
   display: flex !important;
@@ -39,15 +40,13 @@ const Products = () => {
   // Stores the current price range filter set by the user, is passed down to the ProductsFilter component where it is calculated and set
   const [priceRange, setPriceRange] = useState([0, 0]);
   // Stores distinct values of brands of the products
-  const [brands, setBrands] = useState<string[]>([]);
+  const brands: string[] = [];
   // Stores the brands chosen by the user
   const [chosenBrands, setChosenBrands] = useState<string[]>([]);
   // Stores the brand that the user is searching for
   const [searchedBrand, setSearchedBrand] = useState("");
   // Boolean that stores whether the user has set a custom price range or not
-  const rangeNotSet = priceRange[0] === 0 && priceRange[1] === 0;
   const numOfPages = Math.floor(numOfProductsFound / 12) + 1;
-
   const [smallDrawerOpen, setSmallDrawerOpen] = useState(false);
 
   // Function that fetches the products from the API, as well as calculates the lowest and highest price over all products. Sets
@@ -68,16 +67,11 @@ const Products = () => {
         )[0].price,
       );
       setNumOfProductsFound(response.data.products.length);
-      const uniqueBrands = response.data.products.reduce(
-        (brands: string[], product: ProductCardProps) => {
-          if (!brands.includes(product.brand)) {
-            brands.push(product.brand);
-          }
-          return brands;
-        },
-        [],
-      );
-      setBrands(uniqueBrands);
+      response.data.products.forEach((product: ProductCardProps) => {
+        if (!brands.includes(product.brand)) {
+          brands.push(product.brand);
+        }
+      });
     } catch (error) {
       console.log(error);
     }
@@ -116,6 +110,7 @@ const Products = () => {
   };
 
   return (
+    products.length === 0 ? <LoadingScreen/> :
     <>
       <main>
         <SmallFiltersDrawer
@@ -124,7 +119,6 @@ const Products = () => {
           minPrice={minPrice}
           maxPrice={maxPrice}
           priceRange={priceRange}
-          rangeNotSet={rangeNotSet}
           onPriceRangeChange={handlePriceRangeChange}
           brands={brands}
           chosenBrands={chosenBrands}
@@ -139,7 +133,6 @@ const Products = () => {
               minPrice={minPrice}
               maxPrice={maxPrice}
               priceRange={priceRange}
-              rangeNotSet={rangeNotSet}
               onPriceRangeChange={handlePriceRangeChange}
               brands={brands}
               chosenBrands={chosenBrands}
@@ -181,12 +174,9 @@ const Products = () => {
                   page={page}
                   sortBy={sortBy}
                   products={products}
-                  priceRangeSet={!rangeNotSet}
                   lowerPriceBound={priceRange[0]}
                   upperPriceBound={priceRange[1]}
                   setNumOfProductsFound={setNumOfProductsFound}
-                  brands={brands}
-                  setBrands={setBrands}
                   chosenBrands={chosenBrands}
                   searchedBrand={searchedBrand}
                 />
@@ -207,9 +197,9 @@ const Products = () => {
       </main>
       <footer>
         <Footer />
-      </footer>
-    </>
-  );
+        </footer>
+        </>
+  )
 };
 
 export default Products;

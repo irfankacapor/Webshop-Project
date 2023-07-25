@@ -27,7 +27,6 @@ const Filters = ({
   maxPrice,
   priceRange,
   onPriceRangeChange,
-  rangeNotSet,
   brands,
   chosenBrands,
   setChosenBrands,
@@ -39,7 +38,6 @@ const Filters = ({
   maxPrice: number;
   priceRange: number[];
   onPriceRangeChange: (event: Event, newValue: number | number[]) => void;
-  rangeNotSet: boolean;
   brands: string[];
   chosenBrands: string[];
   setChosenBrands: (brands: string[]) => void;
@@ -47,6 +45,7 @@ const Filters = ({
   setSearchedBrand: (brand: string) => void;
   resetAll: () => void;
 }) => {
+  const rangeNotSet = priceRange[0] === 0 && priceRange[1] === 0;
   return (
     <Box display="flex">
       <FilterDrawer>

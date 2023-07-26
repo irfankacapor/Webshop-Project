@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { FilterDivider, ResetAllButton } from "./ProductsPageStyles";
 import PriceFilter from "./PriceFilter";
 import BrandFilter from "./BrandFilter";
-import { FiltersProps } from "./SmallFiltersDrawer";
 import CategoryFilter from "./CategoryFilter";
+import { Filters } from "../../Pages/Products";
+import { Dispatch, SetStateAction } from "react";
 
 const FilterDrawer = styled(({ ...props }) => (
   <Drawer variant="permanent" {...props} />
@@ -25,37 +26,33 @@ const FilterDrawer = styled(({ ...props }) => (
 `;
 
 const LargeFiltersDrawer = ({
-  filters
+  filters,
+  setFilters,
+  resetAll,
 }: {
-  filters: FiltersProps
+  filters: Filters;
+  setFilters: Dispatch<SetStateAction<Filters>>;
+  resetAll: () => void;
 }) => {
-  const rangeNotSet = filters.priceRange[0] === 0 && filters.priceRange[1] === 0;
   return (
     <Box display="flex">
       <FilterDrawer>
         <Box padding="0.5rem 0">
           <PriceFilter
-            minPrice={filters.minPrice}
-            maxPrice={filters.maxPrice}
-            priceRange={filters.priceRange}
-            onPriceRangeChange={filters.onPriceRangeChange}
-            rangeNotSet={rangeNotSet}
+            filters={filters}
+            setFilters={setFilters}
           />
           <FilterDivider />
           <BrandFilter
-            brands={filters.brands}
-            chosenBrands={filters.chosenBrands}
-            setChosenBrands={filters.setChosenBrands}
-            searchedBrand={filters.searchedBrand}
-            setSearchedBrand={filters.setSearchedBrand}
+            filters={filters}
+            setFilters={setFilters}
           />
           <FilterDivider/>
           <CategoryFilter
-          categories={filters.categories}
-          chosenCategories={filters.chosenCategories}
-          setChosenCategories={filters.setChosenCategories}
+            filters={filters}
+            setFilters={setFilters}
         />
-          <ResetAllButton onClick={filters.resetAll} />
+          <ResetAllButton onClick={resetAll}/>
         </Box>
       </FilterDrawer>
     </Box>

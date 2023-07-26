@@ -6,23 +6,18 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { Box, Collapse, Slider, SvgIcon } from "@mui/material";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import { Filters } from "../../Pages/Products";
 
 const PriceFilter = ({
-  minPrice,
-  maxPrice,
-  priceRange,
-  onPriceRangeChange,
-  rangeNotSet,
+  filters,
+  setFilters,
 }: {
-  minPrice: number;
-  maxPrice: number;
-  priceRange: number[];
-  onPriceRangeChange: (event: Event, newValue: number | number[]) => void;
-  rangeNotSet: boolean;
+  filters: Filters;
+  setFilters: Dispatch<SetStateAction<Filters>>;
 }) => {
   const [priceSliderOpen, setPriceSliderOpen] = useState(false);
-
+  const rangeNotSet = filters.priceRange[0] === 0 && filters.priceRange[1] === 0;
   return (
     <FilterContainer>
       <FilterHeadingContainer
@@ -30,7 +25,7 @@ const PriceFilter = ({
       >
         <FilterName>
           Price
-          {rangeNotSet ? "" : `: $${priceRange[0]} - $${priceRange[1]}`}
+          {rangeNotSet ? "" : `: $${filters.priceRange[0]} - $${filters.priceRange[1]}`}
         </FilterName>
         <SvgIcon>
           {priceSliderOpen ? <ExpandMoreIcon /> : <ExpandLessIcon />}
@@ -39,11 +34,12 @@ const PriceFilter = ({
       <Collapse in={priceSliderOpen}>
         <Box padding="0 1.5rem">
           <Slider
-            min={minPrice}
-            max={maxPrice}
+            min={filters.minPrice}
+            max={filters.maxPrice}
             size="medium"
-            value={priceRange}
-            onChange={onPriceRangeChange}
+            value={filters.priceRange}
+            onChange={(event: Event,
+              newValue: number | number[],) => (setFilters({...filters, priceRange: newValue as number[]}))}
           />
         </Box>
       </Collapse>

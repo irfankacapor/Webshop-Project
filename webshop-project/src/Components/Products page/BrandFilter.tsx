@@ -15,46 +15,35 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import { Filters } from "../../Pages/Products";
 
 const BrandFilter = ({
-  brands,
-  chosenBrands,
-  setChosenBrands,
-  searchedBrand,
-  setSearchedBrand,
+  filters,
+  setFilters
 }: {
-  brands: string[];
-  chosenBrands: string[];
-  setChosenBrands: (brands: string[]) => void;
-  searchedBrand: string;
-  setSearchedBrand: (brand: string) => void;
+  filters: Filters;
+  setFilters: Dispatch<SetStateAction<Filters>>;
 }) => {
   const [brandPickerOpen, setBrandPickerOpen] = useState(false);
 
   const handleBrandChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const brand = event.target.name;
     if (event.target.checked) {
-      setChosenBrands([...chosenBrands, brand]);
+      setFilters((prevValue) => ({...filters, chosenBrands: [...prevValue.chosenBrands, brand]}));
     } else {
-      setChosenBrands(
-        chosenBrands.filter((chosenBrand) => chosenBrand !== brand),
-      );
+      setFilters((prevValue) => ({...filters, chosenBrands: prevValue.chosenBrands.filter((chosenBrand) => chosenBrand !== brand),}))
     }
   };
 
   const handleOtherBrands = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const otherBrands = brands.filter((brand, index) => {
+    const otherBrands = filters.brands.filter((brand, index) => {
       return index >= 7;
     });
     if (event.target.checked) {
-      setChosenBrands([...chosenBrands, ...otherBrands]);
+      setFilters((prevValue) => ({...filters, chosenBrands: [...prevValue.chosenBrands, ...otherBrands]}))
     } else {
-      setChosenBrands(
-        chosenBrands.filter(
-          (chosenBrands) => !otherBrands.includes(chosenBrands),
-        ),
-      );
+      setFilters((prevValue) => ({...filters, chosenBrands: prevValue.chosenBrands.filter((chosenBrands) => !otherBrands.includes(chosenBrands))}))
     }
   };
 
@@ -70,9 +59,9 @@ const BrandFilter = ({
       </FilterHeadingContainer>
       <Collapse in={brandPickerOpen} sx={{ padding: "0 1.5rem" }}>
         <TextField
-          value={searchedBrand}
+          value={filters.searchedBrand}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            setSearchedBrand(event.target.value);
+            setFilters({...filters, searchedBrand: event.target.value})
           }}
           InputProps={{
             startAdornment: (
@@ -83,7 +72,7 @@ const BrandFilter = ({
           }}
         ></TextField>
         <FormGroup>
-          {brands
+          {filters.brands
             .filter((_, index) => {
               return index < 7;
             })
@@ -92,7 +81,7 @@ const BrandFilter = ({
                 key={brand}
                 control={
                   <Checkbox
-                    checked={chosenBrands.includes(brand)}
+                    checked={filters.chosenBrands.includes(brand)}
                     onChange={handleBrandChange}
                     name={brand}
                   />
@@ -104,9 +93,9 @@ const BrandFilter = ({
             key="Other"
             control={
               <Checkbox
-                checked={brands
+                checked={filters.brands
                   .filter((brand, index) => index >= 7)
-                  .some((brand) => chosenBrands.includes(brand))}
+                  .some((brand) => filters.chosenBrands.includes(brand))}
                 onChange={handleOtherBrands}
                 name="Other"
               />

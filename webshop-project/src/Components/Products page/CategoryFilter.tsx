@@ -1,27 +1,24 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { FilterContainer, FilterHeadingContainer, FilterName } from "./ProductsPageStyles";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Checkbox, Collapse, FormControlLabel, FormGroup, SvgIcon } from "@mui/material";
+import { Filters } from "../../Pages/Products";
 const CategoryFilter = ({
-    categories,
-    chosenCategories,
-    setChosenCategories
+    filters,
+    setFilters
 }: {
-    categories: string[];
-    chosenCategories: string[];
-    setChosenCategories: ((categories: string[]) => void);
+    filters: Filters;
+    setFilters: Dispatch<SetStateAction<Filters>>;
 }) => {
   const [categoryPickerOpen, setCategoryPickerOpen] = useState(false);
 
   const handleCategoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const category = event.target.name;
     if (event.target.checked) {
-      setChosenCategories([...chosenCategories, category]);
+      setFilters((prevValue) => ({...filters, chosenCategories: [...prevValue.chosenCategories, category]}))
     } else {
-      setChosenCategories(
-        chosenCategories.filter((chosenCategory) => chosenCategory !== category),
-      );
+      setFilters((prevValue) => ({...filters, chosenCategories: prevValue.chosenCategories.filter((chosenCategory) => chosenCategory !== category)}))
     }
   }
 
@@ -37,7 +34,7 @@ const CategoryFilter = ({
         </FilterHeadingContainer>
         <Collapse in={categoryPickerOpen} sx={{ padding: "0 1.5rem" }}>
             <FormGroup>
-                {categories
+                {filters.categories
                 .filter((_, index) => {
                 return index < 7;
                 })
@@ -46,7 +43,7 @@ const CategoryFilter = ({
                     key={category}
                     control={
                     <Checkbox
-                        checked={chosenCategories.includes(category)}
+                        checked={filters.chosenCategories.includes(category)}
                         onChange={handleCategoryChange}
                         name={category}
                     />

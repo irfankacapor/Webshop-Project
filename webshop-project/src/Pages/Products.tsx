@@ -15,6 +15,7 @@ import SortByDropdown from "../Components/Products page/SortByDropdown";
 import SmallFiltersDrawer from "../Components/Products page/SmallFiltersDrawer";
 import LoadingScreen from "../Components/Products page/LoadingScreen";
 import LargeFiltersDrawer from "../Components/Products page/LargeFiltersDrawer";
+import ProductListingBanner from "../Components/Products page/ProductListingBanner";
 
 const FilterButtonContainer = styled(Box)`
   display: flex !important;
@@ -39,7 +40,7 @@ const Products = () => {
   const [chosenBrands, setChosenBrands] = useState<string[]>([]);
   // Stores the brand that the user is searching for
   const [searchedBrand, setSearchedBrand] = useState("");
-  // Boolean that stores whether the user has set a custom price range or not
+  const [chosenCategories, setChosenCategories] = useState<string[]>([]);
   const numOfPages = Math.floor(numOfProductsFound / 12) + 1;
   const [smallDrawerOpen, setSmallDrawerOpen] = useState(false);
 
@@ -62,6 +63,12 @@ const Products = () => {
   const brands =
     products.length > 0
       ? [...new Set(products.map((product) => product.brand))]
+      : [];
+
+  // Stores distinct values of categories of the products
+  const categories = 
+    products.length > 0
+      ? [...new Set(products.map((product) => product.category))]
       : [];
 
   // Stores the price of the most expensive element
@@ -102,6 +109,7 @@ const Products = () => {
     setPriceRange([0, 0]);
     setChosenBrands([]);
     setSearchedBrand("");
+    setChosenCategories([]);
   };
 
   const filters={
@@ -114,6 +122,9 @@ const Products = () => {
     setChosenBrands,
     searchedBrand,
     setSearchedBrand,
+    categories,
+    chosenCategories,
+    setChosenCategories,
     resetAll,
   }
 
@@ -122,6 +133,7 @@ const Products = () => {
   ) : (
     <>
       <main>
+        <ProductListingBanner/>
         <SmallFiltersDrawer
           open={smallDrawerOpen}
           setOpen={setSmallDrawerOpen}
@@ -170,6 +182,7 @@ const Products = () => {
                   setNumOfProductsFound={setNumOfProductsFound}
                   chosenBrands={chosenBrands}
                   searchedBrand={searchedBrand}
+                  chosenCategories={chosenCategories}
                 />
               </Box>
 

@@ -80,7 +80,7 @@ export const FilterDivider = styled(Divider)`
 `;
 
 export const ResetAllButton = styled(({ ...props }) => (
-  <Button onClick={props.resetAll} size="medium" variant="outlined" {...props}>
+  <Button size="medium" variant="outlined" {...props}>
     Reset all
   </Button>
 ))`

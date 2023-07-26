@@ -4,6 +4,7 @@ import styled from "styled-components";
 import PriceFilter from "./PriceFilter";
 import BrandFilter from "./BrandFilter";
 import { FilterDivider, ResetAllButton } from "./ProductsPageStyles";
+import CategoryFilter from "./CategoryFilter";
 
 const StyledDrawer = styled(({ ...props }) => (
   <Drawer
@@ -23,6 +24,9 @@ export interface FiltersProps {
   setChosenBrands: (brands: string[]) => void;
   searchedBrand: string;
   setSearchedBrand: (brand: string) => void;
+  categories: string[];
+  chosenCategories: string[];
+  setChosenCategories: (categories: string[]) => void;
   resetAll: () => void;
 }
 
@@ -65,7 +69,13 @@ const SmallFiltersDrawer = ({
         searchedBrand={filters.searchedBrand}
         setSearchedBrand={filters.setSearchedBrand}
       />
-      <ResetAllButton resetAll={filters.resetAll} />
+      <FilterDivider/>
+      <CategoryFilter
+        categories={filters.categories}
+        chosenCategories={filters.chosenCategories}
+        setChosenCategories={filters.setChosenCategories}
+      />
+      <ResetAllButton onClick={filters.resetAll} />
     </StyledDrawer>
   );
 };

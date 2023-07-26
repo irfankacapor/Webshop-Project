@@ -8,6 +8,7 @@ export interface ProductCardProps {
   price: number;
   rating: number;
   brand: string;
+  category: string;
   id: number;
 }
 
@@ -20,6 +21,7 @@ const AvailableProducts = ({
   setNumOfProductsFound,
   chosenBrands,
   searchedBrand,
+  chosenCategories,
 }: {
   page: number;
   sortBy: string;
@@ -29,6 +31,7 @@ const AvailableProducts = ({
   setNumOfProductsFound: (numOfProductsFound: number) => void;
   chosenBrands: string[];
   searchedBrand: string;
+  chosenCategories: string[];
 }) => {
   // Create a copy of the original products array from the API
   let sortedProducts = products.slice();
@@ -79,11 +82,18 @@ const AvailableProducts = ({
     });
   }
 
+  if (chosenCategories.length > 0){
+    sortedProducts = sortedProducts.filter((product) => {
+      return chosenCategories.includes(product.category);
+    })
+  }
+
   const numOfElementsPerPage = 12;
   const indexOfFirstElement = (page - 1) * numOfElementsPerPage;
   const indexOfLastElement = page * numOfElementsPerPage;
   
   setNumOfProductsFound(sortedProducts.length);
+  
   return (
     <Grid container spacing={{ xs: 4, md: 2 }}>
       {sortedProducts

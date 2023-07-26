@@ -4,6 +4,7 @@ import { FilterDivider, ResetAllButton } from "./ProductsPageStyles";
 import PriceFilter from "./PriceFilter";
 import BrandFilter from "./BrandFilter";
 import { FiltersProps } from "./SmallFiltersDrawer";
+import CategoryFilter from "./CategoryFilter";
 
 const FilterDrawer = styled(({ ...props }) => (
   <Drawer variant="permanent" {...props} />
@@ -48,7 +49,13 @@ const LargeFiltersDrawer = ({
             searchedBrand={filters.searchedBrand}
             setSearchedBrand={filters.setSearchedBrand}
           />
-          <ResetAllButton resetAll={filters.resetAll} />
+          <FilterDivider/>
+          <CategoryFilter
+          categories={filters.categories}
+          chosenCategories={filters.chosenCategories}
+          setChosenCategories={filters.setChosenCategories}
+        />
+          <ResetAllButton onClick={filters.resetAll} />
         </Box>
       </FilterDrawer>
     </Box>

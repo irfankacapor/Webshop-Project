@@ -16,6 +16,8 @@ import SmallFiltersDrawer from "../Components/Products page/SmallFiltersDrawer";
 import LoadingScreen from "../Components/Products page/LoadingScreen";
 import LargeFiltersDrawer from "../Components/Products page/LargeFiltersDrawer";
 import ProductListingBanner from "../Components/Products page/ProductListingBanner";
+import { sort, applyFilters } from "../helpers";
+import { SortingOptions } from "../Constants/sorting-options";
 
 const FilterButtonContainer = styled(Box)`
   display: flex !important;
@@ -30,6 +32,7 @@ const Products = () => {
   const [numOfProductsFound, setNumOfProductsFound] = useState(0);
   // Products array that is fetched from the API
   const [products, setProducts] = useState<ProductCardProps[]>([]);
+  const [availableProducts, setAvailableProducts] = useState<ProductCardProps[]>([]);
   // Current page of products
   const [page, setPage] = useState(1);
   // Stores how the products are sorted
@@ -44,11 +47,14 @@ const Products = () => {
   const numOfPages = Math.floor(numOfProductsFound / 12) + 1;
   const [smallDrawerOpen, setSmallDrawerOpen] = useState(false);
 
+  
+
   // Function that fetches the products from the API, as well as calculates the lowest and highest price over all products. Sets
   const getProducts = async () => {
     try {
       const response = await axios.get(APIurl);
       setProducts(response.data.products);
+      setAvailableProducts(sort(response.data.products, sortBy));
       setNumOfProductsFound(response.data.products.length);
     } catch (error) {
       console.log(error);
@@ -93,7 +99,8 @@ const Products = () => {
 
   // Handles the changes in the way the products are sorted and displayed, is passed down to the ProductFilters component
   const handleSortByChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSortBy(event.target.value as string);
+    setSortBy(event.target.value as keyof typeof SortingOptions)
+    setAvailableProducts(sort(products, event.target.value as keyof typeof SortingOptions));
   };
 
   // Handles page switches
@@ -104,6 +111,12 @@ const Products = () => {
     setPage(value);
   };
 
+  useEffect(() => {
+    const filtersToApply = {lowerPriceBound: priceRange[0], upperPriceBound: priceRange[1], chosenBrands: chosenBrands, searchedBrand: searchedBrand, chosenCategories: chosenCategories}
+    setAvailableProducts(sort(applyFilters(products, filtersToApply), sortBy))
+    setNumOfProductsFound(applyFilters(products, filtersToApply).length)
+  }, [priceRange, chosenBrands, searchedBrand, chosenCategories, products, sortBy])
+
   // Resets all filters to default
   const resetAll = () => {
     setPriceRange([0, 0]);
@@ -111,7 +124,7 @@ const Products = () => {
     setSearchedBrand("");
     setChosenCategories([]);
   };
-
+  
   const filters={
     minPrice,
     maxPrice,
@@ -173,20 +186,19 @@ const Products = () => {
               </FilterButtonContainer>
 
               <Box paddingY="2rem">
-                <AvailableProducts
+                {
+                availableProducts.length > 0
+                ? <AvailableProducts
                   page={page}
-                  sortBy={sortBy}
-                  products={products}
-                  lowerPriceBound={priceRange[0]}
-                  upperPriceBound={priceRange[1]}
-                  setNumOfProductsFound={setNumOfProductsFound}
-                  chosenBrands={chosenBrands}
-                  searchedBrand={searchedBrand}
-                  chosenCategories={chosenCategories}
+                  products={availableProducts}
                 />
+                : <Box width="100%" height="100%" textAlign="center" justifyContent="center" justifyItems="center">
+                    <Typography variant="body1" color={colours.title}>No products match the current filters</Typography>
+                  </Box>
+                }
               </Box>
 
-              <Box display="flex" justifyContent="center" width="100%">
+              <Box display="flex" justifyContent="center" width="100%" alignSelf="bottom" justifyItems="bottom">
                 <Pagination
                   count={numOfPages}
                   size="large"

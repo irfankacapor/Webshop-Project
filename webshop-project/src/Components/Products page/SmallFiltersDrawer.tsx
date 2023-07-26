@@ -69,7 +69,6 @@ const SmallFiltersDrawer = ({
         searchedBrand={filters.searchedBrand}
         setSearchedBrand={filters.setSearchedBrand}
       />
-      <FilterDivider/>
       <CategoryFilter
         categories={filters.categories}
         chosenCategories={filters.chosenCategories}

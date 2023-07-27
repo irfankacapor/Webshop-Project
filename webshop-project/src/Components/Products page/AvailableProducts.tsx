@@ -17,11 +17,11 @@ const AvailableProducts = ({
 }: {
   page: number;
   products: ProductCardProps[];
-}) => {  
+}) => {
   const numOfElementsPerPage = 12;
   const indexOfFirstElement = (page - 1) * numOfElementsPerPage;
   const indexOfLastElement = page * numOfElementsPerPage;
-  
+
   return (
     <Grid container spacing={{ xs: 4, md: 2 }} height="100%">
       {products

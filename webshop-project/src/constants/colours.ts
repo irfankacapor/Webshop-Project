@@ -1,15 +1,15 @@
 export const colours = {
   white: "rgb(255, 255, 255)",
-  
+
   yellow: "rgb(249, 185, 52)",
   staryellow: "rgb(252, 186, 3)",
   orange: "rgb(255, 152, 0)",
   red: "rgb(239, 83, 80)",
-  
+
   blue: "rgb(55, 125, 255)",
   lightblue: "rgba(55, 125, 255, 0.5)",
   extralightblue: "rgba(55, 125, 255, 0.043)",
-  
+
   extralightgrey: "rgba(70, 125, 227, 0.1)",
   lightgrey: "rgb(247, 250, 255)",
   mediumlightgrey: "rgba(0,0,0,0.12)",

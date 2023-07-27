@@ -1,10 +1,13 @@
 import { ProductCardProps } from "./Components/Products page/AvailableProducts";
 import { SortingOptions } from "./Constants/sorting-options";
 
-export const sort = (products: ProductCardProps[], sortOption: typeof SortingOptions[keyof typeof SortingOptions]) => {
-    const sortedProducts = products.slice();
+export const sort = (
+  products: ProductCardProps[],
+  sortOption: (typeof SortingOptions)[keyof typeof SortingOptions],
+) => {
+  const sortedProducts = products.slice();
 
-    // Sort the array based on the chosen sort option
+  // Sort the array based on the chosen sort option
   if (sortOption === SortingOptions.NAME_ASC) {
     sortedProducts.sort((productA, productB) =>
       productA.title.localeCompare(productB.title),
@@ -26,19 +29,28 @@ export const sort = (products: ProductCardProps[], sortOption: typeof SortingOpt
   }
 
   return sortedProducts;
-}
+};
 
-export const applyFilters = (products: ProductCardProps[], filters: {lowerPriceBound: number, upperPriceBound: number, chosenBrands: string[],
-    searchedBrand: string
-    chosenCategories: string[],}) => {
-    let filteredProducts = products.slice()
+export const applyFilters = (
+  products: ProductCardProps[],
+  filters: {
+    lowerPriceBound: number;
+    upperPriceBound: number;
+    chosenBrands: string[];
+    searchedBrand: string;
+    chosenCategories: string[];
+  },
+) => {
+  let filteredProducts = products.slice();
 
-    const priceRangeSet = filters.lowerPriceBound !== 0 || filters.upperPriceBound !== 0;
-    // If the price range is set, show only the products whose price lies in that range
+  const priceRangeSet =
+    filters.lowerPriceBound !== 0 || filters.upperPriceBound !== 0;
+  // If the price range is set, show only the products whose price lies in that range
   if (priceRangeSet) {
     filteredProducts = filteredProducts.filter((product) => {
       return (
-        product.price >= filters.lowerPriceBound && product.price <= filters.upperPriceBound
+        product.price >= filters.lowerPriceBound &&
+        product.price <= filters.upperPriceBound
       );
     });
   }
@@ -57,12 +69,11 @@ export const applyFilters = (products: ProductCardProps[], filters: {lowerPriceB
     });
   }
 
-  if (filters.chosenCategories.length > 0){
+  if (filters.chosenCategories.length > 0) {
     filteredProducts = filteredProducts.filter((product) => {
       return filters.chosenCategories.includes(product.category);
-    })
+    });
   }
 
-  return filteredProducts
-
-}
+  return filteredProducts;
+};

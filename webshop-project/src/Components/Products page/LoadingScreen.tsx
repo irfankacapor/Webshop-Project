@@ -1,6 +1,6 @@
-import React from 'react';
-import { CircularProgress, Box, Typography } from '@mui/material';
-import { colours } from '../../Constants/colours';
+import React from "react";
+import { CircularProgress, Box, Typography } from "@mui/material";
+import { colours } from "../../Constants/colours";
 
 const LoadingScreen = () => {
   return (

@@ -28,10 +28,18 @@ const FilterDrawer = styled(({ ...props }) => (
 const LargeFiltersDrawer = ({
   filters,
   setFilters,
+  minPrice,
+  maxPrice,
+  brands,
+  categories,
   resetAll,
 }: {
   filters: Filters;
   setFilters: Dispatch<SetStateAction<Filters>>;
+  minPrice: number;
+  maxPrice: number;
+  brands: string[];
+  categories: string[];
   resetAll: () => void;
 }) => {
   return (
@@ -41,18 +49,22 @@ const LargeFiltersDrawer = ({
           <PriceFilter
             filters={filters}
             setFilters={setFilters}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
           />
           <FilterDivider />
           <BrandFilter
             filters={filters}
             setFilters={setFilters}
+            brands={brands}
           />
-          <FilterDivider/>
+          <FilterDivider />
           <CategoryFilter
             filters={filters}
             setFilters={setFilters}
-        />
-          <ResetAllButton onClick={resetAll}/>
+            categories={categories}
+          />
+          <ResetAllButton onClick={resetAll} />
         </Box>
       </FilterDrawer>
     </Box>

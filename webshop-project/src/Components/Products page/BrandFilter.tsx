@@ -20,30 +20,48 @@ import { Filters } from "../../Pages/Products";
 
 const BrandFilter = ({
   filters,
-  setFilters
+  setFilters,
+  brands,
 }: {
   filters: Filters;
   setFilters: Dispatch<SetStateAction<Filters>>;
+  brands: string[];
 }) => {
   const [brandPickerOpen, setBrandPickerOpen] = useState(false);
 
   const handleBrandChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const brand = event.target.name;
     if (event.target.checked) {
-      setFilters((prevValue) => ({...filters, chosenBrands: [...prevValue.chosenBrands, brand]}));
+      setFilters((prevValue) => ({
+        ...filters,
+        chosenBrands: [...prevValue.chosenBrands, brand],
+      }));
     } else {
-      setFilters((prevValue) => ({...filters, chosenBrands: prevValue.chosenBrands.filter((chosenBrand) => chosenBrand !== brand),}))
+      setFilters((prevValue) => ({
+        ...filters,
+        chosenBrands: prevValue.chosenBrands.filter(
+          (chosenBrand) => chosenBrand !== brand,
+        ),
+      }));
     }
   };
 
   const handleOtherBrands = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const otherBrands = filters.brands.filter((brand, index) => {
+    const otherBrands = brands.filter((brand, index) => {
       return index >= 7;
     });
     if (event.target.checked) {
-      setFilters((prevValue) => ({...filters, chosenBrands: [...prevValue.chosenBrands, ...otherBrands]}))
+      setFilters((prevValue) => ({
+        ...filters,
+        chosenBrands: [...prevValue.chosenBrands, ...otherBrands],
+      }));
     } else {
-      setFilters((prevValue) => ({...filters, chosenBrands: prevValue.chosenBrands.filter((chosenBrands) => !otherBrands.includes(chosenBrands))}))
+      setFilters((prevValue) => ({
+        ...filters,
+        chosenBrands: prevValue.chosenBrands.filter(
+          (chosenBrands) => !otherBrands.includes(chosenBrands),
+        ),
+      }));
     }
   };
 
@@ -61,7 +79,7 @@ const BrandFilter = ({
         <TextField
           value={filters.searchedBrand}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            setFilters({...filters, searchedBrand: event.target.value})
+            setFilters({ ...filters, searchedBrand: event.target.value });
           }}
           InputProps={{
             startAdornment: (
@@ -72,7 +90,7 @@ const BrandFilter = ({
           }}
         ></TextField>
         <FormGroup>
-          {filters.brands
+          {brands
             .filter((_, index) => {
               return index < 7;
             })
@@ -93,7 +111,7 @@ const BrandFilter = ({
             key="Other"
             control={
               <Checkbox
-                checked={filters.brands
+                checked={brands
                   .filter((brand, index) => index >= 7)
                   .some((brand) => filters.chosenBrands.includes(brand))}
                 onChange={handleOtherBrands}

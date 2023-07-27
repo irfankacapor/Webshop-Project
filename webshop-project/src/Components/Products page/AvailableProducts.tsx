@@ -1,52 +1,30 @@
 import { Grid } from "@mui/material";
 import ProductCard from "./ProductCard";
-import { SortingOptions } from "../../Constants/sorting-options";
 
-interface ProductCardProps {
+export interface ProductCardProps {
   thumbnail: string;
   title: string;
   price: number;
   rating: number;
+  brand: string;
+  category: string;
   id: number;
 }
 
 const AvailableProducts = ({
   page,
-  sortBy,
   products,
 }: {
   page: number;
-  sortBy: string;
   products: ProductCardProps[];
 }) => {
-  const sortedProducts = products.slice();
-  if (sortBy === SortingOptions.NAME_ASC) {
-    sortedProducts.sort((productA, productB) =>
-      productA.title.localeCompare(productB.title),
-    );
-  } else if (sortBy === SortingOptions.NAME_DESC) {
-    sortedProducts
-      .sort((productA, productB) =>
-        productA.title.localeCompare(productB.title),
-      )
-      .reverse();
-  } else if (sortBy === SortingOptions.PRICE_ASC) {
-    sortedProducts.sort(
-      (productA, productB) => productA.price - productB.price,
-    );
-  } else if (sortBy === SortingOptions.PRICE_DESC) {
-    sortedProducts.sort(
-      (productA, productB) => productB.price - productA.price,
-    );
-  }
-
   const numOfElementsPerPage = 12;
   const indexOfFirstElement = (page - 1) * numOfElementsPerPage;
   const indexOfLastElement = page * numOfElementsPerPage;
 
   return (
-    <Grid container spacing={{ xs: 4, md: 2 }}>
-      {sortedProducts
+    <Grid container spacing={{ xs: 4, md: 2 }} height="100%">
+      {products
         .filter((_, index: number) => {
           return index >= indexOfFirstElement && index < indexOfLastElement;
         })

@@ -2,8 +2,8 @@ export const SortingOptions = {
   NAME_ASC: "A-Z",
   NAME_DESC: "Z-A",
   PRICE_ASC: "low to high",
-  PRICE_DESC: "high to low"
-}
+  PRICE_DESC: "high to low",
+};
 
 const options = [
   { option: SortingOptions.NAME_ASC, display: "A-Z", id: 1 },

@@ -1,8 +1,7 @@
-import React from "react";
 import { CircularProgress, Box, Typography } from "@mui/material";
 import { colours } from "../../Constants/colours";
 
-const LoadingScreen = () => {
+const LoadingScreen = ({ text }: { text: string }) => {
   return (
     <Box
       display="flex"
@@ -13,7 +12,7 @@ const LoadingScreen = () => {
     >
       <CircularProgress />
       <Typography variant="h5" marginTop={2} color={colours.mediumdarkgrey}>
-        Finding the best offers
+        {text}
       </Typography>
     </Box>
   );

@@ -127,7 +127,7 @@ const Products = () => {
   };
 
   return products.length === 0 ? (
-    <LoadingScreen />
+    <LoadingScreen text="Finding the best offers" />
   ) : (
     <>
       <main>

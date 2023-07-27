@@ -15,12 +15,12 @@ import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRigh
 import styled from "styled-components";
 import { colours } from "../../Constants/colours";
 
-const StyledStarIcon = styled(StarIcon)`
+export const StyledStarIcon = styled(StarIcon)`
   width: 16px !important;
   height: 16px !important;
 `;
 
-const StyledCardMedia = styled(({ ...props }) => (
+export const StyledCardMedia = styled(({ ...props }) => (
   <CardMedia role="img" {...props} />
 ))`
   height: 320px;
@@ -30,7 +30,7 @@ const StyledCardMedia = styled(({ ...props }) => (
   border-radius: 8px;
 `;
 
-const FavouriteIconContainer = styled(Box)`
+export const FavouriteIconContainer = styled(Box)`
   background-color: ${colours.white};
   position: absolute;
   top: 1rem;
@@ -44,7 +44,7 @@ const FavouriteIconContainer = styled(Box)`
   cursor: pointer !important;
 `;
 
-const ProductCaption = styled(({ ...props }) => (
+export const ProductCaption = styled(({ ...props }) => (
   <Typography variant="body1" {...props} />
 ))`
   color: ${colours.title} !important;
@@ -95,7 +95,7 @@ const SeeDetailsButton = styled(({ ...props }) => (
   }
 `;
 
-const CreateStars = (props: { rating: number }) => {
+export const CreateStars = (props: { rating: number }) => {
   const rating = Math.round(props.rating);
   const stars = Array(5).fill(0);
 
@@ -119,11 +119,13 @@ const ProductCard = ({
   title,
   price,
   rating,
+  id,
 }: {
   thumbnail: string;
   title: string;
   price: number;
   rating: number;
+  id: number;
 }) => {
   return (
     <Box width="100%" height="100%">
@@ -152,16 +154,18 @@ const ProductCard = ({
             <ShoppingCartIcon sx={{ color: "white" }} />
           </ProductButtons>
           <ProductButtons
+            component={Link}
             sx={{
               backgroundColor: colours.extralightgrey,
               marginLeft: "0.5rem",
               "&:hover": { backgroundColor: colours.extralightblue },
             }}
+            href={`/products/product-details/${id}`}
           >
             <VisibilityIcon color="primary" />
           </ProductButtons>
         </Stack>
-        <SeeDetailsButton href="/products">
+        <SeeDetailsButton href={`/products/product-details/${id}`}>
           <Typography>See the details</Typography>
         </SeeDetailsButton>
       </Paper>

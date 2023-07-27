@@ -36,6 +36,7 @@ const AvailableProducts = ({
                 title={product.title}
                 price={product.price}
                 rating={product.rating}
+                id={product.id}
               ></ProductCard>
             </Grid>
           );

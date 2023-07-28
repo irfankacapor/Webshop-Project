@@ -46,8 +46,9 @@ const MoreProducts = () => {
           </Box>
         </ImageContainer>
         <Grid
-          container
-          spacing={{ xs: 12, md: 4 }}
+          item
+          xs={12}
+          md={4}
           paddingX={"1rem"}
           marginY={"1rem"}
           alignItems={"center"}

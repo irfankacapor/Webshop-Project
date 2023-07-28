@@ -7,9 +7,16 @@ const StyledSubscribeField = styled(({...props}) => (<TextField variant="outline
     background-color: ${colours.white} !important;
     max-width: 400px;
     & fieldset {
-        border-radius: 5px 0px 0px 5px !important;
+        border-radius: 5px 0px 0px 5px;
         border: 1px 0px 1px 1px !important;
+        @media (max-width: 600px){
+          border-radius: 5px;
+        }
     }
+    @media(max-width: 600px){
+      max-width: 100%;
+    }
+
   `
 
 const StyledNotificationsButton = styled(NotificationsNoneIcon)`
@@ -17,7 +24,7 @@ const StyledNotificationsButton = styled(NotificationsNoneIcon)`
   color: white !important;
 `
 
-const SubscribeButton = styled(({...props}) => (<Button variant="container" size="large" endIcon={<StyledNotificationsButton/>} {...props}/>))`
+const SubscribeButton = styled(({...props}) => (<Button variant="container" size="large" endIcon={<StyledNotificationsButton width="24px" height="24px"/>} {...props}/>))`
   transition-duration: 250ms !important;
     background-color: ${colours.blue} !important;
     color: ${colours.white} !important;
@@ -30,6 +37,23 @@ const SubscribeButton = styled(({...props}) => (<Button variant="container" size
     font-weight: 300 !important;
     :hover{
         box-shadow: rgba(140, 152, 164, 0.176) 0px 10px 40px 10px !important;
+    }
+
+    @media (max-width: 600px){
+      margin-top: 1rem !important;
+      border-radius: 5px !important;
+      width: 100%;
+    }
+`
+
+const SubscribeFieldContainer = styled(Box)`
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+
+    @media (min-width: 600px){
+      flex-direction: row;
     }
 `
 
@@ -62,10 +86,10 @@ const SubscribeToStore = () => {
           Get the latest from our store
         </StyledSubscribeTitle>
       </Box>
-      <Box display="flex" alignItems="flex-start" justifyContent="center">
+      <SubscribeFieldContainer>
         <StyledSubscribeField />
         <SubscribeButton>Subscribe</SubscribeButton>
-      </Box>
+      </SubscribeFieldContainer>
     </Box>
   );
 };

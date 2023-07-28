@@ -9,6 +9,8 @@ import ProductImages from "../Components/Product details page/ProductImages";
 import LoadingScreen from "../Components/Products page/LoadingScreen";
 import { ProductDetailsText } from "../Components/Product details page/ProductDetailsText";
 import SimilarProducts from "../Components/Product details page/SimilarProducts";
+import { colours } from "../Constants/colours";
+import SubscribeToStore from "../Components/Product details page/SubscribeToStore";
 
 export interface DetailsProps {
   brand: string;
@@ -22,7 +24,7 @@ export interface DetailsProps {
   title: string;
 }
 
-const DetailsContainer = styled(Box)`
+export const DetailsContainer = styled(Box)`
   width: 100%;
   box-sizing: border-box;
   padding: 2rem 1rem;
@@ -110,6 +112,11 @@ const Details = () => {
         <DetailsContainer>
           <SimilarProducts products={similarProducts} />
         </DetailsContainer>
+        <Box sx={{backgroundColor: colours.lightgrey}}>
+            <DetailsContainer>
+                <SubscribeToStore/>
+            </DetailsContainer>
+        </Box>
       </main>
       <footer>
         <Footer />

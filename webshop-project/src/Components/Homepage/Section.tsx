@@ -56,9 +56,10 @@ const Section = (props: SectionProps) => {
         {props.sectionTitle}
       </Typography>
       <div data-aos={props.sectionDescriptionAosAnimation || ""}>
-        {props.sectionDescription.map((item) => {
+        {props.sectionDescription.map((item, index) => {
           return (
             <Typography
+              key={index * 13}
               variant="h6"
               align={props.alignText || "center"}
               sx={{

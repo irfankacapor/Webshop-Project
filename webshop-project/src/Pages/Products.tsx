@@ -18,6 +18,8 @@ import LargeFiltersDrawer from "../Components/Products page/LargeFiltersDrawer";
 import ProductListingBanner from "../Components/Products page/ProductListingBanner";
 import { sort, applyFilters } from "../helpers";
 import { SortingOptions } from "../Constants/sorting-options";
+import { DetailsContainer } from "./Details";
+import SubscribeToStore from "../Components/Product details page/SubscribeToStore";
 
 const FilterButtonContainer = styled(Box)`
   display: flex !important;
@@ -127,7 +129,7 @@ const Products = () => {
   };
 
   return products.length === 0 ? (
-    <LoadingScreen />
+    <LoadingScreen text="Finding the best offers" />
   ) : (
     <>
       <main>
@@ -218,6 +220,11 @@ const Products = () => {
             </Box>
           </Box>
         </ProductsContainer>
+        <Box sx={{backgroundColor: colours.lightgrey}}>
+          <DetailsContainer>
+            <SubscribeToStore/>
+          </DetailsContainer>
+        </Box>
       </main>
       <footer>
         <Footer />

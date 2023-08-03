@@ -46,7 +46,7 @@ const MoreProducts = () => {
           </Box>
         </ImageContainer>
         <Grid
-          container
+          item
           xs={12}
           md={4}
           paddingX={"1rem"}

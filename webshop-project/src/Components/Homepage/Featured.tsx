@@ -27,6 +27,7 @@ const Featured = () => (
             data-aos-delay={index * 100}
             data-aos-duration="600"
             data-aos-offset="100"
+            key={index * 31}
           >
             <Product
               title={product.title}

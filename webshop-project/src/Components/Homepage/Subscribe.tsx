@@ -42,7 +42,10 @@ const StyledTextField = styled(({ ...props }) => (
     fullWidth
     InputProps={{
       endAdornment: (
-        <InputAdornment sx={{ color: "white" }} position="end">
+        <InputAdornment
+          sx={{ color: "white", cursor: "pointer" }}
+          position="end"
+        >
           <NotificationsNoneIcon />
         </InputAdornment>
       ),

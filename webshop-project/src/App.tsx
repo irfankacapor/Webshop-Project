@@ -1,10 +1,7 @@
-import { Route, Routes } from "react-router-dom";
 import { Box, Paper } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Navbar from "./Components/Navbar";
-import Homepage from "./Pages/Homepage";
-import Products from "./Pages/Products";
-import Details from "./Pages/Details";
+import Navbar from "@/components/Navbar";
+import AppRoutes from "@/routes";
 
 const theme = createTheme({
   palette: {
@@ -30,11 +27,7 @@ const App = () => (
           <header>
             <Navbar />
           </header>
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/products/product-details/:id" element={<Details />} />
-          </Routes>
+          <AppRoutes/>
         </Box>
       </Paper>
     }

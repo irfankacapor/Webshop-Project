@@ -1,6 +1,6 @@
 import { Box, Button, Grid, Link, Typography } from "@mui/material";
 import styled from "styled-components";
-import { colours } from "../Constants/colours";
+import { colours } from "@/utils/colours";
 
 const FooterContainer = styled(Box)`
   box-sizing: border-box;

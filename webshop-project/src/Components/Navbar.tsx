@@ -1,7 +1,7 @@
-import { AppBar, Box, Toolbar, Typography, Link } from "@mui/material";
 import { useEffect, useState } from "react";
+import { AppBar, Box, Toolbar, Typography, Link } from "@mui/material";
 import styled from "styled-components";
-import { colours } from "../Constants/colours";
+import { colours } from "@/utils/colours";
 
 const Logo = styled.img`
   height: 5rem;

@@ -3,8 +3,7 @@ import EmptyCart from "@/features/cart-page/EmptyCart"
 import ShoppingCart from "@/features/cart-page/ShoppingCart";
 
 const Cart = () => {
-    const {cartItems, cartQuantity} = useCart();
-    console.log(cartItems);
+    const { cartItems, cartQuantity } = useCart();
     
     return (
       <>

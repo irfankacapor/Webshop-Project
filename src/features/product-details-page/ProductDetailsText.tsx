@@ -1,11 +1,10 @@
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
-import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import styled from "styled-components";
 import { colours } from "@/utils/colours";
 import { CreateStars } from "@/features/products-page/ProductCard";
 import { DetailsProps } from "./types";
 import { AddToCartButton } from "./styles";
+import ContactUs from "@/features/product-details-page/ContactUs";
 
 const AddToFavoriteButton = styled(({ ...props }) => (
   <Button variant="outlined" size="large" fullWidth {...props}>
@@ -17,22 +16,6 @@ const AddToFavoriteButton = styled(({ ...props }) => (
   padding: 10px 22px !important;
   border-radius: 5px !important;
   font-weight: 300 !important;
-`;
-
-const ContactButton = styled(({ ...props }) => (
-  <Button
-    variant="text"
-    size="medium"
-    sx={{ marginLeft: props.marginleft }}
-    {...props}
-  />
-))`
-  box-sizing: border-box !important;
-  text-transform: none !important;
-  font-weight: 300 !important;
-  color: ${colours.grey} !important;
-  padding: 8px 10px !important;
-  border-radius: 5px !important;
 `;
 
 export const ProductDetailsText = ({ details }: { details: DetailsProps }) => {
@@ -75,17 +58,7 @@ export const ProductDetailsText = ({ details }: { details: DetailsProps }) => {
       <Box>
         <AddToFavoriteButton />
       </Box>
-      <Box marginTop="2rem">
-        <Typography variant="body1">Need support?</Typography>
-        <Stack display="flex" flexDirection="row" marginTop="0.25rem">
-          <ContactButton startIcon={<LocalPhoneIcon />}>
-            Contact sales
-          </ContactButton>
-          <ContactButton startIcon={<EmailRoundedIcon />} marginleft="1rem">
-            Email us
-          </ContactButton>
-        </Stack>
-      </Box>
+      <ContactUs />
     </Box>
   );
 };

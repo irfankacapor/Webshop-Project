@@ -1,30 +1,31 @@
+import { CartItem } from "@/features/cart-page/types";
 import { ProductCardProps } from "@/features/products-page/types";
 import { SortingOptions } from "@/utils/sorting-options";
 
 export const sort = (
   products: ProductCardProps[],
-  sortOption: (typeof SortingOptions)[keyof typeof SortingOptions],
+  sortOption: (typeof SortingOptions)[keyof typeof SortingOptions]
 ) => {
   const sortedProducts = products.slice();
 
   // Sort the array based on the chosen sort option
   if (sortOption === SortingOptions.NAME_ASC) {
     sortedProducts.sort((productA, productB) =>
-      productA.title.localeCompare(productB.title),
+      productA.title.localeCompare(productB.title)
     );
   } else if (sortOption === SortingOptions.NAME_DESC) {
     sortedProducts
       .sort((productA, productB) =>
-        productA.title.localeCompare(productB.title),
+        productA.title.localeCompare(productB.title)
       )
       .reverse();
   } else if (sortOption === SortingOptions.PRICE_ASC) {
     sortedProducts.sort(
-      (productA, productB) => productA.price - productB.price,
+      (productA, productB) => productA.price - productB.price
     );
   } else if (sortOption === SortingOptions.PRICE_DESC) {
     sortedProducts.sort(
-      (productA, productB) => productB.price - productA.price,
+      (productA, productB) => productB.price - productA.price
     );
   }
 
@@ -39,7 +40,7 @@ export const applyFilters = (
     chosenBrands: string[];
     searchedBrand: string;
     chosenCategories: string[];
-  },
+  }
 ) => {
   let filteredProducts = products.slice();
 
@@ -77,3 +78,7 @@ export const applyFilters = (
 
   return filteredProducts;
 };
+
+export const CalculateSubtotal = (cartItems: CartItem[]) => {};
+
+export const CalculateTotal = (cartItems: CartItem[]) => {};

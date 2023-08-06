@@ -1,7 +1,8 @@
 import Footer from "@/components/Footer"
-import { Box, Grid, Typography } from "@mui/material"
+import { Box, Divider, Grid, Typography } from "@mui/material";
 import styled from "styled-components"
 import CartItems from "@/features/cart-page/CartItems"
+import OrderSummary from "./OrderSummary";
 
 const CartContainer = styled(Box)`
   margin-top: 2rem;
@@ -27,22 +28,25 @@ const ShoppingCart = () => {
         <CartContainer>
           <Grid container spacing={4}>
             <Grid item xs={12} md={8}>
-              <Typography variant="h6" marginBottom="2rem">Shopping cart</Typography>
+              <Typography variant="h6" marginBottom="2rem">
+                Shopping cart
+              </Typography>
               <Box>
-                <CartItems/>
+                <CartItems />
               </Box>
             </Grid>
             <Grid item xs={12} md={4}>
-
+              <OrderSummary />
             </Grid>
           </Grid>
         </CartContainer>
+        <Divider />
       </main>
       <footer>
-        <Footer/>
+        <Footer />
       </footer>
     </>
-  )
+  );
 }
 
 export default ShoppingCart

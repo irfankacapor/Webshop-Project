@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { DetailsProps } from "@/features/product-details-page/types";
 
-const useProductDetails = (id: string) => {
+const useProductDetails = (id: number) => {
   const detailsAPIurl = `https://dummyjson.com/products/${id}`;
   const [details, setDetails] = useState<DetailsProps>({
     brand: "",

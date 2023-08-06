@@ -14,6 +14,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
 import styled from "styled-components";
 import { colours } from "@/utils/colours";
+import { useCart } from "@/context/CartContext";
 
 export const StyledStarIcon = styled(StarIcon)`
   width: 16px !important;
@@ -127,6 +128,7 @@ const ProductCard = ({
   rating: number;
   id: number;
 }) => {
+  const {increaseQuantity} = useCart();
   return (
     <Box width="100%" height="100%">
       <Paper elevation={0}>
@@ -150,7 +152,7 @@ const ProductCard = ({
           <CreateStars rating={rating} />
         </Box>
         <Stack marginTop="1rem" display="flex" flexDirection={"row"}>
-          <ProductButtons>
+          <ProductButtons component={Link} href="/cart" onClick={() => increaseQuantity(id)}>
             <ShoppingCartIcon sx={{ color: "white" }} />
           </ProductButtons>
           <ProductButtons

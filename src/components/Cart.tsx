@@ -1,11 +1,11 @@
-import { useCart } from "@/context/CartContext"
-import EmptyCart from "@/features/cart-page/EmptyCart"
+import { useCart } from "@/context/CartContext";
+import EmptyCart from "@/features/cart-page/EmptyCart";
 import ShoppingCart from "@/features/cart-page/ShoppingCart";
 
 const Cart = () => {
-    const { cartQuantity } = useCart();
-    
-    return cartQuantity > 0 ? <ShoppingCart/> : <EmptyCart/>
-  }
+  const { cartQuantity } = useCart();
 
-export default Cart
+  return cartQuantity > 0 ? <ShoppingCart /> : <EmptyCart />;
+};
+
+export default Cart;

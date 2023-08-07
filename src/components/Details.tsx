@@ -43,9 +43,10 @@ const DetailsDividerContainer = styled(Box)`
 `;
 
 const Details = () => {
-
   const { id } = useParams<{ id: string }>();
-  const { details, similarProducts } = useProductDetails(id as unknown as number);
+  const { details, similarProducts } = useProductDetails(
+    id as unknown as number,
+  );
 
   return details.images.length === 0 ? (
     <LoadingScreen text={"Loading product details"} />

@@ -133,7 +133,6 @@ const SubscribeToStore = () => {
         </Box>
       </SubscribeContainer>
     </Box>
-
   );
 };
 

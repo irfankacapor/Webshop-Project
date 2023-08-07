@@ -1,7 +1,7 @@
-import Footer from "@/components/Footer"
+import Footer from "@/components/Footer";
 import { Box, Divider, Grid, Typography } from "@mui/material";
-import styled from "styled-components"
-import CartItems from "@/features/cart-page/CartItems"
+import styled from "styled-components";
+import CartItems from "@/features/cart-page/CartItems";
 import OrderSummary from "./OrderSummary";
 
 const CartContainer = styled(Box)`
@@ -11,15 +11,15 @@ const CartContainer = styled(Box)`
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  @media(min-width: 600px){
+  @media (min-width: 600px) {
     max-width: 720px;
     padding: 3rem 1rem;
   }
-  @media(min-width: 900px){
+  @media (min-width: 900px) {
     max-width: 1236px;
     padding: 4rem 1rem;
   }
-`
+`;
 
 const ShoppingCart = () => {
   return (
@@ -47,6 +47,6 @@ const ShoppingCart = () => {
       </footer>
     </>
   );
-}
+};
 
-export default ShoppingCart
+export default ShoppingCart;

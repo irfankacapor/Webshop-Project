@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { colours } from "@/utils/colours";
 import { SectionProps } from "@/features/homepage/types";
 
-
 export const HomepageButton = styled(({ ...props }) => (
   <Button variant="contained" size="large" {...props} />
 ))`

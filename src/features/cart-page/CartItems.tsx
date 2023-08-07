@@ -1,17 +1,17 @@
-import { useCart } from "@/context/CartContext"
+import { useCart } from "@/context/CartContext";
 import CartItem from "./CartItem";
 
 const CartItems = () => {
-    const {cartItems} = useCart();
-    console.log(cartItems);
-     
-    return <>
-        {
-            cartItems.map(item => {
-                return <CartItem id={item.id} key={item.id}/>
-            })
-        }
-    </>
-} 
+  const { cartItems } = useCart();
+  console.log(cartItems);
 
-export default CartItems
+  return (
+    <>
+      {cartItems.map((item) => {
+        return <CartItem id={item.id} key={item.id} />;
+      })}
+    </>
+  );
+};
+
+export default CartItems;

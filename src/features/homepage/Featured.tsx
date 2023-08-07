@@ -4,7 +4,6 @@ import products from "@/utils/products";
 import Product from "@/features/homepage/Product";
 import { ProductProps } from "@/features/homepage/types";
 
-
 const Featured = () => (
   <Box>
     <Section

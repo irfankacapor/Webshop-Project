@@ -37,13 +37,14 @@ const ActionButtons = styled(({ ...props }) => (
 const CartItem = ({ id }: { id: number }) => {
   const { details } = useProductDetails(id);
   const { removeItem, getItemQuantity, setQuantity } = useCart();
-  const isLargeScreen = useMediaQuery('(min-width: 900px)');
-  const isMediumScreen = useMediaQuery('(min-width: 900px) and (max-width: 1199px)');
-
+  const isLargeScreen = useMediaQuery("(min-width: 900px)");
+  const isMediumScreen = useMediaQuery(
+    "(min-width: 900px) and (max-width: 1199px)",
+  );
 
   const handleQuantityChange = (
     event: SelectChangeEvent<number>,
-    child: React.ReactNode
+    child: React.ReactNode,
   ) => {
     const selectedQuantity = event.target.value;
     setQuantity(id, selectedQuantity as number);
@@ -72,32 +73,44 @@ const CartItem = ({ id }: { id: number }) => {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} md={4} order={isLargeScreen? 2 : 3}>
-            <Stack paddingX={isLargeScreen ? "2rem": 0} flexDirection={isLargeScreen ? "column" : "row"}>
+          <Grid item xs={12} md={4} order={isLargeScreen ? 2 : 3}>
+            <Stack
+              paddingX={isLargeScreen ? "2rem" : 0}
+              flexDirection={isLargeScreen ? "column" : "row"}
+            >
               <ActionButtons href="/cart" onClick={() => removeItem(id)}>
                 <DeleteOutlineRoundedIcon sx={{ marginRight: "0.25rem" }} />
                 Remove
               </ActionButtons>
-              <ActionButtons sx={{ marginTop: isLargeScreen ? "0.5rem" : 0, marginLeft: isLargeScreen ? 0 : "0.5rem" }}>
+              <ActionButtons
+                sx={{
+                  marginTop: isLargeScreen ? "0.5rem" : 0,
+                  marginLeft: isLargeScreen ? 0 : "0.5rem",
+                }}
+              >
                 <FavoriteBorderOutlinedIcon sx={{ marginRight: "0.25rem" }} />
                 Save
               </ActionButtons>
             </Stack>
           </Grid>
-          <Grid item xs={12} md={4} order={isLargeScreen? 3 : 2}>
+          <Grid item xs={12} md={4} order={isLargeScreen ? 3 : 2}>
             <Stack
               width="100%"
-              direction={isMediumScreen ? "column": "row"}
-              alignItems={isMediumScreen ? "flex-end" : "center" }
+              direction={isMediumScreen ? "column" : "row"}
+              alignItems={isMediumScreen ? "flex-end" : "center"}
               display="flex"
-              justifyContent={ !isLargeScreen ? "left" : "flex-end"}
+              justifyContent={!isLargeScreen ? "left" : "flex-end"}
               boxSizing="border-box"
             >
               <FormControl>
                 <Select
                   value={getItemQuantity(id)}
                   onChange={handleQuantityChange}
-                  sx={{ maxHeight: "40px", marginRight: isMediumScreen ? 0 : "1rem" , marginBottom: isMediumScreen ? "1rem" : 0}}
+                  sx={{
+                    maxHeight: "40px",
+                    marginRight: isMediumScreen ? 0 : "1rem",
+                    marginBottom: isMediumScreen ? "1rem" : 0,
+                  }}
                 >
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
                     <MenuItem key={num} value={num}>

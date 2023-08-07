@@ -40,14 +40,14 @@ const ApplyDiscountButton = styled(({ ...props }) => (
 `;
 
 const OrderSummary = () => {
-  const {cartItems} = useCart();
+  const { cartItems } = useCart();
   const [VAT, setVAT] = useState(20);
   const [discount, setDiscount] = useState(0);
   const [subtotal, setSubtotal] = useState(0);
 
   useEffect(() => {
     calculateCartSubtotal(cartItems).then((value) => setSubtotal(value));
-  }, [cartItems])
+  }, [cartItems]);
 
   const totalTax = (VAT / 100) * subtotal;
   return (
@@ -94,7 +94,9 @@ const OrderSummary = () => {
           <Divider />
           <Box display="flex" justifyContent="space-between" marginY="1rem">
             <Typography variant="h6">Order total:</Typography>
-            <Typography variant="h6">{formatCurrency(subtotal + discount + totalTax)}</Typography>
+            <Typography variant="h6">
+              {formatCurrency(subtotal + discount + totalTax)}
+            </Typography>
           </Box>
           <AddToCartButton>Checkout</AddToCartButton>
         </Stack>

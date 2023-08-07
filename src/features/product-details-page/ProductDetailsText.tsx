@@ -21,7 +21,7 @@ const AddToFavoriteButton = styled(({ ...props }) => (
 `;
 
 export const ProductDetailsText = ({ details }: { details: DetailsProps }) => {
-  const {increaseQuantity} = useCart();
+  const { increaseQuantity } = useCart();
   return (
     <Box>
       <Box display="flex" justifyContent="space-between">
@@ -47,7 +47,12 @@ export const ProductDetailsText = ({ details }: { details: DetailsProps }) => {
         <CreateStars rating={details.rating} />
       </Box>
       <Box marginTop="2rem">
-        <AddToCartButton onClick={() => increaseQuantity(details.id)} href="/cart">Add to cart</AddToCartButton>
+        <AddToCartButton
+          onClick={() => increaseQuantity(details.id)}
+          href="/cart"
+        >
+          Add to cart
+        </AddToCartButton>
       </Box>
       <Box marginTop="2rem">
         <Typography variant="body1" color={colours.title} marginBottom="0.5rem">

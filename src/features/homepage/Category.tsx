@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { colours } from "@/utils/colours";
 import { CategoryProps } from "./types";
 
-
 const StyledPaper = styled(Paper)`
   height: 100% !important;
   width: 100% !important;

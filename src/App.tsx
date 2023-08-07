@@ -17,7 +17,7 @@ const theme = createTheme({
 
 const App = () => (
   <ThemeProvider theme={theme}>
-      {
+    {
       <CartProvider>
         <Paper elevation={0}>
           <Box
@@ -29,12 +29,12 @@ const App = () => (
             <header>
               <Navbar />
             </header>
-            <AppRoutes/>
+            <AppRoutes />
           </Box>
         </Paper>
       </CartProvider>
-      }
-    </ThemeProvider>
+    }
+  </ThemeProvider>
 );
 
 export default App;

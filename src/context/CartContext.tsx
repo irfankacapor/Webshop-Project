@@ -57,11 +57,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const setQuantity = (id: number, quantity: number) => {
     setCartItems((prevItems) => {
       return prevItems.map((item) => {
-        if (item.id === id) {
-          return { ...item, quantity: quantity };
-        } else {
-          return item;
-        }
+        return item.id === id ? {...item, quantity: quantity} : item
       });
     });
   };

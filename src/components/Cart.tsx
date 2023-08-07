@@ -5,15 +5,7 @@ import ShoppingCart from "@/features/cart-page/ShoppingCart";
 const Cart = () => {
     const { cartQuantity } = useCart();
     
-    return (
-      <>
-        {
-          cartQuantity > 0 ? 
-            <ShoppingCart/>:
-            <EmptyCart/>
-        }
-      </>
-    )
+    return cartQuantity > 0 ? <ShoppingCart/> : <EmptyCart/>
   }
 
 export default Cart

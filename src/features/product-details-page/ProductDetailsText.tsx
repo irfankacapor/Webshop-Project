@@ -1,10 +1,12 @@
-import { Box, Button, Divider, Stack, Typography } from "@mui/material";
+import { Box, Button, Divider, Typography } from "@mui/material";
 import styled from "styled-components";
 import { colours } from "@/utils/colours";
 import { CreateStars } from "@/features/products-page/ProductCard";
 import { DetailsProps } from "./types";
 import { AddToCartButton } from "./styles";
 import ContactUs from "@/features/product-details-page/ContactUs";
+import { useCart } from "@/context/CartContext";
+import { formatCurrency } from "@/utils/helpers";
 
 const AddToFavoriteButton = styled(({ ...props }) => (
   <Button variant="outlined" size="large" fullWidth {...props}>
@@ -19,6 +21,7 @@ const AddToFavoriteButton = styled(({ ...props }) => (
 `;
 
 export const ProductDetailsText = ({ details }: { details: DetailsProps }) => {
+  const {increaseQuantity} = useCart();
   return (
     <Box>
       <Box display="flex" justifyContent="space-between">
@@ -35,7 +38,7 @@ export const ProductDetailsText = ({ details }: { details: DetailsProps }) => {
           noWrap
           color={colours.title}
           fontWeight="600"
-        >{`$${details.price}`}</Typography>
+        >{`${formatCurrency(details.price)}`}</Typography>
       </Box>
       <Box display="flex" alignItems="center" marginTop="1rem">
         <Typography variant="body1" color={colours.grey} marginRight="0.5rem">
@@ -44,7 +47,7 @@ export const ProductDetailsText = ({ details }: { details: DetailsProps }) => {
         <CreateStars rating={details.rating} />
       </Box>
       <Box marginTop="2rem">
-        <AddToCartButton>Add to cart</AddToCartButton>
+        <AddToCartButton onClick={() => increaseQuantity(details.id)} href="/cart">Add to cart</AddToCartButton>
       </Box>
       <Box marginTop="2rem">
         <Typography variant="body1" color={colours.title} marginBottom="0.5rem">

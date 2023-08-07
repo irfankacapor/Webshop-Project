@@ -31,6 +31,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     return [];
   });
 
+
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
@@ -52,7 +53,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         });
       }
     });
-    console.log(cartItems);
   };
   const setQuantity = (id: number, quantity: number) => {
     setCartItems((prevItems) => {

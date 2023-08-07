@@ -11,6 +11,9 @@ import {
 import styled from "styled-components";
 import { AddToCartButton } from "@/features/product-details-page/styles";
 import ContactUs from "@/features/product-details-page/ContactUs";
+import { useCart } from "@/context/CartContext";
+import { calculateCartSubtotal, formatCurrency } from "@/utils/helpers";
+import { useEffect, useState } from "react";
 
 const StyledPaper = styled(Paper)`
   padding: 2rem;
@@ -37,6 +40,16 @@ const ApplyDiscountButton = styled(({ ...props }) => (
 `;
 
 const OrderSummary = () => {
+  const {cartItems} = useCart();
+  const [VAT, setVAT] = useState(20);
+  const [discount, setDiscount] = useState(0);
+  const [subtotal, setSubtotal] = useState(0);
+
+  useEffect(() => {
+    calculateCartSubtotal(cartItems).then((value) => setSubtotal(value));
+  }, [cartItems])
+
+  const totalTax = (VAT / 100) * subtotal;
   return (
     <>
       <StyledPaper elevation={0}>
@@ -59,7 +72,7 @@ const OrderSummary = () => {
               Subtotal
             </Typography>
             <Typography variant="body1" color={colours.grey} fontWeight={500}>
-              $0
+              {formatCurrency(subtotal)}
             </Typography>
           </Box>
           <Box display="flex" justifyContent="space-between" marginTop="1rem">
@@ -67,21 +80,21 @@ const OrderSummary = () => {
               Discount
             </Typography>
             <Typography variant="body1" color={colours.grey} fontWeight={500}>
-              - $0
+              -{formatCurrency(discount)}
             </Typography>
           </Box>
           <Box display="flex" justifyContent="space-between" marginY="1rem">
             <Typography variant="body1" fontWeight={300} color={colours.grey}>
-              VAT(+20%)
+              VAT(+{VAT}%)
             </Typography>
             <Typography variant="body1" color={colours.grey} fontWeight={500}>
-              $10
+              {formatCurrency(totalTax)}
             </Typography>
           </Box>
           <Divider />
           <Box display="flex" justifyContent="space-between" marginY="1rem">
             <Typography variant="h6">Order total:</Typography>
-            <Typography variant="h6">$</Typography>
+            <Typography variant="h6">{formatCurrency(subtotal + discount + totalTax)}</Typography>
           </Box>
           <AddToCartButton>Checkout</AddToCartButton>
         </Stack>

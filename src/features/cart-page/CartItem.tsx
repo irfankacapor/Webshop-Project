@@ -3,13 +3,13 @@ import {
   Divider,
   FormControl,
   Grid,
-  InputLabel,
   Link,
   MenuItem,
   Select,
   SelectChangeEvent,
   Stack,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
@@ -17,6 +17,7 @@ import styled from "styled-components";
 import { colours } from "@/utils/colours";
 import useProductDetails from "@/hooks/useProductDetails";
 import { useCart } from "@/context/CartContext";
+import { formatCurrency } from "@/utils/helpers";
 
 const ThumbnailImage = styled.img`
   border-radius: 8px;
@@ -36,6 +37,9 @@ const ActionButtons = styled(({ ...props }) => (
 const CartItem = ({ id }: { id: number }) => {
   const { details } = useProductDetails(id);
   const { removeItem, getItemQuantity, setQuantity } = useCart();
+  const isLargeScreen = useMediaQuery('(min-width: 900px)');
+  const isMediumScreen = useMediaQuery('(min-width: 900px) and (max-width: 1199px)');
+
 
   const handleQuantityChange = (
     event: SelectChangeEvent<number>,
@@ -46,10 +50,10 @@ const CartItem = ({ id }: { id: number }) => {
   };
   return (
     <Box>
-      <Box display="flex">
+      <Box display="flex" boxSizing="border-box">
         <ThumbnailImage src={details.thumbnail} alt={details.title} />
         <Grid container spacing={4}>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} order={1}>
             <Box>
               <Typography
                 variant="h6"
@@ -68,32 +72,32 @@ const CartItem = ({ id }: { id: number }) => {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} md={4}>
-            <Stack paddingX="2rem">
+          <Grid item xs={12} md={4} order={isLargeScreen? 2 : 3}>
+            <Stack paddingX={isLargeScreen ? "2rem": 0} flexDirection={isLargeScreen ? "column" : "row"}>
               <ActionButtons href="/cart" onClick={() => removeItem(id)}>
                 <DeleteOutlineRoundedIcon sx={{ marginRight: "0.25rem" }} />
                 Remove
               </ActionButtons>
-              <ActionButtons sx={{ marginTop: "0.5rem" }}>
+              <ActionButtons sx={{ marginTop: isLargeScreen ? "0.5rem" : 0, marginLeft: isLargeScreen ? 0 : "0.5rem" }}>
                 <FavoriteBorderOutlinedIcon sx={{ marginRight: "0.25rem" }} />
                 Save
               </ActionButtons>
             </Stack>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} order={isLargeScreen? 3 : 2}>
             <Stack
               width="100%"
-              direction="row"
-              alignItems="center"
+              direction={isMediumScreen ? "column": "row"}
+              alignItems={isMediumScreen ? "flex-end" : "center" }
               display="flex"
-              justifyContent="flex-end"
+              justifyContent={ !isLargeScreen ? "left" : "flex-end"}
               boxSizing="border-box"
             >
               <FormControl>
                 <Select
                   value={getItemQuantity(id)}
                   onChange={handleQuantityChange}
-                  sx={{ maxHeight: "40px", marginRight: "1rem" }}
+                  sx={{ maxHeight: "40px", marginRight: isMediumScreen ? 0 : "1rem" , marginBottom: isMediumScreen ? "1rem" : 0}}
                 >
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
                     <MenuItem key={num} value={num}>
@@ -107,7 +111,7 @@ const CartItem = ({ id }: { id: number }) => {
                 fontWeight="600"
                 color={colours.title}
               >
-                ${details.price}
+                {formatCurrency(details.price)}
               </Typography>
             </Stack>
           </Grid>

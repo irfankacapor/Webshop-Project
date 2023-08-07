@@ -15,6 +15,7 @@ import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRigh
 import styled from "styled-components";
 import { colours } from "@/utils/colours";
 import { useCart } from "@/context/CartContext";
+import { formatCurrency } from "@/utils/helpers";
 
 export const StyledStarIcon = styled(StarIcon)`
   width: 16px !important;
@@ -146,7 +147,7 @@ const ProductCard = ({
         </StyledCardMedia>
         <Box marginTop="1rem" display="flex" justifyContent="space-between">
           <ProductCaption noWrap>{title}</ProductCaption>
-          <ProductCaption>${price}</ProductCaption>
+          <ProductCaption paddingLeft="8px">{formatCurrency(price)}</ProductCaption>
         </Box>
         <Box marginTop="0.25rem">
           <CreateStars rating={rating} />

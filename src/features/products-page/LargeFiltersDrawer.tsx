@@ -4,10 +4,7 @@ import styled from "styled-components";
 import PriceFilter from "@/features/products-page/PriceFilter";
 import BrandFilter from "@/features/products-page/BrandFilter";
 import CategoryFilter from "@/features/products-page/CategoryFilter";
-import {
-  FilterDivider,
-  ResetAllButton,
-} from "@/features/products-page/styles";
+import { FilterDivider, ResetAllButton } from "@/features/products-page/styles";
 import { Filters } from "@/features/products-page/types";
 
 const FilterDrawer = styled(({ ...props }) => (

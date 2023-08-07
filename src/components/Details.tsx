@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { Box, Divider, Grid } from "@mui/material";
 import styled from "styled-components";
 import Footer from "@/components/Footer";
-import { colours } from "@/utils/colours";
 import ProductDetailsBanner from "@/features/product-details-page/ProductDetailsBanner";
 import ProductImages from "@/features/product-details-page/ProductImages";
 import LoadingScreen from "@/features/products-page/LoadingScreen";
@@ -44,9 +43,10 @@ const DetailsDividerContainer = styled(Box)`
 `;
 
 const Details = () => {
-
   const { id } = useParams<{ id: string }>();
-  const { details, similarProducts } = useProductDetails(id as string);
+  const { details, similarProducts } = useProductDetails(
+    id as unknown as number,
+  );
 
   return details.images.length === 0 ? (
     <LoadingScreen text={"Loading product details"} />
@@ -72,11 +72,7 @@ const Details = () => {
         <DetailsContainer>
           <SimilarProducts products={similarProducts} />
         </DetailsContainer>
-        <Box sx={{ backgroundColor: colours.lightgrey }}>
-          <DetailsContainer>
-            <SubscribeToStore />
-          </DetailsContainer>
-        </Box>
+        <SubscribeToStore />
       </main>
       <footer>
         <Footer />

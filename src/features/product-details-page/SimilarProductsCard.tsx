@@ -3,7 +3,7 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import styled from "styled-components";
 import { colours } from "@/utils/colours";
-import { AddToCartButton } from "@/features/product-details-page/ProductDetailsText";
+import { AddToCartButton } from "@/features/product-details-page/styles";
 import {
   FavouriteIconContainer,
   ProductCaption,

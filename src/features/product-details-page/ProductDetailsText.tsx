@@ -1,30 +1,12 @@
-import { Box, Button, Divider, Stack, Typography } from "@mui/material";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
-import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
+import { Box, Button, Divider, Typography } from "@mui/material";
 import styled from "styled-components";
 import { colours } from "@/utils/colours";
 import { CreateStars } from "@/features/products-page/ProductCard";
 import { DetailsProps } from "./types";
-
-export const AddToCartButton = styled(({ ...props }) => (
-  <Button
-    variant="contained"
-    size="large"
-    disableElevation
-    fullWidth
-    {...props}
-  />
-))`
-  box-sizing: border-box;
-  text-transform: none !important;
-  background-color: ${colours.blue} !important;
-  padding: 10px 22px !important;
-  border-radius: 5px !important;
-  font-weight: 300 !important;
-  :hover {
-    box-shadow: rgba(140, 152, 164, 0.176) 0px 10px 40px 10px !important;
-  }
-`;
+import { AddToCartButton } from "./styles";
+import ContactUs from "@/features/product-details-page/ContactUs";
+import { useCart } from "@/context/CartContext";
+import { formatCurrency } from "@/utils/helpers";
 
 const AddToFavoriteButton = styled(({ ...props }) => (
   <Button variant="outlined" size="large" fullWidth {...props}>
@@ -38,23 +20,8 @@ const AddToFavoriteButton = styled(({ ...props }) => (
   font-weight: 300 !important;
 `;
 
-const ContactButton = styled(({ ...props }) => (
-  <Button
-    variant="text"
-    size="medium"
-    sx={{ marginLeft: props.marginleft }}
-    {...props}
-  />
-))`
-  box-sizing: border-box !important;
-  text-transform: none !important;
-  font-weight: 300 !important;
-  color: ${colours.grey} !important;
-  padding: 8px 10px !important;
-  border-radius: 5px !important;
-`;
-
 export const ProductDetailsText = ({ details }: { details: DetailsProps }) => {
+  const { increaseQuantity } = useCart();
   return (
     <Box>
       <Box display="flex" justifyContent="space-between">
@@ -71,7 +38,7 @@ export const ProductDetailsText = ({ details }: { details: DetailsProps }) => {
           noWrap
           color={colours.title}
           fontWeight="600"
-        >{`$${details.price}`}</Typography>
+        >{`${formatCurrency(details.price)}`}</Typography>
       </Box>
       <Box display="flex" alignItems="center" marginTop="1rem">
         <Typography variant="body1" color={colours.grey} marginRight="0.5rem">
@@ -80,7 +47,12 @@ export const ProductDetailsText = ({ details }: { details: DetailsProps }) => {
         <CreateStars rating={details.rating} />
       </Box>
       <Box marginTop="2rem">
-        <AddToCartButton>Add to cart</AddToCartButton>
+        <AddToCartButton
+          onClick={() => increaseQuantity(details.id)}
+          href="/cart"
+        >
+          Add to cart
+        </AddToCartButton>
       </Box>
       <Box marginTop="2rem">
         <Typography variant="body1" color={colours.title} marginBottom="0.5rem">
@@ -94,17 +66,7 @@ export const ProductDetailsText = ({ details }: { details: DetailsProps }) => {
       <Box>
         <AddToFavoriteButton />
       </Box>
-      <Box marginTop="2rem">
-        <Typography variant="body1">Need support?</Typography>
-        <Stack display="flex" flexDirection="row" marginTop="0.25rem">
-          <ContactButton startIcon={<LocalPhoneIcon />}>
-            Contact sales
-          </ContactButton>
-          <ContactButton startIcon={<EmailRoundedIcon />} marginleft="1rem">
-            Email us
-          </ContactButton>
-        </Stack>
-      </Box>
+      <ContactUs />
     </Box>
   );
 };

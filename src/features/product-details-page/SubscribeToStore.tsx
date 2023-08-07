@@ -25,6 +25,24 @@ const StyledSubscribeField = styled(({ ...props }) => (
   }
 `;
 
+const SubscribeContainer = styled(Box)`
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2rem 1rem !important;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 600px) {
+    max-width: 720px;
+    padding: 3rem 1rem !important;
+  }
+
+  @media (min-width: 900px) {
+    max-width: 1236px;
+    padding: 4rem 1rem !important;
+  }
+`;
+
 const StyledNotificationsButton = styled(NotificationsNoneIcon)`
   margin-left: 0.5rem;
   color: white !important;
@@ -86,30 +104,34 @@ const StyledSubscribeTitle = styled(({ ...props }) => (
 
 const SubscribeToStore = () => {
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignContent="center"
-      flexDirection="column"
-    >
-      <Box marginBottom="2rem" textAlign="center">
-        <Typography
-          variant="caption"
-          color={colours.grey}
-          align="center"
-          gutterBottom
-          fontWeight={600}
+    <Box sx={{ backgroundColor: colours.lightgrey }}>
+      <SubscribeContainer>
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignContent="center"
+          flexDirection="column"
         >
-          SUBSCRIBE
-        </Typography>
-        <StyledSubscribeTitle>
-          Get the latest from our store
-        </StyledSubscribeTitle>
-      </Box>
-      <SubscribeFieldContainer>
-        <StyledSubscribeField />
-        <SubscribeButton>Subscribe</SubscribeButton>
-      </SubscribeFieldContainer>
+          <Box marginBottom="2rem" textAlign="center">
+            <Typography
+              variant="caption"
+              color={colours.grey}
+              align="center"
+              gutterBottom
+              fontWeight={600}
+            >
+              SUBSCRIBE
+            </Typography>
+            <StyledSubscribeTitle>
+              Get the latest from our store
+            </StyledSubscribeTitle>
+          </Box>
+          <SubscribeFieldContainer>
+            <StyledSubscribeField />
+            <SubscribeButton>Subscribe</SubscribeButton>
+          </SubscribeFieldContainer>
+        </Box>
+      </SubscribeContainer>
     </Box>
   );
 };

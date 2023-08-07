@@ -12,6 +12,7 @@ export const colours = {
 
   extralightgrey: "rgba(70, 125, 227, 0.1)",
   lightgrey: "rgb(247, 250, 255)",
+  emptycartgrey: "rgb(237, 241, 247)",
   mediumlightgrey: "rgba(0,0,0,0.12)",
   mediumdarkgrey: "rgb(34, 43, 69)",
   darkgrey: "rgb(24, 43, 69)",

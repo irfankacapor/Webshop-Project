@@ -11,7 +11,6 @@ import ProductListingBanner from "@/features/products-page/ProductListingBanner"
 import { sort, applyFilters } from "@/utils/helpers";
 import SubscribeToStore from "@/features/product-details-page/SubscribeToStore";
 import Footer from "@/components/Footer";
-import { DetailsContainer } from "@/components/Details";
 import {
   FilterButton,
   ProductsContainer,
@@ -196,11 +195,7 @@ const Products = () => {
             </Box>
           </Box>
         </ProductsContainer>
-        <Box sx={{ backgroundColor: colours.lightgrey }}>
-          <DetailsContainer>
-            <SubscribeToStore />
-          </DetailsContainer>
-        </Box>
+        <SubscribeToStore />
       </main>
       <footer>
         <Footer />

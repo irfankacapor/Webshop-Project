@@ -3,10 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 import PriceFilter from "@/features/products-page/PriceFilter";
 import BrandFilter from "@/features/products-page/BrandFilter";
-import {
-  FilterDivider,
-  ResetAllButton,
-} from "@/features/products-page/styles";
+import { FilterDivider, ResetAllButton } from "@/features/products-page/styles";
 import CategoryFilter from "@/features/products-page/CategoryFilter";
 import { Filters } from "@/features/products-page/types";
 

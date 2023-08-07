@@ -1,5 +1,7 @@
+import { CartItem } from "@/features/cart-page/types";
 import { ProductCardProps } from "@/features/products-page/types";
 import { SortingOptions } from "@/utils/sorting-options";
+import axios from "axios";
 
 export const sort = (
   products: ProductCardProps[],
@@ -76,4 +78,30 @@ export const applyFilters = (
   }
 
   return filteredProducts;
+};
+
+export const calculateCartSubtotal = async (cartItems: CartItem[]) => {
+  const priceEntries = await Promise.all(
+    cartItems.map(async (item) => {
+      const priceAPIurl = `https://dummyjson.com/products/${item.id}`;
+      const res = await axios.get(priceAPIurl);
+      return [item.id, res.data.price];
+    }),
+  );
+  const prices = Object.fromEntries(priceEntries);
+
+  return cartItems.reduce(
+    (subtotal: number, item: CartItem) =>
+      subtotal + prices[item.id] * item.quantity,
+    0,
+  );
+};
+
+export const formatCurrency = (id: number) => {
+  const CURRENCY_FORMATTER = new Intl.NumberFormat(undefined, {
+    currency: "USD",
+    style: "currency",
+    currencyDisplay: "narrowSymbol",
+  });
+  return CURRENCY_FORMATTER.format(id);
 };

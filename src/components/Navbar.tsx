@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AppBar, Box, Toolbar, Typography, Link } from "@mui/material";
 import styled from "styled-components";
 import { colours } from "@/utils/colours";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 const Logo = styled.img`
   height: 5rem;
@@ -87,6 +88,11 @@ const Navbar = () => {
                 <Typography variant="body1" color={colours.title}>
                   Home
                 </Typography>
+              </Link>
+            </LinkContainer>
+            <LinkContainer>
+              <Link href="/cart">
+                <ShoppingCartOutlinedIcon sx={{ color: colours.title }} />
               </Link>
             </LinkContainer>
           </LinksContainer>

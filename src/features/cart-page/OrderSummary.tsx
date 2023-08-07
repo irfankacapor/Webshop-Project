@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { colours } from "@/utils/colours";
 import {
   Box,
   Button,
   Divider,
+  Link,
   Paper,
   Stack,
   TextField,
@@ -98,7 +100,9 @@ const OrderSummary = () => {
               {formatCurrency(subtotal + discount + totalTax)}
             </Typography>
           </Box>
-          <AddToCartButton>Checkout</AddToCartButton>
+          <Link underline="none" href="/checkout">
+            <AddToCartButton fullWidth>Checkout</AddToCartButton>
+          </Link>
         </Stack>
       </StyledPaper>
       <Box marginTop="2rem">

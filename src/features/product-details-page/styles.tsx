@@ -3,13 +3,7 @@ import { Button } from "@mui/material";
 import styled from "styled-components";
 
 export const AddToCartButton = styled(({ ...props }) => (
-  <Button
-    variant="contained"
-    size="large"
-    disableElevation
-    fullWidth
-    {...props}
-  />
+  <Button variant="contained" size="large" disableElevation {...props} />
 ))`
   box-sizing: border-box;
   text-transform: none !important;

@@ -6,7 +6,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { colours } from "@/utils/colours";
 import { Button, Link, Typography } from "@mui/material";
 
-const CartContainer = styled(Box)`
+export const CartContainer = styled(Box)`
   padding: 2rem 1rem;
   margin-left: auto !important;
   margin-right: auto !important;

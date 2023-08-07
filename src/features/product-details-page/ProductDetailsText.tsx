@@ -48,6 +48,7 @@ export const ProductDetailsText = ({ details }: { details: DetailsProps }) => {
       </Box>
       <Box marginTop="2rem">
         <AddToCartButton
+          fullWidth
           onClick={() => increaseQuantity(details.id)}
           href="/cart"
         >

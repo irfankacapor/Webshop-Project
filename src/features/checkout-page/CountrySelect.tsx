@@ -3,9 +3,18 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
-export default function CountrySelect() {
+const CountrySelect = ({
+  onCountryChange,
+}: {
+  onCountryChange: (selectedCountry: string) => void;
+}) => {
   return (
     <Autocomplete
+      onChange={(event, newValue) => {
+        if (newValue) {
+          onCountryChange(newValue.label);
+        }
+      }}
       id="country-select-demo"
       sx={{ width: 300 }}
       options={countries}
@@ -39,7 +48,7 @@ export default function CountrySelect() {
       )}
     />
   );
-}
+};
 
 interface CountryType {
   code: string;
@@ -473,3 +482,5 @@ const countries: readonly CountryType[] = [
   { code: "ZM", label: "Zambia", phone: "260" },
   { code: "ZW", label: "Zimbabwe", phone: "263" },
 ];
+
+export default CountrySelect;

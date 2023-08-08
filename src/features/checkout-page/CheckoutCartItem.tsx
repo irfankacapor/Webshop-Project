@@ -1,7 +1,7 @@
 import useProductDetails from "@/hooks/useProductDetails";
 import { colours } from "@/utils/colours";
 import { formatCurrency } from "@/utils/helpers";
-import { Box, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 import styled from "styled-components";
 import QuantitySelector from "@/features/cart-page/QuantitySelector";
 
@@ -13,7 +13,18 @@ const Image = styled.img`
   width: 100%;
 `;
 
-const CheckoutCartItem = ({ id }: { id: number }) => {
+const StyledDivider = styled(Divider)`
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+`;
+
+const CheckoutCartItem = ({
+  id,
+  divider,
+}: {
+  id: number;
+  divider: boolean;
+}) => {
   const { details } = useProductDetails(id);
 
   return (
@@ -46,6 +57,7 @@ const CheckoutCartItem = ({ id }: { id: number }) => {
           </Box>
         </Box>
       </Box>
+      {divider && <StyledDivider />}
     </Box>
   );
 };

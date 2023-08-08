@@ -38,11 +38,14 @@ const CheckoutSummary = () => {
           </form>
           <Stack display="flex" flexDirection="column" marginY="2rem">
             <OrderPricing />
-            <Link underline="none">
-              <AddToCartButton fullWidth form="place-order-form" type="submit">
-                Place an order
-              </AddToCartButton>
-            </Link>
+
+            <AddToCartButton
+              fullWidth
+              form="shipping-information-form"
+              type="submit"
+            >
+              Place an order
+            </AddToCartButton>
           </Stack>
         </Box>
         <Box

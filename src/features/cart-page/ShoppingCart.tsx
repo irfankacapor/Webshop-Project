@@ -4,7 +4,7 @@ import styled from "styled-components";
 import CartItems from "@/features/cart-page/CartItems";
 import OrderSummary from "./OrderSummary";
 
-const CartContainer = styled(Box)`
+export const CartContainer = styled(Box)`
   margin-top: 2rem;
   box-sizing: border-box !important;
   padding: 2rem 1rem;

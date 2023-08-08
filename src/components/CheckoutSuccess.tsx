@@ -1,4 +1,4 @@
-import { CartContainer } from "@/features/cart-page/EmptyCart";
+import { EmptyCartContainer } from "@/features/cart-page/EmptyCart";
 import SuccessIcon from "@/features/checkout-success-page/SuccessIcon";
 import SubscribeToStore from "@/features/product-details-page/SubscribeToStore";
 import { AddToCartButton } from "@/features/product-details-page/styles";
@@ -15,7 +15,7 @@ const CheckoutSuccess = () => {
   return (
     <>
       <main>
-        <CartContainer>
+        <EmptyCartContainer>
           <Box display="flex" flexDirection="column" alignItems="center">
             <Box marginTop="1rem">
               <SuccessIcon />
@@ -39,7 +39,7 @@ const CheckoutSuccess = () => {
             </Typography>
             <ContinueShoppingButton>Continue shopping</ContinueShoppingButton>
           </Box>
-        </CartContainer>
+        </EmptyCartContainer>
         <SubscribeToStore />
       </main>
       <footer>

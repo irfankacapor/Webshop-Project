@@ -4,7 +4,7 @@ import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import styled from "styled-components";
 import { colours } from "@/utils/colours";
 
-const ContactButton = styled(({ ...props }) => (
+export const ContactButton = styled(({ ...props }) => (
   <Button
     variant="text"
     size="medium"

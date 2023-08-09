@@ -9,11 +9,9 @@ import {
 } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
 import CountrySelect from "./CountrySelect";
-import React, { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { colours } from "@/utils/colours";
-import { Button } from "@mui/base";
 
 const schema = yup.object().shape({
   fullName: yup.string().required("Name is required!"),
@@ -70,20 +68,14 @@ const CheckoutForm = () => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      country: "BA",
+      country: "Bosnia and Herzegovina",
     },
   });
-  const [selectedCountry, setSelectedCountry] = useState<string>("");
-
-  const handleCountryChange = (selectedCountryNew: string) => {
-    setSelectedCountry(selectedCountryNew);
-    console.log(selectedCountry);
-  };
 
   const onSubmit = (data: FormSchema) => {
     const shippingData = {
       fullName: data.fullName,
-      country: selectedCountry,
+      country: data.country,
       city: data.city,
       address: data.address,
       email: data.email,

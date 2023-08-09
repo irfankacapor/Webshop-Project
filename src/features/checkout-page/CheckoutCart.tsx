@@ -1,7 +1,5 @@
 import { useCart } from "@/context/CartContext";
 import CheckoutCartItem from "./CheckoutCartItem";
-import { Divider } from "@mui/material";
-import styled from "styled-components";
 
 const CheckoutCart = () => {
   const { cartItems } = useCart();

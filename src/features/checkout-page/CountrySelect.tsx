@@ -8,7 +8,7 @@ interface CountrySelectProps {
   value: string;
 }
 const CountrySelect = React.forwardRef((props: CountrySelectProps, ref) => {
-  const { onChange, onBlur, value } = props;
+  const { onChange, value } = props;
   return (
     <Autocomplete
       id="country-select-demo"
@@ -17,9 +17,9 @@ const CountrySelect = React.forwardRef((props: CountrySelectProps, ref) => {
       autoHighlight
       getOptionLabel={(option) => option.label}
       onChange={(event, newValue) => {
-        onChange(newValue ? newValue.code : "");
+        onChange(newValue ? newValue.label : "");
       }}
-      value={countries.find((country) => country.code === value)}
+      value={countries.find((country) => country.label === value)}
       renderOption={(props, option) => (
         <Box
           component="li"
@@ -50,7 +50,7 @@ const CountrySelect = React.forwardRef((props: CountrySelectProps, ref) => {
   );
 });
 
-interface CountryType {
+export interface CountryType {
   code: string;
   label: string;
   phone: string;

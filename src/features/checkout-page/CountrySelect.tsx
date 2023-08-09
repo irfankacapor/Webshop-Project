@@ -2,24 +2,24 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-
-const CountrySelect = ({
-  onCountryChange,
-}: {
-  onCountryChange: (selectedCountry: string) => void;
-}) => {
+interface CountrySelectProps {
+  onChange: (value: string) => void;
+  onBlur: () => void;
+  value: string;
+}
+const CountrySelect = React.forwardRef((props: CountrySelectProps, ref) => {
+  const { onChange, onBlur, value } = props;
   return (
     <Autocomplete
-      onChange={(event, newValue) => {
-        if (newValue) {
-          onCountryChange(newValue.label);
-        }
-      }}
       id="country-select-demo"
       sx={{ width: 300 }}
       options={countries}
       autoHighlight
       getOptionLabel={(option) => option.label}
+      onChange={(event, newValue) => {
+        onChange(newValue ? newValue.code : "");
+      }}
+      value={countries.find((country) => country.code === value)}
       renderOption={(props, option) => (
         <Box
           component="li"
@@ -48,7 +48,7 @@ const CountrySelect = ({
       )}
     />
   );
-};
+});
 
 interface CountryType {
   code: string;

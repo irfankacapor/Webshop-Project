@@ -7,30 +7,36 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import CountrySelect from "./CountrySelect";
 import React, { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { colours } from "@/utils/colours";
+import { Button } from "@mui/base";
 
 const schema = yup.object().shape({
-  fullName: yup.string().required(),
-  country: yup.string().required(),
-  city: yup.string().required(),
-  address: yup.string().required(),
-  email: yup.string().email().required(),
+  fullName: yup.string().required("Name is required!"),
+  country: yup.string().required("Country is required!"),
+  city: yup.string().required("City is required!"),
+  address: yup.string().required("Address is required!"),
+  email: yup
+    .string()
+    .email("Please use a valid email address!")
+    .required("Email is required!"),
   useAddressForBilling: yup.boolean(),
   saveInfo: yup.boolean(),
   cardNumber: yup
     .string()
-    .matches(/^\d+$/, "Card number must only contain digits")
-    .length(16, "Card number must be exactly 16 digits")
-    .required(),
-  cardHolderName: yup.string().required(),
+    .required("Card number is required!")
+    .matches(/^\d+$/, "Card number must only contain digits!")
+    .min(16, "Card number must be exactly 16 digits!")
+    .max(16, "Card number must be exactly 16 digits!"),
+  cardHolderName: yup.string().required("Name of the card holder is required!"),
   expirationDate: yup
     .string()
-    .test("valid-date", "Invalid expiration date", (value) => {
+    .required("Expiration date is required!")
+    .test("valid-date", "Invalid expiration date!", (value) => {
       if (!value) return false;
 
       const [month, year] = value.split("/");
@@ -40,18 +46,17 @@ const schema = yup.object().shape({
       maxDate.setFullYear(maxDate.getFullYear() + 5);
 
       return expirationDate >= currentDate && expirationDate <= maxDate;
-    })
-    .required("Expiration date is required"),
-  zipCode: yup.string().required(),
+    }),
+  zipCode: yup.string().required("Zip code is required!"),
   cvv: yup
     .string()
-    .matches(/^\d+$/, "CVV must only contain digits")
+    .required("CVV is required!")
+    .matches(/^\d+$/, "CVV must only contain digits!")
     .test(
       "len",
-      "CVV must be either 3 or 4 digits",
+      "CVV must be either 3 or 4 digits!",
       (val) => (val && val.length >= 3 && val.length <= 4) as boolean
-    )
-    .required(),
+    ),
 });
 
 type FormSchema = yup.InferType<typeof schema>;
@@ -60,19 +65,22 @@ const CheckoutForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
+    control,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    defaultValues: {
+      country: "BA",
+    },
   });
   const [selectedCountry, setSelectedCountry] = useState<string>("");
 
-  const handleCountryChange = (selectedCountry: string) => {
-    setSelectedCountry(selectedCountry);
+  const handleCountryChange = (selectedCountryNew: string) => {
+    setSelectedCountry(selectedCountryNew);
+    console.log(selectedCountry);
   };
 
   const onSubmit = (data: FormSchema) => {
-    console.log("submit");
     const shippingData = {
       fullName: data.fullName,
       country: selectedCountry,
@@ -123,12 +131,36 @@ const CheckoutForm = () => {
                     placeholder="Full name *"
                     {...register("fullName")}
                   />
+                  {errors.fullName && (
+                    <Typography
+                      variant="subtitle1"
+                      fontSize="0.8rem"
+                      align="center"
+                      color={colours.red}
+                    >
+                      {errors.fullName.message}
+                    </Typography>
+                  )}
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Typography variant="subtitle2" marginBottom="1rem">
                     Country
                   </Typography>
-                  <CountrySelect onCountryChange={handleCountryChange} />
+                  <Controller
+                    name="country"
+                    control={control}
+                    render={({ field }) => <CountrySelect {...field} />}
+                  />
+                  {errors.country && (
+                    <Typography
+                      variant="subtitle1"
+                      fontSize="0.8rem"
+                      align="center"
+                      color={colours.red}
+                    >
+                      {errors.country.message}
+                    </Typography>
+                  )}
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Typography variant="subtitle2" marginBottom="1rem">
@@ -141,6 +173,16 @@ const CheckoutForm = () => {
                     placeholder="City *"
                     {...register("city")}
                   />
+                  {errors.city && (
+                    <Typography
+                      variant="subtitle1"
+                      fontSize="0.8rem"
+                      align="center"
+                      color={colours.red}
+                    >
+                      {errors.city.message}
+                    </Typography>
+                  )}
                 </Grid>
                 <Grid item xs={12}>
                   <Typography variant="subtitle2" marginBottom="1rem">
@@ -153,6 +195,16 @@ const CheckoutForm = () => {
                     placeholder="Address *"
                     {...register("address")}
                   />
+                  {errors.address && (
+                    <Typography
+                      variant="subtitle1"
+                      fontSize="0.8rem"
+                      align="center"
+                      color={colours.red}
+                    >
+                      {errors.address.message}
+                    </Typography>
+                  )}
                 </Grid>
                 <Grid item xs={12}>
                   <Typography variant="subtitle2" marginBottom="1rem">
@@ -165,6 +217,16 @@ const CheckoutForm = () => {
                     type="email"
                     {...register("email")}
                   />
+                  {errors.email && (
+                    <Typography
+                      variant="subtitle1"
+                      fontSize="0.8rem"
+                      align="center"
+                      color={colours.red}
+                    >
+                      {errors.email.message}
+                    </Typography>
+                  )}
                 </Grid>
                 <Grid item xs={12}>
                   <Divider />
@@ -210,14 +272,14 @@ const CheckoutForm = () => {
                   placeholder="Card number *"
                   {...register("cardNumber")}
                 />
-                {errors.expirationDate && (
+                {errors.cardNumber && (
                   <Typography
                     variant="subtitle1"
                     fontSize="0.8rem"
                     align="center"
                     color={colours.red}
                   >
-                    {errors.expirationDate.message}
+                    {errors.cardNumber.message}
                   </Typography>
                 )}
               </Grid>

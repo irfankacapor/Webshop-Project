@@ -10,6 +10,7 @@ import {
   StyledCardMedia,
   StyledStarIcon,
 } from "@/features/products-page/ProductCard";
+import { useCart } from "@/context/CartContext";
 
 const QuickCartButton = styled(({ ...props }) => (
   <Button variant="text" fullWidth size="large" component={Link} {...props} />
@@ -65,6 +66,7 @@ const SimilarProductCard = ({
   description: string;
   id: number;
 }) => {
+  const { increaseQuantity } = useCart();
   return (
     <Box width="100%" height="100%">
       <Paper elevation={0}>
@@ -97,7 +99,7 @@ const SimilarProductCard = ({
           <CreateStars rating={rating} />
         </Box>
         <Stack marginTop="1rem" display="flex">
-          <AddToCartButton>
+          <AddToCartButton onClick={() => increaseQuantity(id)} href="/cart">
             <ShoppingCartIcon
               sx={{
                 color: "white",
@@ -108,7 +110,7 @@ const SimilarProductCard = ({
             />{" "}
             Add to cart
           </AddToCartButton>
-          <QuickCartButton>Quick cart</QuickCartButton>
+          <QuickCartButton href="/cart">Quick cart</QuickCartButton>
         </Stack>
       </Paper>
     </Box>

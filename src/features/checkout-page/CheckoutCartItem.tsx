@@ -1,7 +1,7 @@
 import useProductDetails from "@/hooks/useProductDetails";
 import { colours } from "@/utils/colours";
 import { formatCurrency } from "@/utils/helpers";
-import { Box, Divider, Typography } from "@mui/material";
+import { Box, Divider, Grid, Typography } from "@mui/material";
 import styled from "styled-components";
 import QuantitySelector from "@/features/cart-page/QuantitySelector";
 
@@ -32,29 +32,35 @@ const CheckoutCartItem = ({
       <Box display="flex">
         <Image src={details.thumbnail} alt={details.title} />
         <Box display="flex" flexDirection="row" justifyContent="space-between">
-          <Box>
-            <Typography variant="subtitle2" noWrap>
-              {details.title}
-            </Typography>
-            <Typography
-              variant="subtitle2"
-              color={colours.grey}
-              fontWeight={300}
-            >
-              {details.description}
-            </Typography>
-          </Box>
-          <Box
-            height="100%"
-            marginLeft="0.5rem"
-            display="flex"
-            flexDirection={"column"}
-          >
-            <Typography variant="subtitle2" gutterBottom>
-              {formatCurrency(details.price)}
-            </Typography>
-            <QuantitySelector id={id} dropdownarrow={false} />
-          </Box>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={7.5}>
+              <Box>
+                <Typography variant="subtitle2" noWrap>
+                  {details.title}
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  color={colours.grey}
+                  fontWeight={300}
+                >
+                  {details.description}
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={12} md={4.5}>
+              <Box
+                height="100%"
+                marginLeft="0.5rem"
+                display="flex"
+                flexDirection={"column"}
+              >
+                <Typography variant="subtitle2" gutterBottom>
+                  {formatCurrency(details.price)}
+                </Typography>
+                <QuantitySelector id={id} dropdownarrow={false} />
+              </Box>
+            </Grid>
+          </Grid>
         </Box>
       </Box>
       {divider && <StyledDivider />}

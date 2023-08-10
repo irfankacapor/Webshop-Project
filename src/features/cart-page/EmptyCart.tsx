@@ -6,7 +6,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { colours } from "@/utils/colours";
 import { Button, Link, Typography } from "@mui/material";
 
-const CartContainer = styled(Box)`
+export const EmptyCartContainer = styled(Box)`
   padding: 2rem 1rem;
   margin-left: auto !important;
   margin-right: auto !important;
@@ -48,7 +48,7 @@ const EmptyCart = () => {
   return (
     <>
       <main style={{ marginTop: "2rem" }}>
-        <CartContainer>
+        <EmptyCartContainer>
           <Box display="flex" flexDirection="column" alignItems="center">
             <Box position="relative">
               <StyledCartIcon />
@@ -66,7 +66,7 @@ const EmptyCart = () => {
               Start shopping{" "}
             </StartShoppingButton>
           </Box>
-        </CartContainer>
+        </EmptyCartContainer>
         <SubscribeToStore />
       </main>
       <footer>

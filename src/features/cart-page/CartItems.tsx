@@ -3,7 +3,6 @@ import CartItem from "./CartItem";
 
 const CartItems = () => {
   const { cartItems } = useCart();
-  console.log(cartItems);
 
   return (
     <>

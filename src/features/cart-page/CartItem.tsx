@@ -1,12 +1,8 @@
 import {
   Box,
   Divider,
-  FormControl,
   Grid,
   Link,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
   Stack,
   Typography,
   useMediaQuery,
@@ -18,6 +14,7 @@ import { colours } from "@/utils/colours";
 import useProductDetails from "@/hooks/useProductDetails";
 import { useCart } from "@/context/CartContext";
 import { formatCurrency } from "@/utils/helpers";
+import QuantitySelector from "./QuantitySelector";
 
 const ThumbnailImage = styled.img`
   border-radius: 8px;
@@ -36,19 +33,12 @@ const ActionButtons = styled(({ ...props }) => (
 
 const CartItem = ({ id }: { id: number }) => {
   const { details } = useProductDetails(id);
-  const { removeItem, getItemQuantity, setQuantity } = useCart();
+  const { removeItem } = useCart();
   const isLargeScreen = useMediaQuery("(min-width: 900px)");
   const isMediumScreen = useMediaQuery(
-    "(min-width: 900px) and (max-width: 1199px)",
+    "(min-width: 900px) and (max-width: 1199px)"
   );
 
-  const handleQuantityChange = (
-    event: SelectChangeEvent<number>,
-    child: React.ReactNode,
-  ) => {
-    const selectedQuantity = event.target.value;
-    setQuantity(id, selectedQuantity as number);
-  };
   return (
     <Box>
       <Box display="flex" boxSizing="border-box">
@@ -102,23 +92,7 @@ const CartItem = ({ id }: { id: number }) => {
               justifyContent={!isLargeScreen ? "left" : "flex-end"}
               boxSizing="border-box"
             >
-              <FormControl>
-                <Select
-                  value={getItemQuantity(id)}
-                  onChange={handleQuantityChange}
-                  sx={{
-                    maxHeight: "40px",
-                    marginRight: isMediumScreen ? 0 : "1rem",
-                    marginBottom: isMediumScreen ? "1rem" : 0,
-                  }}
-                >
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
-                    <MenuItem key={num} value={num}>
-                      {num}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
+              <QuantitySelector id={id} size="large" />
               <Typography
                 variant="body1"
                 fontWeight="600"

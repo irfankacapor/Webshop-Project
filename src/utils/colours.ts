@@ -22,4 +22,7 @@ export const colours = {
 
   title: "rgb(30,32,34)",
   transparent: "rgba(0,0,0,0)",
+
+  green: "rgb(0, 255, 0)",
+  successgreen: "rgb(76, 175, 80)",
 };

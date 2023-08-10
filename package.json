@@ -8,6 +8,7 @@
     "@emotion/styled": "^11.11.0",
     "@flaticon/flaticon-uicons": "^2.2.0",
     "@fontsource/roboto": "^5.0.5",
+    "@hookform/resolvers": "^3.2.0",
     "@mui/icons-material": "^5.14.0",
     "@mui/material": "^5.14.0",
     "@mui/styled-engine-sc": "^5.12.0",
@@ -20,15 +21,20 @@
     "@types/react-dom": "^18.2.7",
     "aos": "^2.3.4",
     "axios": "^1.4.0",
+    "flag-icons": "^6.9.3",
+    "i18n-iso-countries": "^7.6.0",
     "install": "^0.13.0",
+    "libphonenumber-js": "^1.10.39",
     "npm": "^9.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.45.4",
     "react-router-dom": "^6.14.1",
     "react-scripts": "^5.0.1",
     "styled-components": "^5.3.11",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.2.0"
   },
   "scripts": {
     "start": "craco start",
@@ -38,8 +44,8 @@
     "test:jest": "craco test",
     "eject": "react-scripts eject",
     "prettier:check": "prettier --check .",
-  "prettier:write": "prettier --write .",
-  "prepare": "husky install"
+    "prettier:write": "prettier --write .",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [

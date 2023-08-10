@@ -2,7 +2,7 @@ import { colours } from "@/utils/colours";
 import {
   Box,
   Button,
-  Divider,
+  Link,
   Paper,
   Stack,
   TextField,
@@ -11,11 +11,9 @@ import {
 import styled from "styled-components";
 import { AddToCartButton } from "@/features/product-details-page/styles";
 import ContactUs from "@/features/product-details-page/ContactUs";
-import { useCart } from "@/context/CartContext";
-import { calculateCartSubtotal, formatCurrency } from "@/utils/helpers";
-import { useEffect, useState } from "react";
+import OrderPricing from "./OrderPricing";
 
-const StyledPaper = styled(Paper)`
+export const SummaryPaper = styled(Paper)`
   padding: 2rem;
   border-radius: 8px !important;
   background-color: ${colours.lightgrey} !important;
@@ -40,19 +38,9 @@ const ApplyDiscountButton = styled(({ ...props }) => (
 `;
 
 const OrderSummary = () => {
-  const { cartItems } = useCart();
-  const [VAT, setVAT] = useState(20);
-  const [discount, setDiscount] = useState(0);
-  const [subtotal, setSubtotal] = useState(0);
-
-  useEffect(() => {
-    calculateCartSubtotal(cartItems).then((value) => setSubtotal(value));
-  }, [cartItems]);
-
-  const totalTax = (VAT / 100) * subtotal;
   return (
     <>
-      <StyledPaper elevation={0}>
+      <SummaryPaper elevation={0}>
         <Typography variant="h6" marginBottom="2rem">
           Order summary
         </Typography>
@@ -67,40 +55,12 @@ const OrderSummary = () => {
           </form>
         </Box>
         <Stack display="flex" flexDirection="column" marginY="2rem">
-          <Box display="flex" justifyContent="space-between">
-            <Typography variant="body1" fontWeight={300} color={colours.grey}>
-              Subtotal
-            </Typography>
-            <Typography variant="body1" color={colours.grey} fontWeight={500}>
-              {formatCurrency(subtotal)}
-            </Typography>
-          </Box>
-          <Box display="flex" justifyContent="space-between" marginTop="1rem">
-            <Typography variant="body1" fontWeight={300} color={colours.grey}>
-              Discount
-            </Typography>
-            <Typography variant="body1" color={colours.grey} fontWeight={500}>
-              -{formatCurrency(discount)}
-            </Typography>
-          </Box>
-          <Box display="flex" justifyContent="space-between" marginY="1rem">
-            <Typography variant="body1" fontWeight={300} color={colours.grey}>
-              VAT(+{VAT}%)
-            </Typography>
-            <Typography variant="body1" color={colours.grey} fontWeight={500}>
-              {formatCurrency(totalTax)}
-            </Typography>
-          </Box>
-          <Divider />
-          <Box display="flex" justifyContent="space-between" marginY="1rem">
-            <Typography variant="h6">Order total:</Typography>
-            <Typography variant="h6">
-              {formatCurrency(subtotal + discount + totalTax)}
-            </Typography>
-          </Box>
-          <AddToCartButton>Checkout</AddToCartButton>
+          <OrderPricing />
+          <Link underline="none" href="/checkout">
+            <AddToCartButton fullWidth>Checkout</AddToCartButton>
+          </Link>
         </Stack>
-      </StyledPaper>
+      </SummaryPaper>
       <Box marginTop="2rem">
         <ContactUs />
       </Box>

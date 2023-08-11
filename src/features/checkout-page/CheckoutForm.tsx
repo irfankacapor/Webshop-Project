@@ -15,6 +15,7 @@ import { colours } from "@/utils/colours";
 import { useNavigate } from "react-router-dom";
 import { FormSchema } from "./validations";
 
+
 type FormSchemaType = yup.InferType<typeof FormSchema>;
 
 const CheckoutForm = () => {

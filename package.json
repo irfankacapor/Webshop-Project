@@ -32,6 +32,7 @@
     "react-router-dom": "^6.14.1",
     "react-scripts": "^5.0.1",
     "styled-components": "^5.3.11",
+    "ts-jest": "^29.1.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
     "yup": "^1.2.0"
@@ -40,8 +41,7 @@
     "start": "craco start",
     "start:cli": "cross-env BROWSER=none craco start",
     "build": "craco build",
-    "test": "react-scripts test",
-    "test:jest": "craco test",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
@@ -73,5 +73,7 @@
     "lint-staged": "^13.2.3",
     "prettier": "^3.0.1",
     "tsconfig-paths-webpack-plugin": "^3.5.1"
-  }
+  },
+  "cracoConfig": "craco.config.js"
+
 }

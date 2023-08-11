@@ -12,14 +12,17 @@ module.exports = {
       '@/hooks': path.resolve(__dirname, 'src/hooks'),
       '@/routes': path.resolve(__dirname, 'src/routes'),
       '@/utils': path.resolve(__dirname, 'src/utils'),
+      '@/test': path.resolve(__dirname, 'src/test'),
     },
   },
   jest: {
     configure: {
       preset: 'ts-jest',
+      testEnvironment: "node",
       moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
         prefix: '<rootDir>/',
       }),
+      
     },
   },
 };

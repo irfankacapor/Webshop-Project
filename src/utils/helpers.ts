@@ -1,6 +1,7 @@
 import { CartItem } from "@/features/cart-page/types";
 import { ProductCardProps } from "@/features/products-page/types";
 import { SortingOptions } from "@/utils/sorting-options";
+import axios from "axios"
 
 
 export const sort = (
@@ -80,7 +81,6 @@ export const applyFilters = (
 };
 
 export const calculateCartSubtotal = async (cartItems: CartItem[]) => {
-  const axios = require('axios');
   const priceEntries = await Promise.all(
     cartItems.map(async (item) => {
       const priceAPIurl = `https://dummyjson.com/products/${item.id}`;

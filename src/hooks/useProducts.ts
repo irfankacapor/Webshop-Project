@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { ProductCardProps } from "@/features/products-page/types";
-
+import axios from "axios"
 const useProducts = () => {
-  const axios = require('axios');
   const APIurl = "https://dummyjson.com/products";
   const [products, setProducts] = useState<ProductCardProps[]>([]);
 

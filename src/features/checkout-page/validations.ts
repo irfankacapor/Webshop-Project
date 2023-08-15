@@ -23,8 +23,11 @@ export const FormSchema = yup.object().shape({
     .required("Expiration date is required!")
     .test("valid-date", "Invalid expiration date!", (value) => {
       if (!value) return false;
-
+      
       const [month, year] = value.split("/");
+      const monthValue = parseInt(month);
+      if (monthValue < 1 || monthValue > 12) return false;
+
       const expirationDate = new Date(parseInt(year), parseInt(month) - 1, 1);
       const currentDate = new Date();
       const maxDate = new Date();

@@ -2,6 +2,10 @@ const path = require('path');
 const { pathsToModuleNameMapper } = require('ts-jest');
 const { compilerOptions } = require('./tsconfig.paths.json');
 
+const paths = pathsToModuleNameMapper(compilerOptions.paths, {
+  prefix: '<rootDir>/',
+});
+
 module.exports = {
   webpack: {
     alias: {
@@ -19,10 +23,10 @@ module.exports = {
     configure: {
       preset: 'ts-jest',
       testEnvironment: "node",
-      moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-        prefix: '<rootDir>/',
-      }),
-      
+      moduleNameMapper: {
+        ...paths,
+        "axios": "axios/dist/node/axios.cjs"
+      }
     },
   },
 };

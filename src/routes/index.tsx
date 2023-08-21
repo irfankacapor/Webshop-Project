@@ -5,6 +5,9 @@ import Details from "@/components/Details";
 import Cart from "@/components/Cart";
 import Checkout from "@/components/Checkout";
 import CheckoutSuccess from "@/components/CheckoutSuccess";
+import SignUpPage from "@/components/SignUpPage";
+import SignInPage from "@/components/SignInPage";
+import ForgotPasswordPage from "@/components/ForgotPasswordPage";
 
 const AppRoutes = () => (
   <Routes>
@@ -14,6 +17,9 @@ const AppRoutes = () => (
     <Route path="/cart" element={<Cart />} />
     <Route path="/checkout" element={<Checkout />} />
     <Route path="/checkout/success" element={<CheckoutSuccess />} />
+    <Route path="/login/sign-up" element={<SignUpPage />} />
+    <Route path="/login/sign-in" element={<SignInPage />} />
+    <Route path="/login/forgot-password" element={<ForgotPasswordPage />} />
   </Routes>
 );
 

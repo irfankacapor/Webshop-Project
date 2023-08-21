@@ -26,7 +26,10 @@ module.exports = {
       moduleNameMapper: {
         ...paths,
         "axios": "axios/dist/node/axios.cjs"
-      }
+      },
+      collectCoverageFrom: [
+          "src/**/*.{ts, tsx, js, jsx}"
+      ]
     },
   },
 };

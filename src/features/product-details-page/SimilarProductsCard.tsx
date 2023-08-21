@@ -1,4 +1,5 @@
-import { Box, Button, Link, Paper, Stack, Typography } from "@mui/material";
+import { Box, Button, Paper, Stack, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import styled from "styled-components";
@@ -99,18 +100,22 @@ const SimilarProductCard = ({
           <CreateStars rating={rating} />
         </Box>
         <Stack marginTop="1rem" display="flex">
-          <AddToCartButton onClick={() => increaseQuantity(id)} href="/cart">
-            <ShoppingCartIcon
-              sx={{
-                color: "white",
-                marginRight: "0.5rem",
-                width: "20px",
-                height: "20px",
-              }}
-            />{" "}
-            Add to cart
-          </AddToCartButton>
-          <QuickCartButton href="/cart">Quick cart</QuickCartButton>
+          <Link to="/cart">
+            <AddToCartButton onClick={() => increaseQuantity(id)} fullWidth>
+              <ShoppingCartIcon
+                sx={{
+                  color: "white",
+                  marginRight: "0.5rem",
+                  width: "20px",
+                  height: "20px",
+                }}
+              />{" "}
+              Add to cart
+            </AddToCartButton>
+          </Link>
+          <Link to="cart">
+            <QuickCartButton>Quick cart</QuickCartButton>
+          </Link>
         </Stack>
       </Paper>
     </Box>

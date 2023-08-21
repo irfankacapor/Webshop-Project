@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ProductCardProps } from "@/features/products-page/types";
+
 import axios from "axios";
 
 const useProducts = () => {

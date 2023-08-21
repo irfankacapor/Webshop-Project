@@ -2,6 +2,10 @@ const path = require('path');
 const { pathsToModuleNameMapper } = require('ts-jest');
 const { compilerOptions } = require('./tsconfig.paths.json');
 
+const paths = pathsToModuleNameMapper(compilerOptions.paths, {
+  prefix: '<rootDir>/',
+});
+
 module.exports = {
   webpack: {
     alias: {
@@ -12,14 +16,20 @@ module.exports = {
       '@/hooks': path.resolve(__dirname, 'src/hooks'),
       '@/routes': path.resolve(__dirname, 'src/routes'),
       '@/utils': path.resolve(__dirname, 'src/utils'),
+      '@/test': path.resolve(__dirname, 'src/test'),
     },
   },
   jest: {
     configure: {
       preset: 'ts-jest',
-      moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-        prefix: '<rootDir>/',
-      }),
+      testEnvironment: "node",
+      moduleNameMapper: {
+        ...paths,
+        "axios": "axios/dist/node/axios.cjs"
+      },
+      collectCoverageFrom: [
+          "src/**/*.{ts, tsx, js, jsx}"
+      ]
     },
   },
 };

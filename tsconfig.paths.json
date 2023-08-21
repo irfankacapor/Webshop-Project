@@ -15,7 +15,9 @@
         "@/routes": ["./src/routes"],
         "@/routes/*": ["./src/routes/*"],
         "@/utils": ["./src/utils"],
-        "@/utils/*": ["./src/utils/*"]
+        "@/utils/*": ["./src/utils/*"],
+        "@/test": ["./src/test"],
+        "@/test/*": ["./src/test/*"]
         
       }
     }

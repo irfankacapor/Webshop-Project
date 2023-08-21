@@ -36,7 +36,7 @@ const CartItem = ({ id }: { id: number }) => {
   const { removeItem } = useCart();
   const isLargeScreen = useMediaQuery("(min-width: 900px)");
   const isMediumScreen = useMediaQuery(
-    "(min-width: 900px) and (max-width: 1199px)"
+    "(min-width: 900px) and (max-width: 1199px)",
   );
 
   return (

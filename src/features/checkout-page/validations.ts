@@ -25,6 +25,9 @@ export const FormSchema = yup.object().shape({
       if (!value) return false;
 
       const [month, year] = value.split("/");
+      const monthValue = parseInt(month);
+      if (monthValue < 1 || monthValue > 12) return false;
+
       const expirationDate = new Date(parseInt(year), parseInt(month) - 1, 1);
       const currentDate = new Date();
       const maxDate = new Date();
@@ -40,6 +43,6 @@ export const FormSchema = yup.object().shape({
     .test(
       "len",
       "CVV must be either 3 or 4 digits!",
-      (val) => (val && val.length >= 3 && val.length <= 4) as boolean
+      (val) => (val && val.length >= 3 && val.length <= 4) as boolean,
     ),
 });

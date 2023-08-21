@@ -1,8 +1,7 @@
 import { CartItem } from "@/features/cart-page/types";
 import { ProductCardProps } from "@/features/products-page/types";
 import { SortingOptions } from "@/utils/sorting-options";
-import axios from "axios"
-
+import axios from "axios";
 
 export const sort = (
   products: ProductCardProps[],

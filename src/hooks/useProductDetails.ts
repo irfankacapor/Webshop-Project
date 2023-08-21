@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { DetailsProps } from "@/features/product-details-page/types";
-import axios from "axios"
+import axios from "axios";
+
 const useProductDetails = (id: number) => {
   const detailsAPIurl = `https://dummyjson.com/products/${id}`;
   const [details, setDetails] = useState<DetailsProps>({

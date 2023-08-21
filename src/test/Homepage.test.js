@@ -8,6 +8,6 @@ it("Featured products cards appear", () => {
 });
 
 it("Subscribe to newsletter section appears", () => {
-  render(<Homepage/>)
-  expect(screen.getByPlaceholderText("Enter your email")).toBeInTheDocument()
-})
+  render(<Homepage />);
+  expect(screen.getByPlaceholderText("Enter your email")).toBeInTheDocument();
+});

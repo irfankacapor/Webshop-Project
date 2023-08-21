@@ -18,11 +18,11 @@ const QuantitySelector = ({
 }) => {
   const { getItemQuantity, setQuantity } = useCart();
   const isMediumScreen = useMediaQuery(
-    "(min-width: 900px) and (max-width: 1199px)"
+    "(min-width: 900px) and (max-width: 1199px)",
   );
   const handleQuantityChange = (
     event: SelectChangeEvent<number>,
-    child: React.ReactNode
+    child: React.ReactNode,
   ) => {
     const selectedQuantity = event.target.value;
     setQuantity(id, selectedQuantity as number);

@@ -71,7 +71,7 @@ export const FilterHeadingContainer = styled(({ ...props }) => (
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  cursor: pointer
+  cursor: pointer;
 `;
 
 export const FilterContainer = styled(Box)``;

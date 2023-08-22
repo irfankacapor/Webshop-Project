@@ -45,14 +45,11 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         password: password,
       });
       setUserData(res.data);
+      localStorage.setItem("userData", JSON.stringify(res.data));
     } catch (error) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    localStorage.setItem("userData", JSON.stringify(userData));
-  }, [userData]);
 
   return (
     <UserContext.Provider

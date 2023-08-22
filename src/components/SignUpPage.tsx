@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { AddToCartButton } from "@/features/product-details-page/styles";
 import Footer from "./Footer";
 import styled from "styled-components";
+import { ErrorMessage } from "@/components/SignInPage";
 
 export const LoginImageContainer = styled(Box)`
   max-width: 500px;
@@ -21,7 +22,7 @@ export const LoginImage = styled.img`
   height: 100%;
 `;
 
-const LoginSchema = yup.object().shape({
+const SignupSchema = yup.object().shape({
   firstName: yup.string().required("First name is required!"),
   lastName: yup.string().required("Last name is required!"),
   username: yup.string().required("A username is required!"),
@@ -31,7 +32,7 @@ const LoginSchema = yup.object().shape({
     .min(8, "The password has to be at least 8 characters long!"),
 });
 
-type LoginSchemaType = yup.InferType<typeof LoginSchema>;
+type SignupSchemaType = yup.InferType<typeof SignupSchema>;
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -41,11 +42,11 @@ const SignUpPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(LoginSchema),
+    resolver: yupResolver(SignupSchema),
   });
 
-  const onSubmit = (data: LoginSchemaType) => {
-    const loginData = {
+  const onSubmit = (data: SignupSchemaType) => {
+    const signupData = {
       firstName: data.firstName,
       lastName: data.lastName,
       username: data.username,
@@ -91,14 +92,9 @@ const SignUpPage = () => {
                           {...register("firstName")}
                         />
                         {errors.firstName && (
-                          <Typography
-                            variant="subtitle1"
-                            fontSize="0.8rem"
-                            align="center"
-                            color={colours.red}
-                          >
+                          <ErrorMessage>
                             {errors.firstName.message}
-                          </Typography>
+                          </ErrorMessage>
                         )}
                       </Grid>
                       <Grid item xs={12} sm={6}>
@@ -113,14 +109,7 @@ const SignUpPage = () => {
                           {...register("lastName")}
                         />
                         {errors.lastName && (
-                          <Typography
-                            variant="subtitle1"
-                            fontSize="0.8rem"
-                            align="center"
-                            color={colours.red}
-                          >
-                            {errors.lastName.message}
-                          </Typography>
+                          <ErrorMessage>{errors.lastName.message}</ErrorMessage>
                         )}
                       </Grid>
                       <Grid item xs={12}>
@@ -135,14 +124,7 @@ const SignUpPage = () => {
                           {...register("username")}
                         />
                         {errors.username && (
-                          <Typography
-                            variant="subtitle1"
-                            fontSize="0.8rem"
-                            align="center"
-                            color={colours.red}
-                          >
-                            {errors.username.message}
-                          </Typography>
+                          <ErrorMessage>{errors.username.message}</ErrorMessage>
                         )}
                       </Grid>
                       <Grid item xs={12}>
@@ -157,14 +139,7 @@ const SignUpPage = () => {
                           {...register("password")}
                         />
                         {errors.password && (
-                          <Typography
-                            variant="subtitle1"
-                            fontSize="0.8rem"
-                            align="center"
-                            color={colours.red}
-                          >
-                            {errors.password.message}
-                          </Typography>
+                          <ErrorMessage>{errors.password.message}</ErrorMessage>
                         )}
                       </Grid>
                       <Grid container item xs={12}>

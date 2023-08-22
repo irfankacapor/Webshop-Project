@@ -133,7 +133,7 @@ const Navbar = () => {
                 />
               </Link>
             </LinkContainer>
-            {userData.image && (
+            {userData?.image && (
               <LinkContainer>
                 <Link underline="none" href="/login/sign-in">
                   <Box borderRadius="100%" maxWidth="3rem">

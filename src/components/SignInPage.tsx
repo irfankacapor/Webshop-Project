@@ -11,19 +11,30 @@ import { AddToCartButton } from "@/features/product-details-page/styles";
 import { useUser } from "@/context/UserContext";
 import { useState } from "react";
 import axios from "axios";
+import styled from "styled-components";
 
 const SignInSchema = yup.object().shape({
   username: yup.string().required("Your username is required!"),
   password: yup
     .string()
     .required("Your password is required!")
-    .min(8, "Your password must be at least 8 characters long!s"),
+    .min(6, "Your password must be at least 6 characters long!s"),
 });
+
+export const ErrorMessage = styled(({ ...props }) => (
+  <Typography
+    variant="subtitle1"
+    fontSize="0.8rem"
+    align="center"
+    color={colours.red}
+    {...props}
+  />
+))``;
 
 type SignInSchemaType = yup.InferType<typeof SignInSchema>;
 
 const SignInPage = () => {
-  const [userExists, setUserExists] = useState(true);
+  const [showCredentialsError, setShowCredentialsError] = useState(false);
   const { loginUser } = useUser();
   const navigate = useNavigate();
   const {
@@ -44,7 +55,7 @@ const SignInPage = () => {
       navigate("/");
     } catch (error: any) {
       if (error.response && error.response.status === 400) {
-        setUserExists(false);
+        setShowCredentialsError(true);
       } else {
         console.error(error);
       }
@@ -89,17 +100,10 @@ const SignInPage = () => {
                         placeholder="Username *"
                         type="username"
                         {...register("username")}
-                        onFocus={() => setUserExists(true)}
+                        onFocus={() => setShowCredentialsError(false)}
                       />
                       {errors.username && (
-                        <Typography
-                          variant="subtitle1"
-                          fontSize="0.8rem"
-                          align="center"
-                          color={colours.red}
-                        >
-                          {errors.username.message}
-                        </Typography>
+                        <ErrorMessage>{errors.username.message}</ErrorMessage>
                       )}
                     </Grid>
                     <Grid item xs={12}>
@@ -123,27 +127,15 @@ const SignInPage = () => {
                         placeholder="Password *"
                         type="password"
                         {...register("password")}
-                        onFocus={() => setUserExists(true)}
+                        onFocus={() => setShowCredentialsError(false)}
                       />
                       {(errors.password && (
-                        <Typography
-                          variant="subtitle1"
-                          fontSize="0.8rem"
-                          align="center"
-                          color={colours.red}
-                        >
-                          {errors.password.message}
-                        </Typography>
+                        <ErrorMessage>{errors.password.message}</ErrorMessage>
                       )) ||
-                        (!userExists && (
-                          <Typography
-                            variant="subtitle1"
-                            fontSize="0.8rem"
-                            align="center"
-                            color={colours.red}
-                          >
+                        (showCredentialsError && (
+                          <ErrorMessage>
                             Invalid username or password!
-                          </Typography>
+                          </ErrorMessage>
                         ))}
                     </Grid>
                     <Grid item container xs={12}>

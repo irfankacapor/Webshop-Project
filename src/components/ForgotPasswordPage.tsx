@@ -16,6 +16,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { AddToCartButton } from "@/features/product-details-page/styles";
 import styled from "styled-components";
+import { ErrorMessage } from "./SignInPage";
 
 const ForgotPasswordUsername = yup.object().shape({
   username: yup.string().required("Your username is required!"),
@@ -81,14 +82,7 @@ const ForgotPasswordPage = () => {
                         {...register("username")}
                       />
                       {errors.username && (
-                        <Typography
-                          variant="subtitle1"
-                          fontSize="0.8rem"
-                          align="center"
-                          color={colours.red}
-                        >
-                          {errors.username.message}
-                        </Typography>
+                        <ErrorMessage>{errors.username.message}</ErrorMessage>
                       )}
                     </Grid>
                     <Grid container item xs={12}>

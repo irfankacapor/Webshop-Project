@@ -11,9 +11,9 @@ import { Controller, useForm } from "react-hook-form";
 import CountrySelect from "./CountrySelect";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { colours } from "@/utils/colours";
 import { useNavigate } from "react-router-dom";
 import { FormSchema } from "./validations";
+import { ErrorMessage } from "@/components/SignInPage";
 
 type FormSchemaType = yup.InferType<typeof FormSchema>;
 
@@ -84,14 +84,7 @@ const CheckoutForm = () => {
                     {...register("fullName")}
                   />
                   {errors.fullName && (
-                    <Typography
-                      variant="subtitle1"
-                      fontSize="0.8rem"
-                      align="center"
-                      color={colours.red}
-                    >
-                      {errors.fullName.message}
-                    </Typography>
+                    <ErrorMessage>{errors.fullName.message}</ErrorMessage>
                   )}
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -104,14 +97,7 @@ const CheckoutForm = () => {
                     render={({ field }) => <CountrySelect {...field} />}
                   />
                   {errors.country && (
-                    <Typography
-                      variant="subtitle1"
-                      fontSize="0.8rem"
-                      align="center"
-                      color={colours.red}
-                    >
-                      {errors.country.message}
-                    </Typography>
+                    <ErrorMessage>{errors.country.message}</ErrorMessage>
                   )}
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -126,14 +112,7 @@ const CheckoutForm = () => {
                     {...register("city")}
                   />
                   {errors.city && (
-                    <Typography
-                      variant="subtitle1"
-                      fontSize="0.8rem"
-                      align="center"
-                      color={colours.red}
-                    >
-                      {errors.city.message}
-                    </Typography>
+                    <ErrorMessage>{errors.city.message}</ErrorMessage>
                   )}
                 </Grid>
                 <Grid item xs={12}>
@@ -148,14 +127,7 @@ const CheckoutForm = () => {
                     {...register("address")}
                   />
                   {errors.address && (
-                    <Typography
-                      variant="subtitle1"
-                      fontSize="0.8rem"
-                      align="center"
-                      color={colours.red}
-                    >
-                      {errors.address.message}
-                    </Typography>
+                    <ErrorMessage>{errors.address.message}</ErrorMessage>
                   )}
                 </Grid>
                 <Grid item xs={12}>
@@ -170,14 +142,7 @@ const CheckoutForm = () => {
                     {...register("email")}
                   />
                   {errors.email && (
-                    <Typography
-                      variant="subtitle1"
-                      fontSize="0.8rem"
-                      align="center"
-                      color={colours.red}
-                    >
-                      {errors.email.message}
-                    </Typography>
+                    <ErrorMessage>{errors.email.message}</ErrorMessage>
                   )}
                 </Grid>
                 <Grid item xs={12}>
@@ -225,14 +190,7 @@ const CheckoutForm = () => {
                   {...register("cardNumber")}
                 />
                 {errors.cardNumber && (
-                  <Typography
-                    variant="subtitle1"
-                    fontSize="0.8rem"
-                    align="center"
-                    color={colours.red}
-                  >
-                    {errors.cardNumber.message}
-                  </Typography>
+                  <ErrorMessage>{errors.cardNumber.message}</ErrorMessage>
                 )}
               </Grid>
               <Grid item xs={12}>
@@ -247,14 +205,7 @@ const CheckoutForm = () => {
                   {...register("cardHolderName")}
                 />
                 {errors.cardHolderName && (
-                  <Typography
-                    variant="subtitle1"
-                    fontSize="0.8rem"
-                    align="center"
-                    color={colours.red}
-                  >
-                    {errors.cardHolderName.message}
-                  </Typography>
+                  <ErrorMessage>{errors.cardHolderName.message}</ErrorMessage>
                 )}
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -268,14 +219,7 @@ const CheckoutForm = () => {
                   {...register("expirationDate")}
                 />
                 {errors.expirationDate && (
-                  <Typography
-                    variant="subtitle1"
-                    fontSize="0.8rem"
-                    align="center"
-                    color={colours.red}
-                  >
-                    {errors.expirationDate.message}
-                  </Typography>
+                  <ErrorMessage>{errors.expirationDate.message}</ErrorMessage>
                 )}
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -290,14 +234,7 @@ const CheckoutForm = () => {
                   {...register("zipCode")}
                 />
                 {errors.zipCode && (
-                  <Typography
-                    variant="subtitle1"
-                    fontSize="0.8rem"
-                    align="center"
-                    color={colours.red}
-                  >
-                    {errors.zipCode.message}
-                  </Typography>
+                  <ErrorMessage>{errors.zipCode.message}</ErrorMessage>
                 )}
               </Grid>
               <Grid item xs={12} sm={4}>
@@ -312,14 +249,7 @@ const CheckoutForm = () => {
                   {...register("cvv")}
                 />
                 {errors.cvv && (
-                  <Typography
-                    variant="subtitle1"
-                    fontSize="0.8rem"
-                    align="center"
-                    color={colours.red}
-                  >
-                    {errors.cvv.message}
-                  </Typography>
+                  <ErrorMessage>{errors.cvv.message}</ErrorMessage>
                 )}
               </Grid>
             </Grid>

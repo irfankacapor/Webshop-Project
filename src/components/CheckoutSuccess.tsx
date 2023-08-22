@@ -6,6 +6,7 @@ import { colours } from "@/utils/colours";
 import { Box, Typography } from "@mui/material";
 import styled from "styled-components";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 const ContinueShoppingButton = styled(AddToCartButton)`
   margin-top: 2rem !important;
@@ -37,7 +38,9 @@ const CheckoutSuccess = () => {
               You will receive an email confirmation when your order is
               completed.
             </Typography>
-            <ContinueShoppingButton>Continue shopping</ContinueShoppingButton>
+            <Link to="/products" style={{ textDecoration: "none" }}>
+              <ContinueShoppingButton>Continue shopping</ContinueShoppingButton>
+            </Link>
           </Box>
         </EmptyCartContainer>
         <SubscribeToStore />

@@ -43,6 +43,6 @@ export const FormSchema = yup.object().shape({
     .test(
       "len",
       "CVV must be either 3 or 4 digits!",
-      (val) => (val && val.length >= 3 && val.length <= 4) as boolean,
+      (val) => (val && val.length >= 3 && val.length <= 4) as boolean
     ),
 });

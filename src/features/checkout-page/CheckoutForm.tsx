@@ -4,16 +4,15 @@ import {
   Divider,
   FormControlLabel,
   Grid,
-  TextField,
   Typography,
 } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
 import CountrySelect from "./CountrySelect";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { colours } from "@/utils/colours";
 import { useNavigate } from "react-router-dom";
 import { FormSchema } from "./validations";
+import { CustomInputField, ErrorMessage } from "@/utils/global-styles";
 
 type FormSchemaType = yup.InferType<typeof FormSchema>;
 
@@ -76,23 +75,12 @@ const CheckoutForm = () => {
                   <Typography variant="subtitle2" marginBottom="1rem">
                     Enter your full name
                   </Typography>
-                  <TextField
-                    type="text"
-                    variant="outlined"
-                    fullWidth
+                  <CustomInputField
+                    error={errors?.fullName?.message}
                     placeholder="Full name *"
+                    type="text"
                     {...register("fullName")}
                   />
-                  {errors.fullName && (
-                    <Typography
-                      variant="subtitle1"
-                      fontSize="0.8rem"
-                      align="center"
-                      color={colours.red}
-                    >
-                      {errors.fullName.message}
-                    </Typography>
-                  )}
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Typography variant="subtitle2" marginBottom="1rem">
@@ -104,81 +92,41 @@ const CheckoutForm = () => {
                     render={({ field }) => <CountrySelect {...field} />}
                   />
                   {errors.country && (
-                    <Typography
-                      variant="subtitle1"
-                      fontSize="0.8rem"
-                      align="center"
-                      color={colours.red}
-                    >
-                      {errors.country.message}
-                    </Typography>
+                    <ErrorMessage>{errors.country.message}</ErrorMessage>
                   )}
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Typography variant="subtitle2" marginBottom="1rem">
                     City
                   </Typography>
-                  <TextField
-                    type="text"
-                    variant="outlined"
-                    fullWidth
+                  <CustomInputField
+                    error={errors?.city?.message}
                     placeholder="City *"
+                    type="text"
                     {...register("city")}
                   />
-                  {errors.city && (
-                    <Typography
-                      variant="subtitle1"
-                      fontSize="0.8rem"
-                      align="center"
-                      color={colours.red}
-                    >
-                      {errors.city.message}
-                    </Typography>
-                  )}
                 </Grid>
                 <Grid item xs={12}>
                   <Typography variant="subtitle2" marginBottom="1rem">
                     Enter your adress
                   </Typography>
-                  <TextField
-                    type="text"
-                    variant="outlined"
-                    fullWidth
+                  <CustomInputField
+                    error={errors?.address?.message}
                     placeholder="Address *"
+                    type="text"
                     {...register("address")}
                   />
-                  {errors.address && (
-                    <Typography
-                      variant="subtitle1"
-                      fontSize="0.8rem"
-                      align="center"
-                      color={colours.red}
-                    >
-                      {errors.address.message}
-                    </Typography>
-                  )}
                 </Grid>
                 <Grid item xs={12}>
                   <Typography variant="subtitle2" marginBottom="1rem">
                     Enter your email
                   </Typography>
-                  <TextField
-                    variant="outlined"
-                    fullWidth
+                  <CustomInputField
+                    error={errors?.email?.message}
                     placeholder="Email *"
-                    type="email"
+                    type="text"
                     {...register("email")}
                   />
-                  {errors.email && (
-                    <Typography
-                      variant="subtitle1"
-                      fontSize="0.8rem"
-                      align="center"
-                      color={colours.red}
-                    >
-                      {errors.email.message}
-                    </Typography>
-                  )}
                 </Grid>
                 <Grid item xs={12}>
                   <Divider />
@@ -218,109 +166,55 @@ const CheckoutForm = () => {
                 <Typography variant="subtitle2" marginBottom="1rem">
                   Enter your card number
                 </Typography>
-                <TextField
-                  variant="outlined"
-                  fullWidth
+                <CustomInputField
+                  error={errors?.cardNumber?.message}
                   placeholder="Card number *"
+                  type="number"
                   {...register("cardNumber")}
                 />
-                {errors.cardNumber && (
-                  <Typography
-                    variant="subtitle1"
-                    fontSize="0.8rem"
-                    align="center"
-                    color={colours.red}
-                  >
-                    {errors.cardNumber.message}
-                  </Typography>
-                )}
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="subtitle2" marginBottom="1rem">
                   Name on the card
                 </Typography>
-                <TextField
+                <CustomInputField
+                  error={errors?.cardHolderName?.message}
+                  placeholder="Cardholder name *"
                   type="text"
-                  variant="outlined"
-                  fullWidth
-                  placeholder="Name *"
                   {...register("cardHolderName")}
                 />
-                {errors.cardHolderName && (
-                  <Typography
-                    variant="subtitle1"
-                    fontSize="0.8rem"
-                    align="center"
-                    color={colours.red}
-                  >
-                    {errors.cardHolderName.message}
-                  </Typography>
-                )}
               </Grid>
               <Grid item xs={12} sm={4}>
                 <Typography variant="subtitle2" marginBottom="1rem">
                   Expiration date
                 </Typography>
-                <TextField
-                  variant="outlined"
-                  fullWidth
+                <CustomInputField
+                  error={errors?.expirationDate?.message}
                   placeholder="MM/YYYY *"
                   {...register("expirationDate")}
                 />
-                {errors.expirationDate && (
-                  <Typography
-                    variant="subtitle1"
-                    fontSize="0.8rem"
-                    align="center"
-                    color={colours.red}
-                  >
-                    {errors.expirationDate.message}
-                  </Typography>
-                )}
               </Grid>
               <Grid item xs={12} sm={4}>
                 <Typography variant="subtitle2" marginBottom="1rem">
                   Billing zip code
                 </Typography>
-                <TextField
-                  type="text"
-                  variant="outlined"
-                  fullWidth
+                <CustomInputField
+                  error={errors?.fullName?.message}
                   placeholder="Zip code *"
+                  type="text"
                   {...register("zipCode")}
                 />
-                {errors.zipCode && (
-                  <Typography
-                    variant="subtitle1"
-                    fontSize="0.8rem"
-                    align="center"
-                    color={colours.red}
-                  >
-                    {errors.zipCode.message}
-                  </Typography>
-                )}
               </Grid>
               <Grid item xs={12} sm={4}>
                 <Typography variant="subtitle2" marginBottom="1rem">
                   CVV
                 </Typography>
-                <TextField
-                  type="text"
-                  variant="outlined"
-                  fullWidth
-                  placeholder="Card CVV *"
+                <CustomInputField
+                  error={errors?.fullName?.message}
+                  placeholder="CVV *"
+                  type="number"
                   {...register("cvv")}
                 />
-                {errors.cvv && (
-                  <Typography
-                    variant="subtitle1"
-                    fontSize="0.8rem"
-                    align="center"
-                    color={colours.red}
-                  >
-                    {errors.cvv.message}
-                  </Typography>
-                )}
               </Grid>
             </Grid>
           </form>

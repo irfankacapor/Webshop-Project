@@ -59,7 +59,12 @@ const SignUpPage = () => {
     <>
       <main>
         <SectionContainer marginTop="2rem">
-          <Grid container spacing={6}>
+          <Grid
+            container
+            spacing={6}
+            justifyContent="center"
+            alignItems="center"
+          >
             <Grid container item xs={12} md={6}>
               <Box>
                 <Box>
@@ -123,7 +128,7 @@ const SignUpPage = () => {
                           {...register("password")}
                         />
                       </Grid>
-                      <Grid container item xs={12}>
+                      <Grid container item xs={12} justifyContent="center">
                         <Box
                           display="flex"
                           justifyContent="space-between"
@@ -145,7 +150,7 @@ const SignUpPage = () => {
                           </AddToCartButton>
                         </Box>
                       </Grid>
-                      <Grid container item xs={12}>
+                      <Grid container item xs={12} justifyContent="center">
                         <Typography variant="subtitle2" color={colours.grey}>
                           By clicking "Sign up" button you agree with our{" "}
                           <Link
@@ -163,7 +168,7 @@ const SignUpPage = () => {
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid container item xs={12} md={6} justifyContent="center">
               <LoginImageContainer>
                 <LoginImage
                   src="https://assets.maccarianagency.com/svg/illustrations/drawkit-illustration4.svg"

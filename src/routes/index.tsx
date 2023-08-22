@@ -8,6 +8,7 @@ import CheckoutSuccess from "@/components/CheckoutSuccess";
 import SignUpPage from "@/components/SignUpPage";
 import SignInPage from "@/components/SignInPage";
 import ForgotPasswordPage from "@/components/ForgotPasswordPage";
+import NotFound from "@/components/NotFound";
 
 const AppRoutes = () => (
   <Routes>
@@ -20,6 +21,7 @@ const AppRoutes = () => (
     <Route path="/login/sign-up" element={<SignUpPage />} />
     <Route path="/login/sign-in" element={<SignInPage />} />
     <Route path="/login/forgot-password" element={<ForgotPasswordPage />} />
+    <Route path="*" element={<NotFound />} />
   </Routes>
 );
 

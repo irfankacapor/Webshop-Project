@@ -57,7 +57,14 @@ const SignInPage = () => {
       <main>
         <SectionContainer marginTop="2rem">
           <Grid container spacing={6} alignItems="center">
-            <Grid container item xs={12} md={6}>
+            <Grid
+              container
+              item
+              xs={12}
+              md={6}
+              alignItems="center"
+              justifyContent="center"
+            >
               <LoginImageContainer>
                 <LoginImage
                   src="https://assets.maccarianagency.com/svg/illustrations/drawkit-illustration2.svg"

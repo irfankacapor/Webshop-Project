@@ -1,6 +1,6 @@
 import { SectionContainer } from "@/features/homepage/styles";
 import Footer from "./Footer";
-import { Box, Divider, Grid, Link, TextField, Typography } from "@mui/material";
+import { Box, Divider, Grid, Link, Typography } from "@mui/material";
 import { LoginImage, LoginImageContainer } from "./SignUpPage";
 import { colours } from "@/utils/colours";
 import * as yup from "yup";
@@ -11,7 +11,7 @@ import { AddToCartButton } from "@/features/product-details-page/styles";
 import { useUser } from "@/context/UserContext";
 import { useState } from "react";
 import axios from "axios";
-import styled from "styled-components";
+import { CustomInputField, ErrorMessage } from "@/utils/global-styles";
 
 const SignInSchema = yup.object().shape({
   username: yup.string().required("Your username is required!"),
@@ -20,16 +20,6 @@ const SignInSchema = yup.object().shape({
     .required("Your password is required!")
     .min(6, "Your password must be at least 6 characters long!s"),
 });
-
-export const ErrorMessage = styled(({ ...props }) => (
-  <Typography
-    variant="subtitle1"
-    fontSize="0.8rem"
-    align="center"
-    color={colours.red}
-    {...props}
-  />
-))``;
 
 type SignInSchemaType = yup.InferType<typeof SignInSchema>;
 
@@ -94,17 +84,12 @@ const SignInPage = () => {
                       <Typography variant="subtitle2" marginBottom="1rem">
                         Enter your username
                       </Typography>
-                      <TextField
-                        variant="outlined"
-                        fullWidth
-                        placeholder="Username *"
-                        type="username"
+                      <CustomInputField
                         {...register("username")}
+                        error={errors?.username?.message}
+                        placeholder="Username *"
                         onFocus={() => setShowCredentialsError(false)}
                       />
-                      {errors.username && (
-                        <ErrorMessage>{errors.username.message}</ErrorMessage>
-                      )}
                     </Grid>
                     <Grid item xs={12}>
                       <Box
@@ -121,22 +106,18 @@ const SignInPage = () => {
                           </Typography>
                         </Link>
                       </Box>
-                      <TextField
-                        variant="outlined"
-                        fullWidth
+                      <CustomInputField
+                        error={errors?.password?.message}
                         placeholder="Password *"
                         type="password"
                         {...register("password")}
                         onFocus={() => setShowCredentialsError(false)}
                       />
-                      {(errors.password && (
-                        <ErrorMessage>{errors.password.message}</ErrorMessage>
-                      )) ||
-                        (showCredentialsError && (
-                          <ErrorMessage>
-                            Invalid username or password!
-                          </ErrorMessage>
-                        ))}
+                      {showCredentialsError && (
+                        <ErrorMessage>
+                          Invalid username or password!
+                        </ErrorMessage>
+                      )}
                     </Grid>
                     <Grid item container xs={12}>
                       <Box

@@ -1,14 +1,6 @@
 import { SectionContainer } from "@/features/homepage/styles";
 import Footer from "./Footer";
-import {
-  Box,
-  Button,
-  Divider,
-  Grid,
-  Link,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Divider, Grid, Link, Typography } from "@mui/material";
 import { colours } from "@/utils/colours";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -16,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { AddToCartButton } from "@/features/product-details-page/styles";
 import styled from "styled-components";
-import { ErrorMessage } from "./SignInPage";
+import { CustomInputField } from "@/utils/global-styles";
 
 const ForgotPasswordUsername = yup.object().shape({
   username: yup.string().required("Your username is required!"),
@@ -74,16 +66,12 @@ const ForgotPasswordPage = () => {
                       <Typography variant="subtitle2" marginBottom="1rem">
                         Enter your username
                       </Typography>
-                      <TextField
-                        variant="outlined"
-                        fullWidth
+                      <CustomInputField
+                        error={errors?.username?.message}
                         placeholder="Username *"
                         type="username"
                         {...register("username")}
                       />
-                      {errors.username && (
-                        <ErrorMessage>{errors.username.message}</ErrorMessage>
-                      )}
                     </Grid>
                     <Grid container item xs={12}>
                       <Box
@@ -95,7 +83,12 @@ const ForgotPasswordPage = () => {
                           <BackToLoginButton>Back to login</BackToLoginButton>
                         </Link>
                         <Link underline="none" href="/login/sign-in">
-                          <AddToCartButton>Send reset link</AddToCartButton>
+                          <AddToCartButton
+                            type="submit"
+                            form="forgot-password-form"
+                          >
+                            Send reset link
+                          </AddToCartButton>
                         </Link>
                       </Box>
                     </Grid>

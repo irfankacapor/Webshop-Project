@@ -1,5 +1,5 @@
 import { SectionContainer } from "@/features/homepage/styles";
-import { Box, Divider, Grid, Link, TextField, Typography } from "@mui/material";
+import { Box, Divider, Grid, Link, Typography } from "@mui/material";
 import { colours } from "@/utils/colours";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -8,7 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { AddToCartButton } from "@/features/product-details-page/styles";
 import Footer from "./Footer";
 import styled from "styled-components";
-import { ErrorMessage } from "@/components/SignInPage";
+import { CustomInputField } from "@/utils/global-styles";
 
 export const LoginImageContainer = styled(Box)`
   max-width: 500px;
@@ -29,7 +29,7 @@ const SignupSchema = yup.object().shape({
   password: yup
     .string()
     .required("A password is required!")
-    .min(8, "The password has to be at least 8 characters long!"),
+    .min(6, "The password has to be at least 6 characters long!"),
 });
 
 type SignupSchemaType = yup.InferType<typeof SignupSchema>;
@@ -84,63 +84,44 @@ const SignUpPage = () => {
                         <Typography variant="subtitle2" marginBottom="1rem">
                           Enter your first name
                         </Typography>
-                        <TextField
+                        <CustomInputField
+                          error={errors?.firstName?.message}
                           type="text"
-                          variant="outlined"
-                          fullWidth
                           placeholder="First name *"
                           {...register("firstName")}
                         />
-                        {errors.firstName && (
-                          <ErrorMessage>
-                            {errors.firstName.message}
-                          </ErrorMessage>
-                        )}
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <Typography variant="subtitle2" marginBottom="1rem">
                           Enter your last name
                         </Typography>
-                        <TextField
+                        <CustomInputField
+                          error={errors?.lastName?.message}
                           type="text"
-                          variant="outlined"
-                          fullWidth
                           placeholder="Last name *"
                           {...register("lastName")}
                         />
-                        {errors.lastName && (
-                          <ErrorMessage>{errors.lastName.message}</ErrorMessage>
-                        )}
                       </Grid>
                       <Grid item xs={12}>
                         <Typography variant="subtitle2" marginBottom="1rem">
                           Enter your username
                         </Typography>
-                        <TextField
-                          variant="outlined"
-                          fullWidth
-                          placeholder="Username *"
-                          type="username"
+                        <CustomInputField
                           {...register("username")}
+                          error={errors?.username?.message}
+                          placeholder="Username *"
                         />
-                        {errors.username && (
-                          <ErrorMessage>{errors.username.message}</ErrorMessage>
-                        )}
                       </Grid>
                       <Grid item xs={12}>
                         <Typography variant="subtitle2" marginBottom="1rem">
                           Enter your password
                         </Typography>
-                        <TextField
-                          variant="outlined"
-                          fullWidth
+                        <CustomInputField
+                          error={errors?.password?.message}
                           placeholder="Password *"
                           type="password"
                           {...register("password")}
                         />
-                        {errors.password && (
-                          <ErrorMessage>{errors.password.message}</ErrorMessage>
-                        )}
                       </Grid>
                       <Grid container item xs={12}>
                         <Box

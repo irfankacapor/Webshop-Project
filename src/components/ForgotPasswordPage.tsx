@@ -19,7 +19,7 @@ const BackToLoginButton = styled(({ ...props }) => (
 ))`
   text-transform: none !important;
   border-radius: 5px !important;
-  padding: 11px 22px !important;
+  padding: 10px 22px !important;
   border-color: ${colours.lightblue} !important;
   color: ${colours.blue} !important;
   font-weight: 300 !important;
@@ -78,6 +78,7 @@ const ForgotPasswordPage = () => {
                         display="flex"
                         justifyContent="space-between"
                         width="100%"
+                        alignItems="center"
                       >
                         <Link underline="none" href="/login/sign-in">
                           <BackToLoginButton>Back to login</BackToLoginButton>
@@ -96,7 +97,14 @@ const ForgotPasswordPage = () => {
                 </form>
               </Box>
             </Grid>
-            <Grid container item xs={12} md={6}>
+            <Grid
+              container
+              item
+              xs={12}
+              md={6}
+              justifyContent="center"
+              alignItems="center"
+            >
               <Box width="100%" height="100%" maxWidth="500px">
                 <img
                   src="https://assets.maccarianagency.com/svg/illustrations/drawkit-illustration3.svg"

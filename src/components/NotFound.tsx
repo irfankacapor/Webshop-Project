@@ -34,7 +34,14 @@ const NotFound = () => {
                 </Box>
               </Box>
             </Grid>
-            <Grid container item xs={12} md={6}>
+            <Grid
+              container
+              item
+              xs={12}
+              md={6}
+              alignItems="center"
+              justifyContent="center"
+            >
               <Box maxWidth="500px" width="100%" height="100%">
                 <img
                   src="https://assets.maccarianagency.com/svg/illustrations/drawkit-illustration6.svg"

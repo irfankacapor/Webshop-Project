@@ -59,11 +59,11 @@ const AutocompleteSearch = ({
       id="product-search-bar"
       disableClearable
       options={
-        inputValue !== ""
-          ? products.map((product) => product.title).slice(0, 6)
-          : []
+        inputValue !== "" ? products.map((product) => product.title) : []
       }
-      filterOptions={createFilterOptions()}
+      filterOptions={createFilterOptions({
+        limit: 6,
+      })}
       renderInput={(params) => (
         <StyledTextField
           {...params}

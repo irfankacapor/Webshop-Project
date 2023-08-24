@@ -3,6 +3,7 @@ export interface Filters {
   chosenBrands: string[];
   searchedBrand: string;
   chosenCategories: string[];
+  searchedName: string;
 }
 
 export interface ProductCardProps {

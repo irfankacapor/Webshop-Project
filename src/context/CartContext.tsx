@@ -3,8 +3,8 @@ import {
   useContext,
   createContext,
   ReactNode,
-  useState,
   useEffect,
+  useReducer,
 } from "react";
 
 type CartContextType = {
@@ -16,19 +16,42 @@ type CartContextType = {
   cartQuantity: number;
 };
 
+type CartActions =
+  | { type: "INCREASE_QUANTITY"; id: number }
+  | { type: "SET_QUANTITY"; id: number; quantity: number }
+  | { type: "REMOVE_ITEM"; id: number };
+
 const CartContext = createContext({} as CartContextType);
 
 export const useCart = () => {
   return useContext(CartContext);
 };
 
+const reducer = (state: CartItem[], action: CartActions) => {
+  switch (action.type) {
+    case "INCREASE_QUANTITY":
+      return state.find((item) => item.id === action.id)
+        ? state.map((item) =>
+            item.id === action.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          )
+        : [...state, { id: action.id, quantity: 1 }];
+    case "SET_QUANTITY":
+      return state.map((item) =>
+        item.id === action.id ? { ...item, quantity: action.quantity } : item
+      );
+    case "REMOVE_ITEM":
+      return state.filter((item) => item.id !== action.id);
+    default:
+      return state;
+  }
+};
+
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+  const [cartItems, dispatch] = useReducer(reducer, [], () => {
     const savedCartItems = localStorage.getItem("cartItems");
-    if (savedCartItems) {
-      return JSON.parse(savedCartItems);
-    }
-    return [];
+    return savedCartItems ? JSON.parse(savedCartItems) : [];
   });
 
   useEffect(() => {
@@ -39,34 +62,18 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   };
   const increaseQuantity = (id: number) => {
-    setCartItems((prevItems) => {
-      if (prevItems.find((item) => item.id === id) == null) {
-        return [...prevItems, { id, quantity: 1 }];
-      } else {
-        return prevItems.map((item) => {
-          if (item.id === id) {
-            return { ...item, quantity: item.quantity + 1 };
-          } else {
-            return item;
-          }
-        });
-      }
-    });
+    dispatch({ type: "INCREASE_QUANTITY", id });
   };
   const setQuantity = (id: number, quantity: number) => {
-    setCartItems((prevItems) => {
-      return prevItems.map((item) => {
-        return item.id === id ? { ...item, quantity: quantity } : item;
-      });
-    });
+    dispatch({ type: "SET_QUANTITY", id, quantity });
   };
   const removeItem = (id: number) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    dispatch({ type: "REMOVE_ITEM", id });
   };
 
   const cartQuantity = cartItems.reduce(
     (quantity, item) => quantity + item.quantity,
-    0,
+    0
   );
 
   return (

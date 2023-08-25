@@ -114,7 +114,7 @@ const Products = () => {
     <>
       <main>
         <ProductListingBanner />
-        <SectionContainer>
+        <SectionContainer position="relative" marginBottom="-3rem">
           <AutocompleteSearch setFilters={setFilters} filters={filters} />
         </SectionContainer>
         <SmallFiltersDrawer

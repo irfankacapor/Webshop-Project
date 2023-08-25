@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import AppRoutes from "@/routes";
 import { CartProvider } from "@/context/CartContext";
 import { UserProvider } from "./context/UserContext";
+import { FONT_FAMILY } from "./utils/global-styles";
 
 const theme = createTheme({
   palette: {
@@ -12,7 +13,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Inter, sans-serif",
+    fontFamily: FONT_FAMILY,
     subtitle2: {
       fontWeight: 300,
     },

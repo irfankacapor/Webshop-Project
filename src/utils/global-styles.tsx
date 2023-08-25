@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { colours } from "./colours";
 import React from "react";
 
+export const FONT_FAMILY = "Inter, sans-serif";
+
 interface Props {
   error?: string;
   [x: string]: any;

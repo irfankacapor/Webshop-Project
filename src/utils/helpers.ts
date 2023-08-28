@@ -5,27 +5,27 @@ import axios from "axios";
 
 export const sort = (
   products: ProductCardProps[],
-  sortOption: (typeof SortingOptions)[keyof typeof SortingOptions],
+  sortOption: (typeof SortingOptions)[keyof typeof SortingOptions]
 ) => {
   const sortedProducts = products.slice();
   // Sort the array based on the chosen sort option
   if (sortOption === SortingOptions.NAME_ASC) {
     sortedProducts.sort((productA, productB) =>
-      productA.title.localeCompare(productB.title),
+      productA.title.localeCompare(productB.title)
     );
   } else if (sortOption === SortingOptions.NAME_DESC) {
     sortedProducts
       .sort((productA, productB) =>
-        productA.title.localeCompare(productB.title),
+        productA.title.localeCompare(productB.title)
       )
       .reverse();
   } else if (sortOption === SortingOptions.PRICE_ASC) {
     sortedProducts.sort(
-      (productA, productB) => productA.price - productB.price,
+      (productA, productB) => productA.price - productB.price
     );
   } else if (sortOption === SortingOptions.PRICE_DESC) {
     sortedProducts.sort(
-      (productA, productB) => productB.price - productA.price,
+      (productA, productB) => productB.price - productA.price
     );
   }
 
@@ -40,7 +40,8 @@ export const applyFilters = (
     chosenBrands: string[];
     searchedBrand: string;
     chosenCategories: string[];
-  },
+    searchedName: string;
+  }
 ) => {
   let filteredProducts = products.slice();
 
@@ -61,6 +62,14 @@ export const applyFilters = (
       return product.brand
         .toLocaleLowerCase()
         .includes(filters.searchedBrand.toLocaleLowerCase());
+    });
+  }
+
+  if (filters.searchedName !== "") {
+    filteredProducts = filteredProducts.filter((product) => {
+      return product.title
+        .toLocaleLowerCase()
+        .includes(filters.searchedName.toLocaleLowerCase());
     });
   }
 
@@ -85,14 +94,14 @@ export const calculateCartSubtotal = async (cartItems: CartItem[]) => {
       const priceAPIurl = `https://dummyjson.com/products/${item.id}`;
       const res = await axios.get(priceAPIurl);
       return [item.id, res.data.price];
-    }),
+    })
   );
   const prices = Object.fromEntries(priceEntries);
 
   return cartItems.reduce(
     (subtotal: number, item: CartItem) =>
       subtotal + prices[item.id] * item.quantity,
-    0,
+    0
   );
 };
 

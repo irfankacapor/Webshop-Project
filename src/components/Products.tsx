@@ -18,6 +18,8 @@ import {
 import AvailableProducts from "@/features/products-page/AvailableProducts";
 import useProducts from "@/hooks/useProducts";
 import { Filters, ProductCardProps } from "@/features/products-page/types";
+import { SectionContainer } from "@/features/homepage/styles";
+import AutocompleteSearch from "./AutocompleteSearch";
 
 const FilterButtonContainer = styled(Box)`
   display: flex !important;
@@ -31,6 +33,7 @@ const Products = () => {
     chosenBrands: [],
     searchedBrand: "",
     chosenCategories: [],
+    searchedName: "",
   });
   // Saves the number of products that are shown based on the current filters
 
@@ -55,14 +58,14 @@ const Products = () => {
     products.length > 0
       ? [...products].sort(
           (productA: ProductCardProps, productB: ProductCardProps) =>
-            productA.price - productB.price,
+            productA.price - productB.price
         )[0].price
       : 0;
   const maxPrice =
     products.length > 0
       ? [...products].sort(
           (productA: ProductCardProps, productB: ProductCardProps) =>
-            productB.price - productA.price,
+            productB.price - productA.price
         )[0].price
       : 0;
 
@@ -74,7 +77,7 @@ const Products = () => {
   // Handles page switches
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
-    value: number,
+    value: number
   ) => {
     setPage(value);
   };
@@ -85,10 +88,11 @@ const Products = () => {
     chosenBrands: filters.chosenBrands,
     searchedBrand: filters.searchedBrand,
     chosenCategories: filters.chosenCategories,
+    searchedName: filters.searchedName,
   };
   const availableProducts = sort(
     applyFilters(products, filtersToApply),
-    sortBy,
+    sortBy
   );
   const numOfProductsFound = availableProducts.length;
   const numOfPages = Math.floor(numOfProductsFound / 12) + 1;
@@ -100,6 +104,7 @@ const Products = () => {
       chosenBrands: [],
       searchedBrand: "",
       chosenCategories: [],
+      searchedName: "",
     });
   };
 
@@ -109,6 +114,9 @@ const Products = () => {
     <>
       <main>
         <ProductListingBanner />
+        <SectionContainer position="relative" marginBottom="-3rem">
+          <AutocompleteSearch setFilters={setFilters} filters={filters} />
+        </SectionContainer>
         <SmallFiltersDrawer
           open={smallDrawerOpen}
           setOpen={setSmallDrawerOpen}

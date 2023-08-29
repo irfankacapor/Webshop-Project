@@ -2,6 +2,7 @@ import { Box, Grid, useMediaQuery } from "@mui/material";
 import { Typography } from "@mui/material";
 import styled from "styled-components";
 import { colours } from "@/utils/colours";
+import { useTranslation } from "react-i18next";
 
 export const MoreProductsContainer = styled(Box)`
   display: flex;
@@ -27,6 +28,7 @@ const StyledImage = styled.img`
 `;
 
 const MoreProducts = () => {
+  const { t } = useTranslation();
   const isSmallScreen = useMediaQuery("(max-width:600px)");
   return (
     <MoreProductsContainer>
@@ -60,7 +62,7 @@ const MoreProducts = () => {
               color={"white"}
               fontSize={isSmallScreen ? "1.5625rem" : "2.125rem"}
             >
-              Fide more products
+              {t("homepage.more_products.title")}
             </Typography>
             <Typography
               variant="body1"
@@ -68,8 +70,7 @@ const MoreProducts = () => {
               color={"white"}
               fontWeight={300}
             >
-              If we're no longer the right solution for you, we'll allow you to
-              export and take your data at anytime for any reason.
+              {t("homepage.more_products.description")}
             </Typography>
           </Box>
         </Grid>

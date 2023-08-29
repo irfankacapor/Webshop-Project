@@ -34,12 +34,12 @@ const reducer = (state: CartItem[], action: CartActions) => {
         ? state.map((item) =>
             item.id === action.id
               ? { ...item, quantity: item.quantity + 1 }
-              : item
+              : item,
           )
         : [...state, { id: action.id, quantity: 1 }];
     case "SET_QUANTITY":
       return state.map((item) =>
-        item.id === action.id ? { ...item, quantity: action.quantity } : item
+        item.id === action.id ? { ...item, quantity: action.quantity } : item,
       );
     case "REMOVE_ITEM":
       return state.filter((item) => item.id !== action.id);
@@ -73,7 +73,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const cartQuantity = cartItems.reduce(
     (quantity, item) => quantity + item.quantity,
-    0
+    0,
   );
 
   return (

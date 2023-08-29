@@ -28,5 +28,5 @@ export const CustomInputField = React.forwardRef<HTMLInputElement, Props>(
         {error && <ErrorMessage>{error}</ErrorMessage>}
       </>
     );
-  }
+  },
 );

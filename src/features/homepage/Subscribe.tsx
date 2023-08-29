@@ -9,6 +9,7 @@ import {
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import styled from "styled-components";
 import { MoreProductsContainer } from "@/features/homepage/MoreProducts";
+import { useTranslation } from "react-i18next";
 
 const StyledTypography = styled(({ ...props }) => (
   <Typography color="white" align="center" data-aos="fade-up" {...props} />
@@ -38,7 +39,7 @@ const SubscribeContainer = styled(MoreProductsContainer)`
 const StyledTextField = styled(({ ...props }) => (
   <TextField
     variant="outlined"
-    placeholder="Enter your email"
+    placeholder={props.placeholder}
     fullWidth
     InputProps={{
       endAdornment: (
@@ -75,6 +76,8 @@ const StyledTextField = styled(({ ...props }) => (
 `;
 
 const Subscribe = () => {
+  const { t } = useTranslation();
+
   const isSmallScreen = useMediaQuery("(max-width:600px)");
   return (
     <SubscribeContainer>
@@ -92,11 +95,10 @@ const Subscribe = () => {
             fontWeight="700"
             fontSize={isSmallScreen ? "1.5625rem" : "2.125rem"}
           >
-            Subscribe to our newsletter
+            {t("homepage.subscribe.title")}
           </StyledTypography>
           <StyledTypography variant="h6">
-            Don't lose a chance to be among the firsts to know about our
-            upcoming news and updates.
+            {t("homepage.subscribe.description")}
           </StyledTypography>
         </TextContainer>
         <Box
@@ -109,7 +111,7 @@ const Subscribe = () => {
             data-aos="fade-up"
             sx={{ maxWidth: "400px", width: "100%" }}
           >
-            <StyledTextField />
+            <StyledTextField placeholder={t("homepage.subscribe.mail")} />
           </FormControl>
         </Box>
       </Box>

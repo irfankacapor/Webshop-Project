@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Link, Typography } from "@mui/material";
+import { Box, Grid, Link, Typography } from "@mui/material";
 import styled from "styled-components";
 import { colours } from "@/utils/colours";
 
@@ -25,16 +25,6 @@ const LogoContainer = styled(({ ...props }) => (
   width: 5rem;
   cursor: auto;
   box-sizing: border-box;
-`;
-
-const PurchaseNowButton = styled(({ ...props }) => (
-  <Button variant="outlined" size="small" {...props} />
-))`
-  text-transform: none !important;
-  border-radius: 5px !important;
-  padding: 10px 9px !important;
-  border-color: ${colours.lightblue} !important;
-  color: ${colours.blue} !important;
 `;
 
 const LinkAndLogoContainer = styled(Box)`
@@ -77,7 +67,30 @@ const Footer = () => (
               </Link>
             </LinkContainer>
             <LinkContainer>
-              <PurchaseNowButton>Purchase now</PurchaseNowButton>
+              <Link underline="none" href="/login/sign-up">
+                <Box
+                  sx={{
+                    backgroundColor: colours.blue,
+                    ":hover": {
+                      boxShadow:
+                        "rgba(140, 152, 164, 0.176) 0px 5px 30px 5px !important",
+                    },
+                  }}
+                  borderRadius="12px"
+                  padding="0.5rem"
+                >
+                  <Typography variant="body1" color={colours.white}>
+                    Sign up
+                  </Typography>
+                </Box>
+              </Link>
+            </LinkContainer>
+            <LinkContainer>
+              <Link underline="none" href="/login/sign-in">
+                <Typography variant="body1" color={colours.title}>
+                  Sign in
+                </Typography>
+              </Link>
             </LinkContainer>
           </Box>
         </LinkAndLogoContainer>

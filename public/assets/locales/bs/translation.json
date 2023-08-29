@@ -1,0 +1,55 @@
+{
+  "navbar": {
+    "products": "Proizvodi",
+    "home": "Početna"
+  },
+  "homepage": {
+    "start": {
+      "title_p1": "Doživite svoju muziku",
+      "title_p2": "kao nikada prije.",
+      "description": "Super ponuda do kraja juna. Sve originalne slušalice po maksimumu:",
+      "button": "Otkrijte ponudu",
+      "alert": "$60 Apple Music poklon kartica pri kupovini odabranih Beats proizvoda.*"
+    },
+    "more_products": {
+      "title": "Pronađite više proizvoda",
+      "description": "Ako više nismo pravo rješenje za vas, omogućit ćemo vam da izvezete i ponesete svoje podatke u bilo koje vrijeme iz bilo kojeg razloga."
+    },
+    "categories": {
+      "name": "kategorije",
+      "title": "Izaberite svoj proizvod po kategorijama",
+      "description1": "Kupite muzičke instrumente i dodatnu opremu online:",
+      "description2": "Sigurno i udobno",
+      "button": "Pogledajte sve kategorije",
+      "category1": "Slušalice",
+      "category2": "Beats",
+      "category3": "Bilježnice",
+      "category4": "Kamere",
+      "category5": "Igre",
+      "category6": "Video"
+    },
+    "featured": {
+      "name": "proizvodi",
+      "title": "Istaknuti proizvodi",
+      "description": "Doživite svoju muziku kao nikada prije. Kupite muzičke instrumente i dodatnu opremu online.",
+      "button": "Pogledaj sve",
+      "cart_button": "Dodaj u korpu",
+      "product1": "Zvučnik",
+      "product2": "Slušalice",
+      "product3": "Bežične slušalice",
+      "product4": "Bluetooth slušalice",
+      "product5": "Slušalice",
+      "product6": "Muzički plejer"
+    },
+    "special_offer": {
+      "title": "Doživite svoju muziku kao nikada prije.",
+      "description": "Ako više nismo pravo rješenje za vas, omogućit ćemo vam da izvezete i ponesete svoje podatke u bilo koje vrijeme iz bilo kojeg razloga.",
+      "button": "Istražite ponudu"
+    },
+    "subscribe": {
+      "title": "Pretplatite se na našu mailing listu",
+      "description": "Ne propustite priliku da budete među prvima koji će saznati o našim nadolazećim vijestima i ažuriranjima.",
+      "mail": "Unesite email"
+    }
+  }
+}

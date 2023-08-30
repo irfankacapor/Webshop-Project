@@ -1,0 +1,63 @@
+{
+  "navbar": {
+    "products": "Products",
+    "home": "Home"
+  },
+  "homepage": {
+    "start": {
+      "title_p1": "Experience your music",
+      "title_p2": "like never before.",
+      "description": "Super offer till the end of June. All the original headphones at maximum:",
+      "button": "Discover the offer",
+      "alert": "$60 Apple Music gift card with purchase of select Beats products.*"
+    },
+    "more_products": {
+      "title": "Fide more products",
+      "description": "If we're no longer the right solution for you, we'll allow you to export and take your data at anytime for any reason."
+    },
+    "categories": {
+      "name": "categories",
+      "title": "Choose your product by categories",
+      "description1": "Buy Music Instruments & Accessories Online:",
+      "description2": "Securely and Comfortably",
+      "button": "See all categories",
+      "category1": "Headphones",
+      "category2": "Beats",
+      "category3": "Notebooks",
+      "category4": "Cameras",
+      "category5": "Gaming",
+      "category6": "Video"
+    },
+    "featured": {
+      "name": "products",
+      "title": "Featured products",
+      "description": "Experience your music like never before. Buy music instruments & accessories online.",
+      "button": "View all",
+      "cart_button": "Add to cart",
+      "product1": "Music player",
+      "product2": "Headphones",
+      "product3": "Wireless headphones",
+      "product4": "Bluetooth headphones",
+      "product5": "Headphones",
+      "product6": "Music player"
+    },
+    "special_offer": {
+      "title": "Experience your music like never before.",
+      "description": "If we're no longer the right solution for you, we'll allow you to export and take your data at anytime for any reason.",
+      "button": "Discover the offer"
+    },
+    "subscribe": {
+      "title": "Subscribe to our newsletter",
+      "description": "Don't lose a chance to be among the firsts to know about our upcoming news and updates.",
+      "mail": "Enter your email"
+    }
+  },
+  "footer": {
+    "home": "Home",
+    "documentation": "Documentation",
+    "sign_up": "Sign up",
+    "sign_in": "Sign in",
+    "copyright": "© randomCompany. 2023, Company. All rights reserved",
+    "disclaimer": "When you visit or interact with our sites, services or tools, we or out authorised service providers may use cookies for storing information to help provide you with a better, faster, and safer experience and for marketing purposes."
+  }
+}

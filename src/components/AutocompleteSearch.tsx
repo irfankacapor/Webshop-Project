@@ -35,9 +35,9 @@ const AutocompleteSearch = ({
             .filter((product) =>
               product.title
                 .toLocaleLowerCase()
-                .includes(newValue.toLocaleLowerCase())
+                .includes(newValue.toLocaleLowerCase()),
             )
-            .slice(0, 6)
+            .slice(0, 6),
         )
       : setFilteredProducts([]);
 
@@ -61,14 +61,14 @@ const AutocompleteSearch = ({
       setHighlightedOption((prevHighlightedOption) =>
         prevHighlightedOption === -1 || prevHighlightedOption === 0
           ? filteredProducts.length - 1
-          : prevHighlightedOption - 1
+          : prevHighlightedOption - 1,
       );
     } else if (event.key === "ArrowDown") {
       setHighlightedOption((prevHighlightedOption) =>
         prevHighlightedOption === -1 ||
         prevHighlightedOption === filteredProducts.length - 1
           ? 0
-          : prevHighlightedOption + 1
+          : prevHighlightedOption + 1,
       );
     }
   };
@@ -90,9 +90,9 @@ const AutocompleteSearch = ({
     setFilteredProducts(
       products
         .filter((product) =>
-          product.title.toLocaleLowerCase().includes(title.toLocaleLowerCase())
+          product.title.toLocaleLowerCase().includes(title.toLocaleLowerCase()),
         )
-        .slice(0, 6)
+        .slice(0, 6),
     );
     setDropdownOpen(false);
   };

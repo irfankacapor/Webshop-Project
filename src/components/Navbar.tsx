@@ -1,9 +1,22 @@
-import { useEffect, useState } from "react";
-import { AppBar, Box, Toolbar, Typography, Link } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  Link,
+  Menu,
+  MenuItem,
+} from "@mui/material";
 import styled from "styled-components";
 import { colours } from "@/utils/colours";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import i18next from "i18next";
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 import { useUser } from "@/context/UserContext";
+import { supported_languages } from "@/services/i18n";
+import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 const Logo = styled.img`
   height: 5rem;
@@ -24,6 +37,20 @@ const NavbarContainer = styled(Box)`
 
   @media (min-width: 900px) {
     max-width: 1236px !important;
+  }
+`;
+
+const LanguagePickerContainer = styled(Box)`
+  display: flex;
+  border-radius: 100%;
+  padding: 0.7rem;
+  overflow: hidden;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(34, 31, 32, 0.1) !important;
   }
 `;
 
@@ -51,7 +78,19 @@ const ProfilePicture = styled.img`
 
 const Navbar = () => {
   const { userData } = useUser();
+  const { t } = useTranslation();
   const [elevation, setElevation] = useState(0);
+  const [anchorElement, setAnchorElement] = useState<null | HTMLElement>(null);
+  const currentLocation = useLocation();
+
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElement(event.currentTarget);
+  };
+
+  const handleMenuClose = (code: string) => {
+    setAnchorElement(null);
+    i18next.changeLanguage(code);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,40 +126,16 @@ const Navbar = () => {
             <LinkContainer>
               <Link underline="none" href="/products">
                 <Typography variant="body1" color={colours.title}>
-                  Products
+                  {currentLocation.pathname === "/"
+                    ? t("navbar.products")
+                    : "Products"}
                 </Typography>
               </Link>
             </LinkContainer>
             <LinkContainer>
               <Link underline="none" href="/">
                 <Typography variant="body1" color={colours.title}>
-                  Home
-                </Typography>
-              </Link>
-            </LinkContainer>
-            <LinkContainer marginRight={0}>
-              <Link underline="none" href="/login/sign-up">
-                <Box
-                  sx={{
-                    backgroundColor: colours.blue,
-                    ":hover": {
-                      boxShadow:
-                        "rgba(140, 152, 164, 0.176) 0px 5px 30px 5px !important",
-                    },
-                  }}
-                  borderRadius="12px"
-                  padding="0.5rem"
-                >
-                  <Typography variant="body1" color={colours.white}>
-                    Sign up
-                  </Typography>
-                </Box>
-              </Link>
-            </LinkContainer>
-            <LinkContainer>
-              <Link underline="none" href="/login/sign-in">
-                <Typography variant="body1" color={colours.title}>
-                  Sign in
+                  {currentLocation.pathname === "/" ? t("navbar.home") : "Home"}
                 </Typography>
               </Link>
             </LinkContainer>
@@ -133,6 +148,36 @@ const Navbar = () => {
                 />
               </Link>
             </LinkContainer>
+            {currentLocation.pathname === "/" && (
+              <LinkContainer>
+                <LanguagePickerContainer onClick={handleMenuOpen}>
+                  {
+                    <div>
+                      <span
+                        className={`fi fi-${supported_languages.find(
+                          (lang) => lang.code === i18next.language
+                        )?.country_code}`}
+                      />
+                    </div>
+                  }
+                </LanguagePickerContainer>
+                <Menu
+                  anchorEl={anchorElement}
+                  open={Boolean(anchorElement)}
+                  onClose={handleMenuClose}
+                >
+                  {supported_languages.map(({ code, name, country_code }) => (
+                    <MenuItem key={code} onClick={() => handleMenuClose(code)}>
+                      <Box marginRight={"0.5rem"}>
+                        <span className={`fi fi-${country_code}`} />
+                      </Box>
+                      {name}
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </LinkContainer>
+            )}
+
             {userData?.image && (
               <LinkContainer>
                 <Link underline="none" href="/login/sign-in">

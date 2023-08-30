@@ -58,14 +58,14 @@ const Products = () => {
     products.length > 0
       ? [...products].sort(
           (productA: ProductCardProps, productB: ProductCardProps) =>
-            productA.price - productB.price
+            productA.price - productB.price,
         )[0].price
       : 0;
   const maxPrice =
     products.length > 0
       ? [...products].sort(
           (productA: ProductCardProps, productB: ProductCardProps) =>
-            productB.price - productA.price
+            productB.price - productA.price,
         )[0].price
       : 0;
 
@@ -77,7 +77,7 @@ const Products = () => {
   // Handles page switches
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
-    value: number
+    value: number,
   ) => {
     setPage(value);
   };
@@ -92,7 +92,7 @@ const Products = () => {
   };
   const availableProducts = sort(
     applyFilters(products, filtersToApply),
-    sortBy
+    sortBy,
   );
   const numOfProductsFound = availableProducts.length;
   const numOfPages = Math.floor(numOfProductsFound / 12) + 1;

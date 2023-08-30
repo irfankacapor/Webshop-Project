@@ -51,5 +51,13 @@
       "description": "Ne propustite priliku da budete među prvima koji će saznati o našim nadolazećim vijestima i ažuriranjima.",
       "mail": "Unesite email"
     }
+  },
+  "footer": {
+    "home": "Početna",
+    "documentation": "Dokumentacija",
+    "sign_up": "Registrujte se",
+    "sign_in": "Prijavite se",
+    "copyright": "© randomCompany. 2023, Kompanija. Sva prava zadržana",
+    "disclaimer": "Kada posjetite ili interagujete sa našim stranicama, uslugama ili alatima, mi ili naši ovlašteni pružatelji usluga koristimo kolačiće za pohranu informacija kako bismo vam pružili bolje, brže i sigurnije iskustvo i u marketinške svrhe."
   }
 }

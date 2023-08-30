@@ -25,10 +25,8 @@ const SpecialOffer = () => {
         <Grid item xs={12} md={6} data-aos="fade-up">
           <Section
             sectionTitle={t("homepage.special_offer.title")}
-            sectionDescription={[
-              "If we're no longer the right solution for you, we'll allow you to export and take your data at anytime for any reason.",
-            ]}
-            sectionButton="Discover the offer"
+            sectionDescription={[t("homepage.special_offer.description")]}
+            sectionButton={t("homepage.special_offer.button")}
             sectionDescriptionColor={colours.mediumdarkgrey}
             sectionTitleColor={colours.darkgrey}
             alignText="left"

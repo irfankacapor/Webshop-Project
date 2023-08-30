@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Pagination, Typography } from "@mui/material";
+import { Box, Pagination, Typography, useMediaQuery } from "@mui/material";
 import styled from "styled-components";
 import { colours } from "@/utils/colours";
 import { SortingOptions } from "@/utils/sorting-options";
@@ -28,6 +28,8 @@ const FilterButtonContainer = styled(Box)`
 `;
 
 const Products = () => {
+  const isMediumScreen = useMediaQuery("(min-width: 900px)");
+  const isExtraSmallScreen = useMediaQuery("(max-width: 400px)");
   const [filters, setFilters] = useState<Filters>({
     priceRange: [0, 0],
     chosenBrands: [],
@@ -58,14 +60,14 @@ const Products = () => {
     products.length > 0
       ? [...products].sort(
           (productA: ProductCardProps, productB: ProductCardProps) =>
-            productA.price - productB.price,
+            productA.price - productB.price
         )[0].price
       : 0;
   const maxPrice =
     products.length > 0
       ? [...products].sort(
           (productA: ProductCardProps, productB: ProductCardProps) =>
-            productB.price - productA.price,
+            productB.price - productA.price
         )[0].price
       : 0;
 
@@ -77,7 +79,7 @@ const Products = () => {
   // Handles page switches
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
-    value: number,
+    value: number
   ) => {
     setPage(value);
   };
@@ -92,7 +94,7 @@ const Products = () => {
   };
   const availableProducts = sort(
     applyFilters(products, filtersToApply),
-    sortBy,
+    sortBy
   );
   const numOfProductsFound = availableProducts.length;
   const numOfPages = Math.floor(numOfProductsFound / 12) + 1;
@@ -140,7 +142,11 @@ const Products = () => {
               resetAll={resetAll}
             />
 
-            <Box marginLeft="2rem" width="100%" color={colours.title}>
+            <Box
+              marginLeft={isMediumScreen ? "2rem" : 0}
+              width="100%"
+              color={colours.title}
+            >
               <FilterButtonContainer>
                 <FilterButton
                   onClick={() => setSmallDrawerOpen((prevValue) => !prevValue)}
@@ -157,6 +163,7 @@ const Products = () => {
                     color={colours.title}
                     fontWeight="700"
                     marginRight="0.5rem"
+                    visibility={isExtraSmallScreen ? "hidden" : undefined}
                   >
                     {numOfProductsFound} results found
                   </Typography>

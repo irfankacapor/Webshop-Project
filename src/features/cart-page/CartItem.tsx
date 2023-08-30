@@ -36,7 +36,7 @@ const CartItem = ({ id }: { id: number }) => {
   const { removeItem } = useCart();
   const isLargeScreen = useMediaQuery("(min-width: 900px)");
   const isMediumScreen = useMediaQuery(
-    "(min-width: 900px) and (max-width: 1199px)",
+    "(min-width: 900px) and (max-width: 1100px)"
   );
 
   return (
@@ -58,6 +58,7 @@ const CartItem = ({ id }: { id: number }) => {
                 variant="body1"
                 fontSize="0.9rem"
                 color={colours.grey}
+                maxWidth={"85%"}
               >
                 {details.description}
               </Typography>
@@ -66,7 +67,7 @@ const CartItem = ({ id }: { id: number }) => {
           <Grid item xs={12} md={4} order={isLargeScreen ? 2 : 3}>
             <Stack
               paddingX={isLargeScreen ? "2rem" : 0}
-              flexDirection={isLargeScreen ? "column" : "row"}
+              flexDirection={"column"}
             >
               <ActionButtons href="/cart" onClick={() => removeItem(id)}>
                 <DeleteOutlineRoundedIcon sx={{ marginRight: "0.25rem" }} />
@@ -74,8 +75,7 @@ const CartItem = ({ id }: { id: number }) => {
               </ActionButtons>
               <ActionButtons
                 sx={{
-                  marginTop: isLargeScreen ? "0.5rem" : 0,
-                  marginLeft: isLargeScreen ? 0 : "0.5rem",
+                  marginTop: "0.5rem",
                 }}
               >
                 <FavoriteBorderOutlinedIcon sx={{ marginRight: "0.25rem" }} />

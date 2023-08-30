@@ -108,7 +108,7 @@ const CheckoutForm = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <Typography variant="subtitle2" marginBottom="1rem">
-                    Enter your adress
+                    Enter your address
                   </Typography>
                   <CustomInputField
                     error={errors?.address?.message}

@@ -48,10 +48,8 @@ Run `npm test` to launch the test runner in interactive watch mode. The tests ar
 
 Run `npm run build` to build the app for production. The build is minified, and the filenames include the hashes. Your app is ready to be deployed!
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request.
-
 ## Contact Information
 
-For any questions or collaboration requests, please feel free to reach out.
+For any question, please feel free to reach out.
+
+- LinkedIn: www.linkedin/in/irfankacapor

@@ -33,7 +33,7 @@ export const FilterButton = styled(({ ...props }) => (
     }
     {...props}
   >
-    Filter
+    <span className="filter-text">Filter</span>
   </Button>
 ))`
   text-transform: none !important;
@@ -48,8 +48,16 @@ export const FilterButton = styled(({ ...props }) => (
     border-color: ${colours.blue} !important;
   }
 
-  @media (min-width: 900px) {
-    display: none !important;
+  @media (max-width: 400px) {
+    .filter-text {
+      display: none;
+    }
+    & img {
+      margin: 0 !important;
+    }
+    .MuiButton-startIcon {
+      margin: 0 !important;
+    }
   }
 
   & img {

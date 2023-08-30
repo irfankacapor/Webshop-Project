@@ -1,5 +1,4 @@
-import { Box, Button, Divider, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, Button, Divider, Typography, Link } from "@mui/material";
 import styled from "styled-components";
 import { colours } from "@/utils/colours";
 import { CreateStars } from "@/features/products-page/ProductCard";
@@ -48,7 +47,7 @@ export const ProductDetailsText = ({ details }: { details: DetailsProps }) => {
         <CreateStars rating={details.rating} />
       </Box>
       <Box marginTop="2rem">
-        <Link to="/cart">
+        <Link href="/cart" underline="none">
           <AddToCartButton
             fullWidth
             onClick={() => increaseQuantity(details.id)}

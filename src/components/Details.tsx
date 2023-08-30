@@ -31,7 +31,7 @@ export const DetailsContainer = styled(Box)`
 const DetailsDividerContainer = styled(Box)`
   width: 100%;
   box-sizing: border-box;
-  padding: 2rem 1rem !important;
+  padding: 1rem;
   margin-left: auto;
   margin-right: auto;
   @media (min-width: 600px) {
@@ -45,7 +45,7 @@ const DetailsDividerContainer = styled(Box)`
 const Details = () => {
   const { id } = useParams<{ id: string }>();
   const { details, similarProducts } = useProductDetails(
-    id as unknown as number,
+    id as unknown as number
   );
 
   return details.images.length === 0 ? (

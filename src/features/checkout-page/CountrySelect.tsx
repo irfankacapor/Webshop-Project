@@ -12,7 +12,9 @@ const CountrySelect = React.forwardRef((props: CountrySelectProps, ref) => {
   return (
     <Autocomplete
       id="country-select-demo"
-      sx={{ width: 300 }}
+      sx={{
+        width: "100%",
+      }}
       options={countries}
       autoHighlight
       getOptionLabel={(option) => option.label}

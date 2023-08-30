@@ -10,7 +10,7 @@ import { Filters } from "@/features/products-page/types";
 const StyledDrawer = styled(({ ...props }) => (
   <Drawer
     anchor="left"
-    PaperProps={{ style: { padding: "1rem" } }}
+    PaperProps={{ style: { padding: "1rem", maxWidth: "300px" } }}
     {...props}
   />
 ))``;

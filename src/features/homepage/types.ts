@@ -6,7 +6,8 @@ export interface ProductProps {
 
 export interface CategoryProps {
   category: string;
-  icon: string;
+  icon: JSX.Element;
+  href: string;
 }
 
 export interface SectionProps {
@@ -21,4 +22,5 @@ export interface SectionProps {
   sectionAosAnimation?: string;
   sectionTitleAosAnimation?: string;
   sectionDescriptionAosAnimation?: string;
+  buttonHref?: string;
 }

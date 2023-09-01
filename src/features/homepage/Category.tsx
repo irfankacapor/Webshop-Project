@@ -55,7 +55,6 @@ const iconProps = {
 const Category = () => {
   const { t } = useTranslation();
   const categories = useCategories();
-  console.log(categories);
   const categoryList: CategoryProps[] = [
     {
       category:

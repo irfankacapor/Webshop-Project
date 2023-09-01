@@ -113,3 +113,6 @@ export const formatCurrency = (id: number) => {
   });
   return CURRENCY_FORMATTER.format(id);
 };
+
+export const capitalizeFirstLetter = (str: string): string =>
+  str.charAt(0).toUpperCase() + str.slice(1);

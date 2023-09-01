@@ -14,6 +14,7 @@ import {
   FilterName,
 } from "@/features/products-page/styles";
 import { Filters } from "@/features/products-page/types";
+import { capitalizeFirstLetter } from "@/utils/helpers";
 
 const CategoryFilter = ({
   filters,
@@ -37,14 +38,11 @@ const CategoryFilter = ({
       setFilters((prevValue) => ({
         ...filters,
         chosenCategories: prevValue.chosenCategories.filter(
-          (chosenCategory) => chosenCategory !== category,
+          (chosenCategory) => chosenCategory !== category
         ),
       }));
     }
   };
-
-  const capitalizeFirstLetter = (str: string): string =>
-    str.charAt(0).toUpperCase() + str.slice(1);
 
   return (
     <FilterContainer>

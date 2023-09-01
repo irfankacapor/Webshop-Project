@@ -9,6 +9,8 @@ import LaptopRoundedIcon from "@mui/icons-material/LaptopRounded";
 import BlurOnRoundedIcon from "@mui/icons-material/BlurOnRounded";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import useCategories from "@/hooks/useCategories";
+import i18next from "i18next";
 
 const StyledPaper = styled(Paper)`
   height: 100% !important;
@@ -52,37 +54,56 @@ const iconProps = {
 
 const Category = () => {
   const { t } = useTranslation();
-
+  const categories = useCategories();
+  console.log(categories);
   const categoryList: CategoryProps[] = [
     {
-      category: t("homepage.categories.category1"),
+      category:
+        i18next.language === "bs"
+          ? t("homepage.categories.category1")
+          : categories[0],
       icon: <SmartphoneRoundedIcon sx={iconProps} />,
-      href: "/products?category=smartphones",
+      href: `/products?category=${categories[0]}`,
     },
     {
-      category: t("homepage.categories.category2"),
+      category:
+        i18next.language === "bs"
+          ? t("homepage.categories.category2")
+          : categories[1],
       icon: <LaptopRoundedIcon sx={iconProps} />,
-      href: "/products?category=laptops",
+      href: `/products?category=${categories[1]}`,
     },
     {
-      category: t("homepage.categories.category3"),
+      category:
+        i18next.language === "bs"
+          ? t("homepage.categories.category3")
+          : categories[2],
       icon: <BlurOnRoundedIcon sx={iconProps} />,
-      href: "/products?category=fragrances",
+      href: `/products?category=${categories[2]}`,
     },
     {
-      category: t("homepage.categories.category4"),
+      category:
+        i18next.language === "bs"
+          ? t("homepage.categories.category4")
+          : categories[3],
       icon: <AutoAwesomeIcon sx={iconProps} />,
-      href: "/products?category=skincare",
+      href: `/products?category=${categories[3]}`,
     },
     {
-      category: t("homepage.categories.category5"),
+      category:
+        i18next.language === "bs"
+          ? t("homepage.categories.category5")
+          : categories[4],
       icon: <LocalGroceryStoreRoundedIcon sx={iconProps} />,
-      href: "/products?category=groceries",
+      href: `/products?category=${categories[4]}`,
     },
     {
-      category: t("homepage.categories.category6"),
+      category:
+        i18next.language === "bs"
+          ? t("homepage.categories.category6")
+          : categories[5],
       icon: <HomeRoundedIcon sx={iconProps} />,
-      href: "/products?category=home-decoration",
+      href: `/products?category=home-${categories[5]}`,
     },
   ];
 

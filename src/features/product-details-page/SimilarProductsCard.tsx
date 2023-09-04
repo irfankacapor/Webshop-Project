@@ -11,7 +11,7 @@ import {
   ProductCaption,
   StyledCardMedia,
   StyledStarIcon,
-} from "@/features/products-page/ProductCard";
+} from "@/features/products-page/styles";
 import { useCart } from "@/context/CartContext";
 
 export const CreateStars = (props: { rating: number }) => {

@@ -28,13 +28,15 @@ const FilterButtonContainer = styled(Box)`
 `;
 
 const Products = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialCategory = urlParams.get("category")?.toLocaleLowerCase();
   const isMediumScreen = useMediaQuery("(min-width: 900px)");
   const isExtraSmallScreen = useMediaQuery("(max-width: 400px)");
   const [filters, setFilters] = useState<Filters>({
     priceRange: [0, 0],
     chosenBrands: [],
     searchedBrand: "",
-    chosenCategories: [],
+    chosenCategories: initialCategory ? [initialCategory] : [],
     searchedName: "",
   });
   // Saves the number of products that are shown based on the current filters

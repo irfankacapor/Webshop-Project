@@ -16,6 +16,7 @@ const Categories = () => {
             t("homepage.categories.description2"),
           ]}
           sectionButton={t("homepage.categories.button")}
+          buttonHref="/products"
         ></Section>
       </Box>
       <Grid container spacing={4}>

@@ -1,101 +1,18 @@
-import {
-  Box,
-  Button,
-  CardMedia,
-  Link,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Link, Paper, Stack, Typography } from "@mui/material";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import StarIcon from "@mui/icons-material/Star";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
-import styled from "styled-components";
 import { colours } from "@/utils/colours";
 import { useCart } from "@/context/CartContext";
 import { formatCurrency } from "@/utils/helpers";
-
-export const StyledStarIcon = styled(StarIcon)`
-  width: 16px !important;
-  height: 16px !important;
-`;
-
-export const StyledCardMedia = styled(({ ...props }) => (
-  <CardMedia role="img" {...props} />
-))`
-  height: 320px;
-  overflow: hidden;
-  position: relative;
-  background-color: transparent;
-  border-radius: 8px;
-`;
-
-export const FavouriteIconContainer = styled(Box)`
-  background-color: ${colours.white};
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  padding: 1rem;
-  border-radius: 8px;
-  box-sizing: border-box;
-  object-fit: contain;
-  height: 52px;
-  width: 52px;
-  cursor: pointer !important;
-`;
-
-export const ProductCaption = styled(({ ...props }) => (
-  <Typography variant="body1" {...props} />
-))`
-  color: ${colours.title} !important;
-  text-transform: uppercase;
-  font-weight: 600 !important;
-  text-overflow: ellipsis;
-`;
-
-const ProductButtons = styled(({ ...props }) => (
-  <Button variant="contained" size="large" {...props} />
-))`
-  min-width: 4rem !important;
-  width: 100%;
-  transition-property: box-shadow;
-  box-shadow: ${colours.lightshadow} 0px 12px 15px !important;
-  padding: 10px 22px !important;
-
-  & svg {
-    width: 20px;
-    height: 20px;
-  }
-`;
-
-const SeeDetailsButton = styled(({ ...props }) => (
-  <Button
-    variant="text"
-    fullWidth
-    size="large"
-    component={Link}
-    endIcon={<KeyboardArrowRightRoundedIcon />}
-    {...props}
-  />
-))`
-  text-transform: none !important;
-  display: flex;
-  justify-content: space-between !important;
-  align-items: center;
-  border-radius: 5px !important;
-  padding: 10px 11px !important;
-  color: ${colours.title} !important;
-  width: 100%;
-  margin-top: 0.5rem !important;
-  & span {
-    & svg {
-      width: 20px;
-      height: 20px;
-    }
-  }
-`;
+import {
+  FavouriteIconContainer,
+  ProductButtons,
+  ProductCaption,
+  SeeDetailsButton,
+  StyledCardMedia,
+  StyledStarIcon,
+} from "./styles";
 
 export const CreateStars = (props: { rating: number }) => {
   const rating = Math.round(props.rating);

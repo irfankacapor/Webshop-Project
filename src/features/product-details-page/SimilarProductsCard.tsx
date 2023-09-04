@@ -1,36 +1,18 @@
-import { Box, Button, Paper, Stack, Typography, Link } from "@mui/material";
+import { Box, Paper, Stack, Typography, Link } from "@mui/material";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import styled from "styled-components";
 import { colours } from "@/utils/colours";
-import { AddToCartButton } from "@/features/product-details-page/styles";
+import {
+  AddToCartButton,
+  QuickCartButton,
+} from "@/features/product-details-page/styles";
 import {
   FavouriteIconContainer,
   ProductCaption,
   StyledCardMedia,
   StyledStarIcon,
-} from "@/features/products-page/ProductCard";
+} from "@/features/products-page/styles";
 import { useCart } from "@/context/CartContext";
-
-const QuickCartButton = styled(({ ...props }) => (
-  <Button variant="text" fullWidth size="large" component={Link} {...props} />
-))`
-  text-transform: none !important;
-  display: flex;
-  font-weight: 300 !important;
-  text-align: center;
-  border-radius: 5px !important;
-  padding: 10px 11px !important;
-  color: ${colours.title} !important;
-  width: 100%;
-  margin-top: 0.5rem !important;
-  & span {
-    & svg {
-      width: 20px;
-      height: 20px;
-    }
-  }
-`;
 
 export const CreateStars = (props: { rating: number }) => {
   const rating = Math.round(props.rating);

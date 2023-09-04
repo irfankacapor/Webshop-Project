@@ -1,4 +1,4 @@
-import { Typography, Box, Button } from "@mui/material";
+import { Typography, Box, Button, Link } from "@mui/material";
 import { useMediaQuery } from "@mui/material";
 import styled from "styled-components";
 import { colours } from "@/utils/colours";
@@ -69,9 +69,11 @@ const Section = (props: SectionProps) => {
         alignItems={props.alignText || "center"}
         marginTop="1rem"
       >
-        <HomepageButton sx={{ height: props.buttonHeight || "auto" }}>
-          {props.sectionButton}
-        </HomepageButton>
+        <Link underline="none" href={props.buttonHref}>
+          <HomepageButton sx={{ height: props.buttonHeight || "auto" }}>
+            {props.sectionButton}
+          </HomepageButton>
+        </Link>
       </Box>
     </Box>
   );

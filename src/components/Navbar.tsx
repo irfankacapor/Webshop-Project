@@ -88,8 +88,14 @@ const Navbar = () => {
   };
 
   const handleMenuClose = (code: string) => {
+    if (code) {
+      i18next.changeLanguage(code);
+    }
+    handleClose();
+  };
+
+  const handleClose = () => {
     setAnchorElement(null);
-    i18next.changeLanguage(code);
   };
 
   useEffect(() => {
@@ -164,7 +170,7 @@ const Navbar = () => {
                 <Menu
                   anchorEl={anchorElement}
                   open={Boolean(anchorElement)}
-                  onClose={handleMenuClose}
+                  onClose={handleClose}
                 >
                   {supported_languages.map(({ code, name, country_code }) => (
                     <MenuItem key={code} onClick={() => handleMenuClose(code)}>
